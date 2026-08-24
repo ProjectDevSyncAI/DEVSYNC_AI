@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+
+    "declaration": true,
+    "removeComments": true,
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    "sourceMap": true,
+    "incremental": true,
+
+    "skipLibCheck": true,
+    "strict": true,
+
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}

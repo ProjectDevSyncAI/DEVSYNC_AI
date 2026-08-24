@@ -1,0 +1,1476 @@
+// ============================================================
+// DEVSYNC AI
+// Advanced Collaborative Developer Platform
+// Prisma 7 + PostgreSQL + pgvector
+// ============================================================
+
+generator client {
+  provider = "prisma-client"
+  output   = "../apps/api/src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================================
+// ENUMS
+// ============================================================
+
+enum UserStatus {
+  ACTIVE
+  INVITED
+  SUSPENDED
+  DEACTIVATED
+}
+
+enum OrganizationRole {
+  OWNER
+  ADMIN
+  ENGINEER
+  MANAGER
+  VIEWER
+}
+
+enum ProjectStatus {
+  PLANNING
+  ACTIVE
+  ON_HOLD
+  COMPLETED
+  ARCHIVED
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  IN_REVIEW
+  BLOCKED
+  DONE
+  CANCELLED
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum IssueStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+  REOPENED
+}
+
+enum IssuePriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum IssueType {
+  BUG
+  FEATURE
+  IMPROVEMENT
+  DOCUMENTATION
+  SECURITY
+  PERFORMANCE
+  OTHER
+}
+
+enum SprintStatus {
+  PLANNED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum PullRequestStatus {
+  OPEN
+  MERGED
+  CLOSED
+  DRAFT
+}
+
+enum PullRequestReviewStatus {
+  PENDING
+  APPROVED
+  CHANGES_REQUESTED
+  COMMENTED
+}
+
+enum RepositoryVisibility {
+  PUBLIC
+  PRIVATE
+  INTERNAL
+}
+
+enum ChatChannelType {
+  PROJECT
+  GENERAL
+  DIRECT
+  GROUP
+}
+
+enum MessageType {
+  TEXT
+  SYSTEM
+  AI
+  FILE
+  CODE
+}
+
+enum NotificationType {
+  TASK_ASSIGNED
+  TASK_UPDATED
+  ISSUE_ASSIGNED
+  ISSUE_UPDATED
+  PR_REVIEW
+  PR_MERGED
+  MENTION
+  CHAT_MESSAGE
+  SPRINT_STARTED
+  SPRINT_COMPLETED
+  AI_INSIGHT
+  RISK_DETECTED
+  SYSTEM
+}
+
+enum NotificationPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum AIMessageRole {
+  SYSTEM
+  USER
+  ASSISTANT
+  TOOL
+}
+
+enum AIInsightType {
+  PROJECT_SUMMARY
+  PRODUCTIVITY
+  RISK
+  BUG
+  SPRINT
+  CODE
+  TEAM
+  RELEASE
+  GENERAL
+}
+
+enum RiskSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum RiskStatus {
+  OPEN
+  ACKNOWLEDGED
+  MITIGATED
+  RESOLVED
+  IGNORED
+}
+
+enum DocumentSourceType {
+  GITHUB
+  TASK
+  ISSUE
+  PULL_REQUEST
+  COMMIT
+  CHAT
+  DOCUMENTATION
+  MANUAL
+  PROJECT
+}
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  DELETE
+  LOGIN
+  LOGOUT
+  INVITE
+  ROLE_CHANGE
+  CONNECT
+  DISCONNECT
+  AI_REQUEST
+  EXPORT
+}
+
+enum WebhookEventType {
+  PUSH
+  PULL_REQUEST
+  ISSUES
+  ISSUE_COMMENT
+  PULL_REQUEST_REVIEW
+  PULL_REQUEST_REVIEW_COMMENT
+  CREATE
+  DELETE
+  RELEASE
+  WORKFLOW_RUN
+  UNKNOWN
+}
+
+// ============================================================
+// USER
+// ============================================================
+
+model User {
+  id String @id @default(uuid()) @db.Uuid
+
+  email    String @unique @db.VarChar(320)
+  username String @unique @db.VarChar(80)
+
+  firstName String @db.VarChar(80)
+  lastName  String @db.VarChar(80)
+
+  avatarUrl String? @db.Text
+  bio       String? @db.Text
+
+  passwordHash String
+
+  status UserStatus @default(ACTIVE)
+
+  lastLoginAt     DateTime?
+  emailVerifiedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  memberships        OrganizationMember[]
+  ownedOrganizations Organization[]       @relation("OrganizationOwner")
+
+  projectMemberships ProjectMember[]
+  chatMemberships    ChatChannelMember[]
+
+  assignedTasks Task[] @relation("TaskAssignee")
+  createdTasks  Task[] @relation("TaskCreator")
+
+  assignedIssues Issue[] @relation("IssueAssignee")
+  reportedIssues Issue[] @relation("IssueReporter")
+
+  comments Comment[]
+
+  commits Commit[] @relation("CommitAuthor")
+
+  pullRequests PullRequest[] @relation("PullRequestAuthor")
+
+  reviews PullRequestReview[]
+
+  sprintMemberships SprintMember[]
+
+  sentMessages ChatMessage[] @relation("MessageSender")
+
+  notifications Notification[]
+
+  aiConversations AIConversation[]
+
+  aiMessages AIMessage[]
+
+  auditLogs AuditLog[]
+
+  githubAccount GitHubAccount?
+
+  createdProjects Project[] @relation("ProjectCreator")
+
+  createdIssues Issue[] @relation("IssueCreator")
+
+  createdSprints Sprint[] @relation("SprintCreator")
+
+  mentionedInComments CommentMention[]
+
+  mentionedInMessages MessageMention[]
+  activities          Activity[]
+
+  @@index([email])
+  @@index([username])
+  @@index([status])
+  @@index([createdAt])
+}
+
+// ============================================================
+// ORGANIZATION
+// ============================================================
+
+model Organization {
+  id String @id @default(uuid()) @db.Uuid
+
+  name String @db.VarChar(120)
+  slug String @unique @db.VarChar(120)
+
+  description String? @db.Text
+  logoUrl     String? @db.Text
+
+  ownerId String @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  owner User @relation("OrganizationOwner", fields: [ownerId], references: [id])
+
+  members OrganizationMember[]
+
+  projects Project[]
+
+  repositories Repository[]
+
+  invitations OrganizationInvitation[]
+
+  auditLogs AuditLog[]
+
+  @@index([ownerId])
+  @@index([slug])
+}
+
+// ============================================================
+// ORGANIZATION MEMBERS
+// ============================================================
+
+model OrganizationMember {
+  id String @id @default(uuid()) @db.Uuid
+
+  organizationId String @db.Uuid
+  userId         String @db.Uuid
+
+  role OrganizationRole @default(ENGINEER)
+
+  joinedAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId])
+  @@index([organizationId])
+  @@index([userId])
+  @@index([role])
+}
+
+// ============================================================
+// ORGANIZATION INVITATIONS
+// ============================================================
+
+model OrganizationInvitation {
+  id String @id @default(uuid()) @db.Uuid
+
+  organizationId String @db.Uuid
+
+  email String @db.VarChar(320)
+
+  role OrganizationRole @default(ENGINEER)
+
+  token String @unique
+
+  expiresAt  DateTime
+  acceptedAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([email])
+  @@index([expiresAt])
+}
+
+// ============================================================
+// PROJECT
+// ============================================================
+
+model Project {
+  id String @id @default(uuid()) @db.Uuid
+
+  organizationId String @db.Uuid
+  createdById    String @db.Uuid
+
+  name String @db.VarChar(150)
+  key  String @db.VarChar(20)
+
+  description String? @db.Text
+
+  status ProjectStatus @default(PLANNING)
+
+  startDate  DateTime?
+  targetDate DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  createdBy User @relation("ProjectCreator", fields: [createdById], references: [id])
+
+  members ProjectMember[]
+
+  repositories Repository[]
+
+  tasks Task[]
+
+  issues Issue[]
+
+  sprints Sprint[]
+
+  pullRequests PullRequest[]
+
+  commits Commit[]
+
+  comments Comment[]
+
+  chatChannels ChatChannel[]
+
+  notifications Notification[]
+
+  aiConversations AIConversation[]
+
+  aiInsights AIInsight[]
+
+  risks ProjectRisk[]
+
+  documents Document[]
+
+  analytics  ProjectAnalytics[]
+  activities Activity[]
+
+  @@unique([organizationId, key])
+  @@index([organizationId])
+  @@index([createdById])
+  @@index([status])
+}
+
+// ============================================================
+// PROJECT MEMBERS
+// ============================================================
+
+model ProjectMember {
+  id String @id @default(uuid()) @db.Uuid
+
+  projectId String @db.Uuid
+  userId    String @db.Uuid
+
+  joinedAt DateTime @default(now())
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+  @@index([projectId])
+  @@index([userId])
+}
+
+// ============================================================
+// REPOSITORY
+// ============================================================
+
+model Repository {
+  id String @id @default(uuid()) @db.Uuid
+
+  organizationId String  @db.Uuid
+  projectId      String? @db.Uuid
+
+  githubId String? @unique
+
+  name     String @db.VarChar(150)
+  fullName String @db.VarChar(250)
+
+  url String @db.Text
+
+  defaultBranch String @default("main")
+
+  visibility RepositoryVisibility @default(PRIVATE)
+
+  language String? @db.VarChar(50)
+
+  stars Int @default(0)
+  forks Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  project Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+
+  branches Branch[]
+
+  commits Commit[]
+
+  pullRequests PullRequest[]
+
+  issues Issue[]
+
+  documents Document[]
+
+  @@index([organizationId])
+  @@index([projectId])
+  @@index([fullName])
+}
+
+// ============================================================
+// BRANCH
+// ============================================================
+
+model Branch {
+  id String @id @default(uuid()) @db.Uuid
+
+  repositoryId String @db.Uuid
+
+  name String @db.VarChar(150)
+
+  sha String @db.VarChar(100)
+
+  isDefault Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  repository Repository @relation(fields: [repositoryId], references: [id], onDelete: Cascade)
+
+  @@unique([repositoryId, name])
+  @@index([repositoryId])
+}
+
+// ============================================================
+// COMMIT
+// ============================================================
+
+model Commit {
+  id String @id @default(uuid()) @db.Uuid
+
+  repositoryId String  @db.Uuid
+  projectId    String? @db.Uuid
+
+  authorId String? @db.Uuid
+
+  sha String @unique @db.VarChar(100)
+
+  message String @db.Text
+
+  branch String? @db.VarChar(150)
+
+  additions    Int @default(0)
+  deletions    Int @default(0)
+  changedFiles Int @default(0)
+
+  committedAt DateTime
+
+  createdAt DateTime @default(now())
+
+  repository Repository @relation(fields: [repositoryId], references: [id], onDelete: Cascade)
+
+  project Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+
+  author User? @relation("CommitAuthor", fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([repositoryId])
+  @@index([projectId])
+  @@index([authorId])
+  @@index([committedAt])
+}
+
+// ============================================================
+// TASK
+// ============================================================
+
+model Task {
+  id String @id @default(uuid()) @db.Uuid
+
+  projectId String @db.Uuid
+
+  assigneeId String? @db.Uuid
+  creatorId  String  @db.Uuid
+
+  sprintId String? @db.Uuid
+
+  title String @db.VarChar(250)
+
+  description String? @db.Text
+
+  status TaskStatus @default(TODO)
+
+  priority TaskPriority @default(MEDIUM)
+
+  storyPoints Int?
+
+  dueDate DateTime?
+
+  position Float @default(0)
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  completedAt DateTime?
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  assignee User? @relation("TaskAssignee", fields: [assigneeId], references: [id], onDelete: SetNull)
+
+  creator User @relation("TaskCreator", fields: [creatorId], references: [id])
+
+  sprint Sprint? @relation(fields: [sprintId], references: [id], onDelete: SetNull)
+
+  comments Comment[]
+
+  labels TaskLabel[]
+
+  @@index([projectId])
+  @@index([assigneeId])
+  @@index([sprintId])
+  @@index([status])
+  @@index([priority])
+  @@index([dueDate])
+}
+
+// ============================================================
+// TASK LABEL
+// ============================================================
+
+model TaskLabel {
+  id String @id @default(uuid()) @db.Uuid
+
+  taskId  String @db.Uuid
+  labelId String @db.Uuid
+
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  label Label @relation(fields: [labelId], references: [id], onDelete: Cascade)
+
+  @@unique([taskId, labelId])
+}
+
+// ============================================================
+// LABEL
+// ============================================================
+
+model Label {
+  id String @id @default(uuid()) @db.Uuid
+
+  organizationId String @db.Uuid
+
+  name  String @db.VarChar(50)
+  color String @db.VarChar(20)
+
+  createdAt DateTime @default(now())
+
+  taskLabels  TaskLabel[]
+  issueLabels IssueLabel[]
+
+  @@unique([organizationId, name])
+  @@index([organizationId])
+}
+
+// ============================================================
+// ISSUE
+// ============================================================
+
+model Issue {
+  id String @id @default(uuid()) @db.Uuid
+
+  projectId    String  @db.Uuid
+  repositoryId String? @db.Uuid
+
+  assigneeId String? @db.Uuid
+  reporterId String  @db.Uuid
+  creatorId  String  @db.Uuid
+
+  githubId String? @unique
+
+  title String @db.VarChar(250)
+
+  description String? @db.Text
+
+  type IssueType @default(BUG)
+
+  status IssueStatus @default(OPEN)
+
+  priority IssuePriority @default(MEDIUM)
+
+  estimatedHours Float?
+
+  dueDate DateTime?
+
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  resolvedAt DateTime?
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  repository Repository? @relation(fields: [repositoryId], references: [id], onDelete: SetNull)
+
+  assignee User? @relation("IssueAssignee", fields: [assigneeId], references: [id], onDelete: SetNull)
+
+  reporter User @relation("IssueReporter", fields: [reporterId], references: [id])
+
+  creator User @relation("IssueCreator", fields: [creatorId], references: [id])
+
+  labels IssueLabel[]
+
+  comments Comment[]
+
+  @@index([projectId])
+  @@index([repositoryId])
+  @@index([assigneeId])
+  @@index([status])
+  @@index([priority])
+  @@index([type])
+}
+
+// ============================================================
+// ISSUE LABEL
+// ============================================================
+
+model IssueLabel {
+  id String @id @default(uuid()) @db.Uuid
+
+  issueId String @db.Uuid
+  labelId String @db.Uuid
+
+  issue Issue @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  label Label @relation(fields: [labelId], references: [id], onDelete: Cascade)
+
+  @@unique([issueId, labelId])
+}
+
+// ============================================================
+// SPRINT
+// ============================================================
+
+model Sprint {
+  id String @id @default(uuid()) @db.Uuid
+
+  projectId String @db.Uuid
+  creatorId String @db.Uuid
+
+  name String @db.VarChar(150)
+
+  goal String? @db.Text
+
+  status SprintStatus @default(PLANNED)
+
+  startDate DateTime
+  endDate   DateTime
+
+  capacity Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  creator User @relation("SprintCreator", fields: [creatorId], references: [id])
+
+  tasks Task[]
+
+  members SprintMember[]
+
+  @@index([projectId])
+  @@index([status])
+  @@index([startDate, endDate])
+}
+
+// ============================================================
+// SPRINT MEMBERS
+// ============================================================
+
+model SprintMember {
+  id String @id @default(uuid()) @db.Uuid
+
+  sprintId String @db.Uuid
+  userId   String @db.Uuid
+
+  sprint Sprint @relation(fields: [sprintId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([sprintId, userId])
+}
+
+// ============================================================
+// PULL REQUEST
+// ============================================================
+
+model PullRequest {
+  id String @id @default(uuid()) @db.Uuid
+
+  repositoryId String  @db.Uuid
+  projectId    String? @db.Uuid
+
+  authorId String? @db.Uuid
+
+  githubId String @unique
+
+  number Int
+
+  title String @db.VarChar(250)
+
+  description String? @db.Text
+
+  sourceBranch String @db.VarChar(150)
+  targetBranch String @db.VarChar(150)
+
+  status PullRequestStatus @default(OPEN)
+
+  reviewStatus PullRequestReviewStatus @default(PENDING)
+
+  additions Int @default(0)
+  deletions Int @default(0)
+
+  changedFiles Int @default(0)
+
+  openedAt DateTime
+  mergedAt DateTime?
+  closedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  repository Repository @relation(fields: [repositoryId], references: [id], onDelete: Cascade)
+
+  project Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+
+  author User? @relation("PullRequestAuthor", fields: [authorId], references: [id], onDelete: SetNull)
+
+  reviews PullRequestReview[]
+
+  comments Comment[]
+
+  @@unique([repositoryId, number])
+  @@index([repositoryId])
+  @@index([projectId])
+  @@index([authorId])
+  @@index([status])
+  @@index([reviewStatus])
+}
+
+// ============================================================
+// PULL REQUEST REVIEW
+// ============================================================
+
+model PullRequestReview {
+  id String @id @default(uuid()) @db.Uuid
+
+  pullRequestId String @db.Uuid
+  reviewerId    String @db.Uuid
+
+  githubId String? @unique
+
+  status PullRequestReviewStatus
+
+  body String? @db.Text
+
+  submittedAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  pullRequest PullRequest @relation(fields: [pullRequestId], references: [id], onDelete: Cascade)
+
+  reviewer User @relation(fields: [reviewerId], references: [id])
+
+  @@index([pullRequestId])
+  @@index([reviewerId])
+}
+
+// ============================================================
+// COMMENT
+// ============================================================
+
+model Comment {
+  id String @id @default(uuid()) @db.Uuid
+
+  projectId String @db.Uuid
+
+  taskId        String? @db.Uuid
+  issueId       String? @db.Uuid
+  pullRequestId String? @db.Uuid
+
+  authorId String @db.Uuid
+
+  content String @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  task Task? @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  issue Issue? @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  pullRequest PullRequest? @relation(fields: [pullRequestId], references: [id], onDelete: Cascade)
+
+  author User @relation(fields: [authorId], references: [id])
+
+  mentions CommentMention[]
+
+  @@index([projectId])
+  @@index([taskId])
+  @@index([issueId])
+  @@index([pullRequestId])
+  @@index([authorId])
+}
+
+// ============================================================
+// COMMENT MENTION
+// ============================================================
+
+model CommentMention {
+  id String @id @default(uuid()) @db.Uuid
+
+  commentId String @db.Uuid
+  userId    String @db.Uuid
+
+  comment Comment @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([commentId, userId])
+}
+
+// ============================================================
+// CHAT CHANNEL
+// ============================================================
+
+model ChatChannel {
+  id String @id @default(uuid()) @db.Uuid
+
+  projectId String? @db.Uuid
+
+  name String? @db.VarChar(100)
+
+  type ChatChannelType @default(PROJECT)
+
+  isPrivate Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  members ChatChannelMember[]
+
+  messages ChatMessage[]
+
+  @@index([projectId])
+  @@index([type])
+}
+
+// ============================================================
+// CHAT CHANNEL MEMBER
+// ============================================================
+
+model ChatChannelMember {
+  id String @id @default(uuid()) @db.Uuid
+
+  channelId String @db.Uuid
+  userId    String @db.Uuid
+
+  joinedAt DateTime @default(now())
+
+  channel ChatChannel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([channelId, userId])
+}
+
+// ============================================================
+// CHAT MESSAGE
+// ============================================================
+
+model ChatMessage {
+  id String @id @default(uuid()) @db.Uuid
+
+  channelId String  @db.Uuid
+  senderId  String? @db.Uuid
+
+  type MessageType @default(TEXT)
+
+  content String @db.Text
+
+  metadata Json?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  channel ChatChannel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+
+  sender User? @relation("MessageSender", fields: [senderId], references: [id], onDelete: SetNull)
+
+  mentions MessageMention[]
+
+  @@index([channelId])
+  @@index([senderId])
+  @@index([createdAt])
+}
+
+// ============================================================
+// MESSAGE MENTION
+// ============================================================
+
+model MessageMention {
+  id String @id @default(uuid()) @db.Uuid
+
+  messageId String @db.Uuid
+  userId    String @db.Uuid
+
+  message ChatMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([messageId, userId])
+}
+
+// ============================================================
+// NOTIFICATION
+// ============================================================
+
+model Notification {
+  id String @id @default(uuid()) @db.Uuid
+
+  userId    String  @db.Uuid
+  projectId String? @db.Uuid
+
+  type NotificationType
+
+  priority NotificationPriority @default(NORMAL)
+
+  title String @db.VarChar(200)
+
+  message String @db.Text
+
+  metadata Json?
+
+  readAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([projectId])
+  @@index([readAt])
+  @@index([createdAt])
+}
+
+// ============================================================
+// AI CONVERSATION
+// ============================================================
+
+model AIConversation {
+  id String @id @default(uuid()) @db.Uuid
+
+  userId    String  @db.Uuid
+  projectId String? @db.Uuid
+
+  title String @db.VarChar(200)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  messages AIMessage[]
+
+  @@index([userId])
+  @@index([projectId])
+  @@index([updatedAt])
+}
+
+// ============================================================
+// AI MESSAGE
+// ============================================================
+
+model AIMessage {
+  id String @id @default(uuid()) @db.Uuid
+
+  conversationId String  @db.Uuid
+  userId         String? @db.Uuid
+
+  role AIMessageRole
+
+  content String @db.Text
+
+  model String? @db.VarChar(100)
+
+  promptTokens     Int?
+  completionTokens Int?
+  totalTokens      Int?
+
+  latencyMs Int?
+
+  metadata Json?
+
+  createdAt DateTime @default(now())
+
+  conversation AIConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  citations AIMessageCitation[]
+
+  @@index([conversationId])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+// ============================================================
+// AI MESSAGE CITATIONS
+// ============================================================
+
+model AIMessageCitation {
+  id String @id @default(uuid()) @db.Uuid
+
+  messageId String @db.Uuid
+
+  documentId String? @db.Uuid
+
+  chunkId String? @db.Uuid
+
+  sourceTitle String? @db.VarChar(250)
+
+  sourceUrl String? @db.Text
+
+  relevanceScore Float?
+
+  message AIMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  document Document? @relation(fields: [documentId], references: [id], onDelete: SetNull)
+
+  chunk DocumentChunk? @relation(fields: [chunkId], references: [id], onDelete: SetNull)
+
+  @@index([messageId])
+  @@index([documentId])
+  @@index([chunkId])
+}
+
+// ============================================================
+// RAG DOCUMENT
+// ============================================================
+
+model Document {
+  id String @id @default(uuid()) @db.Uuid
+
+  projectId    String? @db.Uuid
+  repositoryId String? @db.Uuid
+
+  sourceType DocumentSourceType
+
+  externalId String? @db.VarChar(250)
+
+  title String @db.VarChar(300)
+
+  content String @db.Text
+
+  sourceUrl String? @db.Text
+
+  checksum String? @db.VarChar(128)
+
+  metadata Json?
+
+  indexedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  repository Repository? @relation(fields: [repositoryId], references: [id], onDelete: Cascade)
+
+  chunks DocumentChunk[]
+
+  citations AIMessageCitation[]
+
+  @@index([projectId])
+  @@index([repositoryId])
+  @@index([sourceType])
+  @@index([externalId])
+  @@index([checksum])
+}
+
+// ============================================================
+// RAG DOCUMENT CHUNK
+// ============================================================
+
+model DocumentChunk {
+  id String @id @default(uuid()) @db.Uuid
+
+  documentId String @db.Uuid
+
+  chunkIndex Int
+
+  content String @db.Text
+
+  tokenCount Int?
+
+  metadata Json?
+
+  // pgvector column.
+  // Prisma treats this as an unsupported PostgreSQL type.
+  embedding Unsupported("vector(1536)")?
+
+  createdAt DateTime @default(now())
+
+  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  citations AIMessageCitation[]
+
+  @@unique([documentId, chunkIndex])
+  @@index([documentId])
+}
+
+// ============================================================
+// AI INSIGHT
+// ============================================================
+
+model AIInsight {
+  id String @id @default(uuid()) @db.Uuid
+
+  projectId String @db.Uuid
+
+  type AIInsightType
+
+  title String @db.VarChar(250)
+
+  summary String @db.Text
+
+  details Json?
+
+  confidence Float?
+
+  generatedAt DateTime @default(now())
+
+  expiresAt DateTime?
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([type])
+  @@index([generatedAt])
+}
+
+// ============================================================
+// PROJECT RISK
+// ============================================================
+
+model ProjectRisk {
+  id String @id @default(uuid()) @db.Uuid
+
+  projectId String @db.Uuid
+
+  title String @db.VarChar(250)
+
+  description String @db.Text
+
+  severity RiskSeverity
+
+  status RiskStatus @default(OPEN)
+
+  probability Float?
+
+  impact Float?
+
+  riskScore Float?
+
+  source String? @db.VarChar(100)
+
+  evidence Json?
+
+  detectedAt DateTime @default(now())
+
+  resolvedAt DateTime?
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([severity])
+  @@index([status])
+  @@index([riskScore])
+}
+
+// ============================================================
+// PROJECT ANALYTICS
+// ============================================================
+
+model ProjectAnalytics {
+  id String @id @default(uuid()) @db.Uuid
+
+  projectId String @db.Uuid
+
+  date DateTime @db.Date
+
+  completedTasks Int @default(0)
+
+  openedIssues Int @default(0)
+
+  resolvedIssues Int @default(0)
+
+  commits Int @default(0)
+
+  pullRequests Int @default(0)
+
+  mergedPullRequests Int @default(0)
+
+  activeDevelopers Int @default(0)
+
+  deploymentCount Int @default(0)
+
+  averageCycleTime Float?
+
+  velocity Float?
+
+  createdAt DateTime @default(now())
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, date])
+  @@index([projectId])
+  @@index([date])
+}
+
+// ============================================================
+// GITHUB ACCOUNT
+// ============================================================
+
+model GitHubAccount {
+  id String @id @default(uuid()) @db.Uuid
+
+  userId String @unique @db.Uuid
+
+  githubUserId String @unique
+
+  username String @db.VarChar(100)
+
+  avatarUrl String? @db.Text
+
+  accessToken String? @db.Text
+
+  refreshToken String? @db.Text
+
+  tokenExpiresAt DateTime?
+
+  scopes Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ============================================================
+// GITHUB WEBHOOK EVENT
+// ============================================================
+
+model GitHubWebhookEvent {
+  id String @id @default(uuid()) @db.Uuid
+
+  deliveryId String @unique
+
+  eventType WebhookEventType
+
+  action String? @db.VarChar(100)
+
+  repositoryId String?
+
+  payload Json
+
+  processed Boolean @default(false)
+
+  processedAt DateTime?
+
+  errorMessage String? @db.Text
+
+  createdAt DateTime @default(now())
+
+  @@index([eventType])
+  @@index([processed])
+  @@index([createdAt])
+}
+
+// ============================================================
+// AUDIT LOG
+// ============================================================
+
+model AuditLog {
+  id String @id @default(uuid()) @db.Uuid
+
+  organizationId String? @db.Uuid
+
+  userId String? @db.Uuid
+
+  action AuditAction
+
+  entityType String @db.VarChar(100)
+
+  entityId String? @db.VarChar(100)
+
+  description String? @db.Text
+
+  metadata Json?
+
+  ipAddress String? @db.VarChar(45)
+
+  userAgent String? @db.Text
+
+  createdAt DateTime @default(now())
+
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId])
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// ============================================================
+// ACTIVITY
+// ============================================================
+
+model Activity {
+  id String @id @default(uuid()) @db.Uuid
+
+  projectId String? @db.Uuid
+
+  userId String? @db.Uuid
+
+  type String @db.VarChar(100)
+
+  title String @db.VarChar(250)
+
+  description String? @db.Text
+
+  entityType String? @db.VarChar(100)
+
+  entityId String? @db.VarChar(100)
+
+  metadata Json?
+
+  createdAt DateTime @default(now())
+
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([projectId])
+  @@index([userId])
+  @@index([type])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+}

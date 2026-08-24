@@ -1,0 +1,432 @@
+/* =========================================================
+   DevSync AI — Advanced Motion System
+   ========================================================= */
+
+/* ---------- Core keyframes ---------- */
+
+@keyframes ds-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ds-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ds-fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ds-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ds-slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ds-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ds-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  70% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------- Floating / ambient motion ---------- */
+
+@keyframes ds-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes ds-float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes ds-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes ds-pulse-soft {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+/* ---------- Loading ---------- */
+
+@keyframes ds-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ds-shimmer {
+  from {
+    background-position: -700px 0;
+  }
+
+  to {
+    background-position: 700px 0;
+  }
+}
+
+@keyframes ds-progress {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* ---------- Notification / attention ---------- */
+
+@keyframes ds-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  35% {
+    transform: translateY(-5px);
+  }
+
+  65% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes ds-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-4px);
+  }
+
+  40% {
+    transform: translateX(4px);
+  }
+
+  60% {
+    transform: translateX(-3px);
+  }
+
+  80% {
+    transform: translateX(3px);
+  }
+}
+
+/* ---------- Glow ---------- */
+
+@keyframes ds-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(99, 102, 241, 0);
+  }
+
+  50% {
+    box-shadow:
+      0 0 28px rgba(99, 102, 241, 0.16),
+      0 0 60px rgba(99, 102, 241, 0.08);
+  }
+}
+
+/* ---------- Utility animation classes ---------- */
+
+.ds-animate-fade {
+  animation: ds-fade-in 0.45s ease-out both;
+}
+
+.ds-animate-up {
+  animation: ds-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ds-animate-down {
+  animation: ds-fade-down 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ds-animate-left {
+  animation: ds-slide-left 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ds-animate-right {
+  animation: ds-slide-right 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ds-animate-scale {
+  animation: ds-scale-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ds-animate-pop {
+  animation: ds-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ds-float {
+  animation: ds-float 3.5s ease-in-out infinite;
+}
+
+.ds-float-slow {
+  animation: ds-float-slow 6s ease-in-out infinite;
+}
+
+.ds-pulse {
+  animation: ds-pulse 2s ease-in-out infinite;
+}
+
+.ds-pulse-soft {
+  animation: ds-pulse-soft 2.5s ease-in-out infinite;
+}
+
+.ds-spin {
+  animation: ds-spin 0.8s linear infinite;
+}
+
+.ds-bounce {
+  animation: ds-bounce 1.2s ease-in-out infinite;
+}
+
+.ds-shake {
+  animation: ds-shake 0.45s ease-in-out;
+}
+
+.ds-glow {
+  animation: ds-glow 3s ease-in-out infinite;
+}
+
+/* ---------- Staggered entrance ---------- */
+
+.ds-stagger > * {
+  animation: ds-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ds-stagger > *:nth-child(1) {
+  animation-delay: 40ms;
+}
+
+.ds-stagger > *:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.ds-stagger > *:nth-child(3) {
+  animation-delay: 120ms;
+}
+
+.ds-stagger > *:nth-child(4) {
+  animation-delay: 160ms;
+}
+
+.ds-stagger > *:nth-child(5) {
+  animation-delay: 200ms;
+}
+
+.ds-stagger > *:nth-child(6) {
+  animation-delay: 240ms;
+}
+
+.ds-stagger > *:nth-child(7) {
+  animation-delay: 280ms;
+}
+
+.ds-stagger > *:nth-child(8) {
+  animation-delay: 320ms;
+}
+
+.ds-stagger > *:nth-child(9) {
+  animation-delay: 360ms;
+}
+
+.ds-stagger > *:nth-child(10) {
+  animation-delay: 400ms;
+}
+
+/* ---------- Interactive motion ---------- */
+
+.ds-hover-lift {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.ds-hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+.ds-hover-scale {
+  transition: transform 180ms ease;
+}
+
+.ds-hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.ds-hover-scale:active {
+  transform: scale(0.98);
+}
+
+.ds-hover-glow {
+  transition:
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.ds-hover-glow:hover {
+  box-shadow:
+    0 10px 35px rgba(15, 23, 42, 0.08),
+    0 0 24px rgba(99, 102, 241, 0.08);
+}
+
+/* ---------- Shimmer skeleton ---------- */
+
+.ds-shimmer {
+  background-image: linear-gradient(
+    90deg,
+    rgba(148, 163, 184, 0.08) 0,
+    rgba(148, 163, 184, 0.18) 40%,
+    rgba(148, 163, 184, 0.08) 80%
+  );
+
+  background-size: 700px 100%;
+  animation: ds-shimmer 1.8s linear infinite;
+}
+
+/* ---------- Animated progress ---------- */
+
+.ds-progress {
+  position: relative;
+  overflow: hidden;
+}
+
+.ds-progress::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateX(-100%);
+  animation: ds-progress 1.8s ease-in-out infinite;
+}
+
+/* ---------- Page transition ---------- */
+
+.ds-page-enter {
+  animation:
+    ds-fade-in 0.35s ease-out both,
+    ds-fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---------- Modal ---------- */
+
+.ds-modal-backdrop {
+  animation: ds-fade-in 180ms ease-out both;
+}
+
+.ds-modal-content {
+  animation: ds-scale-in 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---------- Reduced motion accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

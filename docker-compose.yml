@@ -1,0 +1,74 @@
+services:
+
+  # ==========================================================
+  # POSTGRESQL + PGVECTOR
+  # ==========================================================
+
+  postgres:
+    image: pgvector/pgvector:pg17
+    container_name: devsync-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: devsync
+      POSTGRES_PASSWORD: devsync_password
+      POSTGRES_DB: devsync
+
+    ports:
+      - "5440:5432"
+
+    volumes:
+      - devsync_postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U devsync -d devsync"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+  # ==========================================================
+  # REDIS
+  # ==========================================================
+
+  redis:
+    image: redis:8-alpine
+    container_name: devsync-redis
+    restart: unless-stopped
+
+    ports:
+      - "6379:6379"
+
+    volumes:
+      - devsync_redis_data:/data
+
+    command:
+      - redis-server
+      - --appendonly
+      - "yes"
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "redis-cli",
+          "ping"
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+
+# ==========================================================
+# VOLUMES
+# ==========================================================
+
+volumes:
+
+  devsync_postgres_data:
+
+  devsync_redis_data:

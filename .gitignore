@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+.next/
+coverage/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Prisma
+prisma/generated/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Testing
+playwright-report/
+test-results/
+
+# Temporary
+tmp/
+temp/
+
+# Docker
+.docker/
+
+# AI
+.ai-cache/
+embeddings-cache/
