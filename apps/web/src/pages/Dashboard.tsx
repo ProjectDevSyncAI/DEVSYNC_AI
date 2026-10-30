@@ -1,242 +1,217 @@
+
 import { useMemo, useState } from "react";
 import {
   Activity,
-  AlertTriangle,
   ArrowDownRight,
+  ArrowRight,
   ArrowUpRight,
-  Bot,
   BrainCircuit,
   CalendarDays,
   CheckCircle2,
-  ChevronRight,
+  ChevronDown,
+  CircleAlert,
   Clock3,
+  Code2,
   FolderKanban,
-  Gauge,
-  GitBranch,
-  ListTodo,
   MoreHorizontal,
   Plus,
-  Rocket,
-  ShieldCheck,
+  Search,
   Sparkles,
   Target,
   TrendingUp,
   Users,
   Zap,
 } from "lucide-react";
-import {
-  Area,
-  AreaChart,
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Cell,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
 
-/* -------------------------------------------------------------------------- */
-/* TYPES                                                                      */
-/* -------------------------------------------------------------------------- */
-
-type ActivityItem = {
-  id: number;
-  type: "commit" | "task" | "risk" | "deployment" | "ai";
-  title: string;
-  description: string;
-  time: string;
-};
+type ProjectStatus = "On track" | "At risk" | "Completed";
 
 type Project = {
   id: number;
   name: string;
   description: string;
+  category: string;
   progress: number;
-  status: "Healthy" | "At Risk" | "Delayed";
-  members: number;
-  tasks: number;
-  completed: number;
+  status: ProjectStatus;
+  members: string[];
+  dueDate: string;
   color: string;
 };
 
-/* -------------------------------------------------------------------------- */
-/* MOCK DATA                                                                  */
-/* -------------------------------------------------------------------------- */
+type Task = {
+  id: number;
+  title: string;
+  project: string;
+  priority: "High" | "Medium" | "Low";
+  status: "In progress" | "To do" | "Review";
+  due: string;
+};
 
-const productivityData = [
-  { day: "Mon", completed: 18, created: 14 },
-  { day: "Tue", completed: 25, created: 19 },
-  { day: "Wed", completed: 21, created: 17 },
-  { day: "Thu", completed: 31, created: 22 },
-  { day: "Fri", completed: 28, created: 20 },
-  { day: "Sat", completed: 16, created: 12 },
-  { day: "Sun", completed: 12, created: 9 },
-];
-
-const workloadData = [
-  { name: "Engineering", value: 42 },
-  { name: "Design", value: 24 },
-  { name: "Marketing", value: 18 },
-  { name: "Management", value: 16 },
-];
-
-const projects: Project[] = [
+const initialProjects: Project[] = [
   {
     id: 1,
-    name: "DevSync AI",
-    description: "AI-powered engineering workspace",
-    progress: 78,
-    status: "Healthy",
-    members: 12,
-    tasks: 84,
-    completed: 66,
-    color: "from-violet-500 to-indigo-500",
+    name: "DevSync AI Platform",
+    description: "AI-powered development workspace",
+    category: "Web application",
+    progress: 76,
+    status: "On track",
+    members: ["DM", "AS", "RK"],
+    dueDate: "Nov 08",
+    color: "indigo",
   },
   {
     id: 2,
-    name: "Mobile App",
-    description: "Next-generation mobile experience",
-    progress: 61,
-    status: "Healthy",
-    members: 8,
-    tasks: 52,
-    completed: 32,
-    color: "from-cyan-500 to-blue-500",
+    name: "Analytics Engine",
+    description: "Project insights and reporting",
+    category: "AI & Analytics",
+    progress: 48,
+    status: "At risk",
+    members: ["AS", "PK"],
+    dueDate: "Nov 12",
+    color: "violet",
   },
   {
     id: 3,
-    name: "Analytics Platform",
-    description: "Real-time business intelligence",
-    progress: 43,
-    status: "At Risk",
-    members: 7,
-    tasks: 39,
-    completed: 17,
-    color: "from-orange-500 to-rose-500",
-  },
-];
-
-const activities: ActivityItem[] = [
-  {
-    id: 1,
-    type: "ai",
-    title: "AI detected a project risk",
-    description: "API integration may miss the sprint deadline.",
-    time: "8 min ago",
-  },
-  {
-    id: 2,
-    type: "commit",
-    title: "New deployment pushed",
-    description: "Production deployment completed successfully.",
-    time: "24 min ago",
-  },
-  {
-    id: 3,
-    type: "task",
-    title: "Task completed",
-    description: "Authentication flow marked as completed.",
-    time: "41 min ago",
+    name: "API Integration",
+    description: "Backend services and authentication",
+    category: "Backend",
+    progress: 91,
+    status: "On track",
+    members: ["DM", "RK", "SK"],
+    dueDate: "Nov 04",
+    color: "cyan",
   },
   {
     id: 4,
-    type: "risk",
-    title: "Risk probability increased",
-    description: "Analytics API risk moved from 34% → 57%.",
-    time: "1 hr ago",
-  },
-  {
-    id: 5,
-    type: "deployment",
-    title: "Sprint milestone reached",
-    description: "Sprint velocity increased by 18%.",
-    time: "2 hrs ago",
+    name: "UI Design System",
+    description: "Reusable interface components",
+    category: "Frontend",
+    progress: 100,
+    status: "Completed",
+    members: ["PK", "SK"],
+    dueDate: "Oct 24",
+    color: "emerald",
   },
 ];
 
-/* -------------------------------------------------------------------------- */
-/* SMALL COMPONENTS                                                           */
-/* -------------------------------------------------------------------------- */
+const initialTasks: Task[] = [
+  {
+    id: 1,
+    title: "Finalize dashboard components",
+    project: "DevSync AI Platform",
+    priority: "High",
+    status: "In progress",
+    due: "Today",
+  },
+  {
+    id: 2,
+    title: "Review authentication API",
+    project: "API Integration",
+    priority: "High",
+    status: "Review",
+    due: "Today",
+  },
+  {
+    id: 3,
+    title: "Improve analytics visualizations",
+    project: "Analytics Engine",
+    priority: "Medium",
+    status: "To do",
+    due: "Tomorrow",
+  },
+  {
+    id: 4,
+    title: "Update component documentation",
+    project: "UI Design System",
+    priority: "Low",
+    status: "In progress",
+    due: "Oct 30",
+  },
+];
 
-function MetricCard({
-  title,
-  value,
-  change,
-  positive,
-  icon: Icon,
-  iconClass,
+const weeklyActivity = [
+  { day: "Mon", completed: 5, created: 3 },
+  { day: "Tue", completed: 8, created: 5 },
+  { day: "Wed", completed: 6, created: 4 },
+  { day: "Thu", completed: 10, created: 6 },
+  { day: "Fri", completed: 7, created: 3 },
+  { day: "Sat", completed: 4, created: 2 },
+  { day: "Sun", completed: 8, created: 4 },
+];
+
+const colorStyles: Record<
+  string,
+  { icon: string; bar: string; soft: string }
+> = {
+  indigo: {
+    icon: "bg-indigo-100 text-indigo-700",
+    bar: "bg-indigo-500",
+    soft: "from-indigo-500/10 to-indigo-500/[0.02]",
+  },
+  violet: {
+    icon: "bg-violet-100 text-violet-700",
+    bar: "bg-violet-500",
+    soft: "from-violet-500/10 to-violet-500/[0.02]",
+  },
+  cyan: {
+    icon: "bg-cyan-100 text-cyan-700",
+    bar: "bg-cyan-500",
+    soft: "from-cyan-500/10 to-cyan-500/[0.02]",
+  },
+  emerald: {
+    icon: "bg-emerald-100 text-emerald-700",
+    bar: "bg-emerald-500",
+    soft: "from-emerald-500/10 to-emerald-500/[0.02]",
+  },
+};
+
+function Card({
+  children,
+  className = "",
 }: {
-  title: string;
-  value: string;
-  change: string;
-  positive?: boolean;
-  icon: typeof Activity;
-  iconClass: string;
+  children: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
-      <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-slate-100 opacity-60 blur-2xl dark:bg-slate-800" />
+    <section
+      className={`rounded-2xl border border-slate-200/80 bg-white shadow-sm ${className}`}
+    >
+      {children}
+    </section>
+  );
+}
 
-      <div className="relative flex items-start justify-between">
-        <div>
-          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
-            {title}
-          </p>
-
-          <h3 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-            {value}
-          </h3>
-
-          <div className="mt-2 flex items-center gap-1.5 text-xs font-medium">
-            {positive ? (
-              <ArrowUpRight className="h-3.5 w-3.5 text-emerald-500" />
-            ) : (
-              <ArrowDownRight className="h-3.5 w-3.5 text-rose-500" />
-            )}
-
-            <span
-              className={
-                positive ? "text-emerald-500" : "text-rose-500"
-              }
-            >
-              {change}
-            </span>
-
-            <span className="text-slate-400">vs last week</span>
-          </div>
-        </div>
-
-        <div
-          className={`flex h-11 w-11 items-center justify-center rounded-xl ${iconClass}`}
-        >
-          <Icon className="h-5 w-5" />
-        </div>
+function SectionHeading({
+  title,
+  subtitle,
+  action,
+}: {
+  title: string;
+  subtitle?: string;
+  action?: React.ReactNode;
+}) {
+  return (
+    <div className="mb-5 flex items-center justify-between gap-3">
+      <div>
+        <h2 className="text-sm font-bold text-slate-900">{title}</h2>
+        {subtitle && (
+          <p className="mt-1 text-xs text-slate-500">{subtitle}</p>
+        )}
       </div>
+      {action}
     </div>
   );
 }
 
-function StatusBadge({
-  status,
-}: {
-  status: Project["status"];
-}) {
-  const styles = {
-    Healthy:
-      "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400",
-    "At Risk":
-      "bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400",
-    Delayed:
-      "bg-rose-50 text-rose-600 dark:bg-rose-500/10 dark:text-rose-400",
+function StatusBadge({ status }: { status: ProjectStatus }) {
+  const styles: Record<ProjectStatus, string> = {
+    "On track": "bg-emerald-50 text-emerald-700 ring-emerald-600/15",
+    "At risk": "bg-amber-50 text-amber-700 ring-amber-600/15",
+    Completed: "bg-blue-50 text-blue-700 ring-blue-600/15",
   };
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${styles[status]}`}
+      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold ring-1 ring-inset ${styles[status]}`}
     >
       <span className="h-1.5 w-1.5 rounded-full bg-current" />
       {status}
@@ -244,627 +219,879 @@ function StatusBadge({
   );
 }
 
-function ActivityIcon({
-  type,
+function ProgressBar({
+  value,
+  color = "bg-indigo-500",
 }: {
-  type: ActivityItem["type"];
+  value: number;
+  color?: string;
 }) {
-  const map = {
-    commit: {
-      icon: GitBranch,
-      className:
-        "bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400",
-    },
-    task: {
-      icon: CheckCircle2,
-      className:
-        "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400",
-    },
-    risk: {
-      icon: AlertTriangle,
-      className:
-        "bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400",
-    },
-    deployment: {
-      icon: Rocket,
-      className:
-        "bg-violet-50 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400",
-    },
-    ai: {
-      icon: BrainCircuit,
-      className:
-        "bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400",
-    },
-  };
-
-  const item = map[type];
-  const Icon = item.icon;
-
   return (
     <div
-      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${item.className}`}
+      className="h-1.5 overflow-hidden rounded-full bg-slate-100"
+      role="progressbar"
+      aria-valuenow={value}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label={`${value}% complete`}
     >
-      <Icon className="h-4.5 w-4.5" />
+      <div
+        className={`h-full rounded-full transition-all duration-500 ${color}`}
+        style={{ width: `${value}%` }}
+      />
     </div>
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* DASHBOARD                                                                  */
-/* -------------------------------------------------------------------------- */
-
 export default function Dashboard() {
-  const [timeRange, setTimeRange] = useState("7D");
-  const [showAllActivity, setShowAllActivity] = useState(false);
+  const [projects, setProjects] = useState<Project[]>(initialProjects);
+  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [taskFilter, setTaskFilter] = useState("All");
+  const [projectSearch, setProjectSearch] = useState("");
+  const [showCreateProject, setShowCreateProject] = useState(false);
+  const [newProjectName, setNewProjectName] = useState("");
+  const [newProjectDescription, setNewProjectDescription] = useState("");
+  const [notice, setNotice] = useState("");
 
-  const visibleActivities = useMemo(
-    () => (showAllActivity ? activities : activities.slice(0, 4)),
-    [showAllActivity]
+  const filteredProjects = useMemo(
+    () =>
+      projects.filter((project) =>
+        `${project.name} ${project.description} ${project.category}`
+          .toLowerCase()
+          .includes(projectSearch.toLowerCase()),
+      ),
+    [projects, projectSearch],
   );
 
-  const totalWorkload = workloadData.reduce(
-    (sum, item) => sum + item.value,
-    0
+  const filteredTasks = useMemo(
+    () =>
+      tasks.filter((task) => {
+        if (taskFilter === "All") return true;
+        return task.status === taskFilter;
+      }),
+    [tasks, taskFilter],
   );
+
+  const completedProjects = projects.filter(
+    (project) => project.status === "Completed",
+  ).length;
+
+  const activeProjects = projects.filter(
+    (project) => project.status !== "Completed",
+  ).length;
+
+  const completedTasks = tasks.filter(
+    (task) => task.status === "Review",
+  ).length;
+
+  function createProject(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const name = newProjectName.trim();
+    if (!name) return;
+
+    const project: Project = {
+      id: Date.now(),
+      name,
+      description: newProjectDescription.trim() || "New workspace project",
+      category: "New project",
+      progress: 0,
+      status: "On track",
+      members: ["DM"],
+      dueDate: "Not set",
+      color: "indigo",
+    };
+
+    setProjects((current) => [project, ...current]);
+    setNewProjectName("");
+    setNewProjectDescription("");
+    setShowCreateProject(false);
+    setNotice(`"${name}" was added to this dashboard.`);
+  }
+
+  function updateTaskStatus(taskId: number) {
+    setTasks((current) =>
+      current.map((task) =>
+        task.id === taskId
+          ? {
+              ...task,
+              status:
+                task.status === "To do"
+                  ? "In progress"
+                  : task.status === "In progress"
+                    ? "Review"
+                    : "To do",
+            }
+          : task,
+      ),
+    );
+  }
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#070b14] dark:text-white">
-      {/* ------------------------------------------------------------------ */}
-      {/* HEADER                                                             */}
-      {/* ------------------------------------------------------------------ */}
+    <div className="mx-auto max-w-[1600px] space-y-6">
+      {/* Welcome header */}
+      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+        <div>
+          <div className="flex items-center gap-2 text-xs font-semibold text-indigo-600">
+            <Sparkles size={14} />
+            YOUR WORKSPACE
+          </div>
+          <h1 className="mt-2 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+            Good to see you again
+          </h1>
+          <p className="mt-2 text-sm text-slate-500">
+            Here’s what’s happening across your development workspace.
+          </p>
+        </div>
 
-      <div className="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8">
-        <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
-          <div>
-            <div className="mb-2 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-              <span>Workspace</span>
-              <ChevronRight className="h-3.5 w-3.5" />
-              <span className="font-medium text-slate-700 dark:text-slate-300">
-                Engineering
-              </span>
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-medium text-slate-600 shadow-sm">
+            <CalendarDays size={15} className="text-slate-400" />
+            <span>
+              {new Date().toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setShowCreateProject(true)}
+            className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white shadow-sm shadow-indigo-600/20 transition hover:bg-indigo-700"
+          >
+            <Plus size={16} />
+            New project
+          </button>
+        </div>
+      </div>
+
+      {notice && (
+        <div
+          role="status"
+          className="flex items-center justify-between gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800"
+        >
+          <span className="flex items-center gap-2">
+            <CheckCircle2 size={17} />
+            {notice}
+          </span>
+          <button
+            type="button"
+            onClick={() => setNotice("")}
+            className="text-xs font-semibold hover:underline"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
+
+      {/* AI banner */}
+      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-950 via-indigo-950 to-violet-950 p-5 text-white sm:p-7">
+        <div className="absolute -right-10 -top-24 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
+        <div className="absolute bottom-[-90px] right-1/3 h-52 w-52 rounded-full bg-violet-500/20 blur-3xl" />
+
+        <div className="relative flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[10px] font-semibold tracking-wide text-indigo-100">
+              <BrainCircuit size={14} />
+              DEVSYNC AI
+              <span className="rounded bg-white/15 px-1.5 py-0.5">WORKSPACE</span>
             </div>
-
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Good morning, Deepanshu
-              <span className="ml-2 inline-block">👋</span>
-            </h1>
-
-            <p className="mt-2 max-w-2xl text-sm text-slate-500 dark:text-slate-400 sm:text-base">
-              Here's what is happening across your engineering workspace
-              today.
+            <h2 className="mt-4 text-xl font-bold tracking-tight sm:text-2xl">
+              Build better. Ship smarter.
+            </h2>
+            <p className="mt-2 max-w-xl text-sm leading-6 text-indigo-100/75">
+              Keep projects organized, focus on the next task, and make your
+              development workflow easier to manage.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
-            <button className="inline-flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 text-sm font-semibold shadow-sm transition hover:border-slate-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
-              <CalendarDays className="h-4 w-4" />
-              Aug 24, 2026
-            </button>
-
-            <button className="inline-flex h-10 items-center gap-2 rounded-xl bg-slate-900 px-4 text-sm font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100">
-              <Plus className="h-4 w-4" />
-              New Project
-            </button>
-          </div>
-        </div>
-
-        {/* ---------------------------------------------------------------- */}
-        {/* AI INSIGHT                                                       */}
-        {/* ---------------------------------------------------------------- */}
-
-        <div className="relative mt-7 overflow-hidden rounded-2xl border border-indigo-200/60 bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 p-[1px] shadow-xl shadow-indigo-500/10">
-          <div className="relative overflow-hidden rounded-[15px] bg-white/95 px-5 py-4 backdrop-blur-xl dark:bg-slate-950/90 sm:px-6">
-            <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-indigo-500/10 blur-3xl" />
-
-            <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div className="flex gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg">
-                  <Sparkles className="h-5 w-5" />
-                </div>
-
-                <div>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h2 className="font-semibold text-slate-900 dark:text-white">
-                      AI Workspace Insight
-                    </h2>
-
-                    <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400">
-                      Live Analysis
-                    </span>
-                  </div>
-
-                  <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400">
-                    Your team completed <strong>18% more tasks</strong> this
-                    week. However, one project has an elevated delivery risk
-                    that may impact the next sprint.
-                  </p>
-                </div>
-              </div>
-
-              <button className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-2.5 text-sm font-semibold text-indigo-700 transition hover:bg-indigo-100 dark:border-indigo-500/20 dark:bg-indigo-500/10 dark:text-indigo-300 dark:hover:bg-indigo-500/20">
-                <Bot className="h-4 w-4" />
-                Ask DevSync AI
-              </button>
+          <div className="flex shrink-0 items-center gap-3 rounded-xl border border-white/10 bg-white/[0.07] p-4">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-400/20 text-indigo-200">
+              <Zap size={22} />
             </div>
-          </div>
-        </div>
-
-        {/* ---------------------------------------------------------------- */}
-        {/* METRICS                                                          */}
-        {/* ---------------------------------------------------------------- */}
-
-        <section className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <MetricCard
-            title="Active Projects"
-            value="08"
-            change="+2.4%"
-            positive
-            icon={FolderKanban}
-            iconClass="bg-violet-50 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400"
-          />
-
-          <MetricCard
-            title="Tasks Completed"
-            value="147"
-            change="+18.2%"
-            positive
-            icon={CheckCircle2}
-            iconClass="bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400"
-          />
-
-          <MetricCard
-            title="Team Velocity"
-            value="84%"
-            change="+7.8%"
-            positive
-            icon={Gauge}
-            iconClass="bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400"
-          />
-
-          <MetricCard
-            title="Open Risks"
-            value="06"
-            change="-12.5%"
-            positive
-            icon={ShieldCheck}
-            iconClass="bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400"
-          />
-        </section>
-
-        {/* ---------------------------------------------------------------- */}
-        {/* MAIN ANALYTICS                                                   */}
-        {/* ---------------------------------------------------------------- */}
-
-        <section className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.8fr)]">
-          {/* PRODUCTIVITY CHART */}
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-              <div>
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-indigo-500" />
-                  <h2 className="font-semibold">Team Productivity</h2>
-                </div>
-
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                  Tasks created vs completed
-                </p>
-              </div>
-
-              <div className="flex rounded-lg bg-slate-100 p-1 dark:bg-slate-800">
-                {["7D", "30D", "90D"].map((range) => (
-                  <button
-                    key={range}
-                    onClick={() => setTimeRange(range)}
-                    className={`rounded-md px-3 py-1.5 text-xs font-semibold transition ${
-                      timeRange === range
-                        ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white"
-                        : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-                    }`}
-                  >
-                    {range}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-7 h-[280px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={productivityData}>
-                  <defs>
-                    <linearGradient id="completedGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopOpacity={0.28} />
-                      <stop offset="100%" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-
-                  <CartesianGrid
-                    vertical={false}
-                    strokeDasharray="4 4"
-                    className="stroke-slate-200 dark:stroke-slate-800"
-                  />
-
-                  <XAxis
-                    dataKey="day"
-                    axisLine={false}
-                    tickLine={false}
-                    tick={{ fontSize: 12 }}
-                    className="fill-slate-400"
-                  />
-
-                  <YAxis
-                    axisLine={false}
-                    tickLine={false}
-                    tick={{ fontSize: 12 }}
-                    className="fill-slate-400"
-                  />
-
-                  <Tooltip
-                    contentStyle={{
-                      borderRadius: 12,
-                      border: "1px solid rgba(148,163,184,.2)",
-                      background: "rgba(15,23,42,.95)",
-                      color: "#fff",
-                    }}
-                  />
-
-                  <Area
-                    type="monotone"
-                    dataKey="completed"
-                    stroke="#6366f1"
-                    strokeWidth={3}
-                    fill="url(#completedGradient)"
-                    name="Completed"
-                  />
-
-                  <Area
-                    type="monotone"
-                    dataKey="created"
-                    stroke="#94a3b8"
-                    strokeWidth={2}
-                    strokeDasharray="5 5"
-                    fill="transparent"
-                    name="Created"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
-
-            <div className="mt-3 flex items-center gap-5 text-xs text-slate-500 dark:text-slate-400">
-              <span className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-indigo-500" />
-                Completed
-              </span>
-
-              <span className="flex items-center gap-2">
-                <span className="h-0.5 w-4 bg-slate-400" />
-                Created
-              </span>
-            </div>
-          </div>
-
-          {/* WORKLOAD */}
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-            <div className="flex items-start justify-between">
-              <div>
-                <div className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-cyan-500" />
-                  <h2 className="font-semibold">Team Workload</h2>
-                </div>
-
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                  Current allocation
-                </p>
-              </div>
-
-              <button className="rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-white">
-                <MoreHorizontal className="h-5 w-5" />
-              </button>
-            </div>
-
-            <div className="relative mx-auto mt-5 h-[190px] w-full max-w-[250px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={workloadData}
-                    dataKey="value"
-                    nameKey="name"
-                    innerRadius={58}
-                    outerRadius={82}
-                    paddingAngle={4}
-                    stroke="none"
-                  >
-                    {workloadData.map((_, index) => (
-                      <Cell
-                        key={index}
-                        fill={
-                          ["#6366f1", "#06b6d4", "#f59e0b", "#10b981"][
-                            index
-                          ]
-                        }
-                      />
-                    ))}
-                  </Pie>
-
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-2xl font-bold">{totalWorkload}%</span>
-                <span className="text-xs text-slate-400">allocated</span>
-              </div>
-            </div>
-
-            <div className="mt-2 space-y-3">
-              {workloadData.map((item, index) => (
-                <div
-                  key={item.name}
-                  className="flex items-center justify-between text-sm"
-                >
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="h-2.5 w-2.5 rounded-full"
-                      style={{
-                        backgroundColor: [
-                          "#6366f1",
-                          "#06b6d4",
-                          "#f59e0b",
-                          "#10b981",
-                        ][index],
-                      }}
-                    />
-
-                    <span className="text-slate-600 dark:text-slate-400">
-                      {item.name}
-                    </span>
-                  </div>
-
-                  <span className="font-semibold">{item.value}%</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ---------------------------------------------------------------- */}
-        {/* PROJECTS                                                         */}
-        {/* ---------------------------------------------------------------- */}
-
-        <section className="mt-6 rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <div className="flex flex-col justify-between gap-3 border-b border-slate-200 px-5 py-5 dark:border-slate-800 sm:flex-row sm:items-center sm:px-6">
             <div>
-              <div className="flex items-center gap-2">
-                <Target className="h-5 w-5 text-violet-500" />
-                <h2 className="font-semibold">Project Health</h2>
-              </div>
-
-              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                AI-powered overview of your active projects
+              <p className="text-xs font-medium text-indigo-100/70">
+                Project completion
+              </p>
+              <p className="mt-1 text-2xl font-bold">
+                {projects.length
+                  ? Math.round(
+                      projects.reduce((sum, project) => sum + project.progress, 0) /
+                        projects.length,
+                    )
+                  : 0}
+                %
               </p>
             </div>
+            <div className="ml-2 hidden h-10 w-px bg-white/10 sm:block" />
+            <div className="hidden sm:block">
+              <p className="text-[10px] text-indigo-100/60">Projects</p>
+              <p className="mt-1 text-sm font-bold">{projects.length}</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <button className="inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400">
-              View all projects
-              <ChevronRight className="h-4 w-4" />
-            </button>
+      {/* KPI cards */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {[
+          {
+            label: "Total projects",
+            value: projects.length,
+            note: `${activeProjects} active`,
+            icon: FolderKanban,
+            color: "bg-indigo-50 text-indigo-600",
+            trend: "Workspace",
+            trendIcon: ArrowUpRight,
+          },
+          {
+            label: "Tasks to review",
+            value: completedTasks,
+            note: "Awaiting review",
+            icon: CheckCircle2,
+            color: "bg-emerald-50 text-emerald-600",
+            trend: "Task status",
+            trendIcon: ArrowUpRight,
+          },
+          {
+            label: "Projects at risk",
+            value: projects.filter((project) => project.status === "At risk")
+              .length,
+            note: "Need attention",
+            icon: CircleAlert,
+            color: "bg-amber-50 text-amber-600",
+            trend: "Project health",
+            trendIcon: ArrowDownRight,
+          },
+          {
+            label: "Tracked tasks",
+            value: tasks.length,
+            note: `${tasks.filter((task) => task.status === "In progress").length} in progress`,
+            icon: Target,
+            color: "bg-violet-50 text-violet-600",
+            trend: "Task overview",
+            trendIcon: Activity,
+          },
+        ].map((metric) => {
+          const Icon = metric.icon;
+          const TrendIcon = metric.trendIcon;
+
+          return (
+            <Card
+              key={metric.label}
+              className="p-5 transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div
+                  className={`flex h-11 w-11 items-center justify-center rounded-xl ${metric.color}`}
+                >
+                  <Icon size={21} />
+                </div>
+                <span className="flex items-center gap-1 rounded-full bg-slate-50 px-2 py-1 text-[10px] font-medium text-slate-500">
+                  <TrendIcon size={12} />
+                  {metric.trend}
+                </span>
+              </div>
+              <p className="mt-5 text-xs font-medium text-slate-500">
+                {metric.label}
+              </p>
+              <div className="mt-1 flex items-end justify-between gap-2">
+                <p className="text-3xl font-bold tracking-tight text-slate-950">
+                  {metric.value}
+                </p>
+                <span className="pb-1 text-[11px] text-slate-500">
+                  {metric.note}
+                </span>
+              </div>
+            </Card>
+          );
+        })}
+      </div>
+
+      {/* Activity chart and task summary */}
+      <div className="grid grid-cols-1 gap-5 xl:grid-cols-3">
+        <Card className="p-5 sm:p-6 xl:col-span-2">
+          <SectionHeading
+            title="Workspace activity"
+            subtitle="Illustrative weekly activity"
+            action={
+              <span className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-2.5 py-2 text-[10px] font-semibold text-slate-600">
+                This week
+                <ChevronDown size={13} />
+              </span>
+            }
+          />
+
+          <div className="mb-5 flex flex-wrap gap-4">
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <span className="h-2.5 w-2.5 rounded-sm bg-indigo-500" />
+              Tasks completed
+            </div>
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <span className="h-2.5 w-2.5 rounded-sm bg-violet-200" />
+              Tasks created
+            </div>
           </div>
 
-          <div className="grid divide-y divide-slate-200 dark:divide-slate-800 md:grid-cols-3 md:divide-x md:divide-y-0">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="group p-5 transition hover:bg-slate-50 dark:hover:bg-slate-800/40 sm:p-6"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${project.color} text-sm font-bold text-white shadow-md`}
-                    >
-                      {project.name
-                        .split(" ")
-                        .map((word) => word[0])
-                        .join("")
-                        .slice(0, 2)}
-                    </div>
+          <div className="grid h-48 grid-cols-7 gap-3 sm:gap-5">
+            {weeklyActivity.map((day) => {
+              const total = day.completed + day.created;
+              const max = 16;
 
-                    <div>
-                      <h3 className="font-semibold">{project.name}</h3>
-                      <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
-                        {project.description}
-                      </p>
+              return (
+                <div
+                  key={day.day}
+                  className="flex min-w-0 flex-col items-center justify-end"
+                >
+                  <span className="mb-2 text-[10px] font-medium text-slate-400">
+                    {total}
+                  </span>
+                  <div className="flex h-36 w-full max-w-9 items-end overflow-hidden rounded-t-lg bg-slate-50">
+                    <div
+                      className="flex w-full flex-col justify-end overflow-hidden rounded-t-lg"
+                      style={{ height: `${(total / max) * 100}%` }}
+                    >
+                      <div
+                        className="w-full bg-violet-200"
+                        style={{
+                          height: `${(day.created / total) * 100}%`,
+                          minHeight: day.created ? "5px" : 0,
+                        }}
+                      />
+                      <div
+                        className="w-full bg-indigo-500"
+                        style={{
+                          height: `${(day.completed / total) * 100}%`,
+                          minHeight: day.completed ? "5px" : 0,
+                        }}
+                      />
                     </div>
                   </div>
-
-                  <button className="rounded-lg p-1.5 text-slate-400 opacity-0 transition group-hover:opacity-100 hover:bg-slate-200 dark:hover:bg-slate-700">
-                    <MoreHorizontal className="h-4 w-4" />
-                  </button>
-                </div>
-
-                <div className="mt-6 flex items-center justify-between">
-                  <StatusBadge status={project.status} />
-
-                  <span className="text-sm font-bold">
-                    {project.progress}%
+                  <span className="mt-3 text-[10px] font-medium text-slate-500">
+                    {day.day}
                   </span>
                 </div>
+              );
+            })}
+          </div>
 
-                <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
-                  <div
-                    className={`h-full rounded-full bg-gradient-to-r ${project.color} transition-all duration-700`}
-                    style={{ width: `${project.progress}%` }}
-                  />
+          <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
+            <span className="text-xs text-slate-500">
+              Sample chart data — connect your analytics API for live metrics.
+            </span>
+            <span className="flex items-center gap-1 text-xs font-semibold text-indigo-600">
+              <TrendingUp size={14} />
+              Weekly view
+            </span>
+          </div>
+        </Card>
+
+        <Card className="p-5 sm:p-6">
+          <SectionHeading
+            title="Task distribution"
+            subtitle="Current tasks by status"
+          />
+
+          <div className="flex items-center justify-center py-3">
+            <div
+              className="relative flex h-40 w-40 items-center justify-center rounded-full"
+              style={{
+                background: `conic-gradient(#6366f1 0% ${tasks.length ? (tasks.filter((task) => task.status === "In progress").length / tasks.length) * 100 : 0}%, #a78bfa ${tasks.length ? (tasks.filter((task) => task.status === "In progress").length / tasks.length) * 100 : 0}% ${tasks.length ? ((tasks.filter((task) => task.status === "In progress").length + tasks.filter((task) => task.status === "To do").length) / tasks.length) * 100 : 0}%, #e2e8f0 ${tasks.length ? ((tasks.filter((task) => task.status === "In progress").length + tasks.filter((task) => task.status === "To do").length) / tasks.length) * 100 : 0}% 100%)`,
+              }}
+            >
+              <div className="flex h-28 w-28 flex-col items-center justify-center rounded-full bg-white">
+                <span className="text-3xl font-bold text-slate-950">
+                  {tasks.length}
+                </span>
+                <span className="mt-1 text-[10px] text-slate-500">
+                  Total tasks
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 space-y-4">
+            {[
+              {
+                label: "In progress",
+                color: "bg-indigo-500",
+                count: tasks.filter((task) => task.status === "In progress")
+                  .length,
+              },
+              {
+                label: "To do",
+                color: "bg-violet-400",
+                count: tasks.filter((task) => task.status === "To do").length,
+              },
+              {
+                label: "In review",
+                color: "bg-slate-300",
+                count: tasks.filter((task) => task.status === "Review").length,
+              },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="flex items-center justify-between gap-3"
+              >
+                <div className="flex items-center gap-2 text-xs text-slate-600">
+                  <span className={`h-2.5 w-2.5 rounded-sm ${item.color}`} />
+                  {item.label}
                 </div>
-
-                <div className="mt-4 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                  <span className="flex items-center gap-1.5">
-                    <ListTodo className="h-3.5 w-3.5" />
-                    {project.completed}/{project.tasks} tasks
-                  </span>
-
-                  <span className="flex items-center gap-1.5">
-                    <Users className="h-3.5 w-3.5" />
-                    {project.members}
-                  </span>
-                </div>
+                <span className="text-xs font-bold text-slate-800">
+                  {item.count}
+                </span>
               </div>
             ))}
           </div>
-        </section>
+        </Card>
+      </div>
 
-        {/* ---------------------------------------------------------------- */}
-        {/* BOTTOM GRID                                                      */}
-        {/* ---------------------------------------------------------------- */}
+      {/* Projects */}
+      <Card className="p-5 sm:p-6">
+        <SectionHeading
+          title="Projects"
+          subtitle="A quick look at your active work"
+          action={
+            <button
+              type="button"
+              onClick={() => setShowCreateProject(true)}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-50 px-3 py-2 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-100"
+            >
+              <Plus size={14} />
+              Add project
+            </button>
+          }
+        />
 
-        <section className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(340px,1fr)]">
-          {/* ACTIVITY */}
+        <div className="relative mb-5 max-w-sm">
+          <Search
+            size={15}
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+          />
+          <input
+            value={projectSearch}
+            onChange={(event) => setProjectSearch(event.target.value)}
+            placeholder="Search projects..."
+            aria-label="Search projects"
+            className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-9 pr-3 text-xs outline-none transition focus:border-indigo-300 focus:bg-white"
+          />
+        </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <div className="flex items-center justify-between border-b border-slate-200 px-5 py-5 dark:border-slate-800 sm:px-6">
-              <div>
-                <div className="flex items-center gap-2">
-                  <Activity className="h-5 w-5 text-indigo-500" />
-                  <h2 className="font-semibold">Recent Activity</h2>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 2xl:grid-cols-4">
+          {filteredProjects.map((project) => {
+            const colors = colorStyles[project.color] ?? colorStyles.indigo;
+
+            return (
+              <div
+                key={project.id}
+                className={`rounded-2xl border border-slate-200 bg-gradient-to-br ${colors.soft} p-4 transition hover:border-indigo-200 hover:shadow-sm`}
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div
+                    className={`flex h-10 w-10 items-center justify-center rounded-xl ${colors.icon}`}
+                  >
+                    <Code2 size={19} />
+                  </div>
+                  <button
+                    type="button"
+                    aria-label={`Project options for ${project.name}`}
+                    title="Project options"
+                    onClick={() =>
+                      setNotice(
+                        `${project.name}: ${project.progress}% complete. Project editing is not connected to the backend yet.`,
+                      )
+                    }
+                    className="rounded-lg p-1.5 text-slate-400 hover:bg-white hover:text-slate-700"
+                  >
+                    <MoreHorizontal size={18} />
+                  </button>
                 </div>
 
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                  What's happening across your workspace
+                <h3 className="mt-4 truncate text-sm font-bold text-slate-900">
+                  {project.name}
+                </h3>
+                <p className="mt-1 min-h-9 text-xs leading-5 text-slate-500">
+                  {project.description}
                 </p>
-              </div>
 
-              <button
-                onClick={() => setShowAllActivity((value) => !value)}
-                className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400"
-              >
-                {showAllActivity ? "Show less" : "View all"}
-              </button>
+                <div className="mt-3 flex items-center justify-between gap-2">
+                  <span className="truncate text-[10px] font-medium text-slate-500">
+                    {project.category}
+                  </span>
+                  <StatusBadge status={project.status} />
+                </div>
+
+                <div className="mt-5 flex items-center justify-between text-[10px]">
+                  <span className="font-medium text-slate-500">Progress</span>
+                  <span className="font-bold text-slate-800">
+                    {project.progress}%
+                  </span>
+                </div>
+                <div className="mt-2">
+                  <ProgressBar value={project.progress} color={colors.bar} />
+                </div>
+
+                <div className="mt-4 flex items-center justify-between border-t border-slate-200/70 pt-3">
+                  <div className="flex -space-x-2">
+                    {project.members.map((member, index) => (
+                      <div
+                        key={`${project.id}-${member}-${index}`}
+                        title={member}
+                        className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-slate-100 text-[9px] font-bold text-slate-600"
+                      >
+                        {member}
+                      </div>
+                    ))}
+                  </div>
+                  <span className="flex items-center gap-1 text-[10px] text-slate-500">
+                    <CalendarDays size={12} />
+                    {project.dueDate}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {filteredProjects.length === 0 && (
+          <div className="rounded-xl border border-dashed border-slate-200 py-10 text-center">
+            <FolderKanban
+              size={26}
+              className="mx-auto text-slate-300"
+            />
+            <p className="mt-3 text-sm font-semibold text-slate-700">
+              No projects found
+            </p>
+            <p className="mt-1 text-xs text-slate-500">
+              Try another search term.
+            </p>
+          </div>
+        )}
+      </Card>
+
+      {/* Tasks and insights */}
+      <div className="grid grid-cols-1 gap-5 xl:grid-cols-3">
+        <Card className="overflow-hidden xl:col-span-2">
+          <div className="p-5 sm:p-6">
+            <SectionHeading
+              title="My tasks"
+              subtitle="Priorities and next steps"
+              action={
+                <select
+                  value={taskFilter}
+                  onChange={(event) => setTaskFilter(event.target.value)}
+                  aria-label="Filter tasks by status"
+                  className="rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-600 outline-none focus:border-indigo-300"
+                >
+                  <option>All</option>
+                  <option>To do</option>
+                  <option>In progress</option>
+                  <option>Review</option>
+                </select>
+              }
+            />
+
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[580px] text-left">
+                <thead>
+                  <tr className="border-y border-slate-100 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                    <th className="py-3 pr-3">Task</th>
+                    <th className="px-3 py-3">Priority</th>
+                    <th className="px-3 py-3">Due</th>
+                    <th className="px-3 py-3">Status</th>
+                    <th className="py-3 pl-3">Update</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredTasks.map((task) => (
+                    <tr
+                      key={task.id}
+                      className="border-b border-slate-50 last:border-0 hover:bg-slate-50/70"
+                    >
+                      <td className="py-4 pr-3">
+                        <p className="max-w-[240px] truncate text-xs font-semibold text-slate-800">
+                          {task.title}
+                        </p>
+                        <p className="mt-1 max-w-[240px] truncate text-[10px] text-slate-400">
+                          {task.project}
+                        </p>
+                      </td>
+                      <td className="px-3 py-4">
+                        <span
+                          className={`inline-flex items-center gap-1.5 text-[10px] font-semibold ${
+                            task.priority === "High"
+                              ? "text-rose-600"
+                              : task.priority === "Medium"
+                                ? "text-amber-600"
+                                : "text-slate-500"
+                          }`}
+                        >
+                          <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                          {task.priority}
+                        </span>
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-[10px] text-slate-500">
+                        {task.due}
+                      </td>
+                      <td className="px-3 py-4">
+                        <span
+                          className={`whitespace-nowrap rounded-md px-2 py-1 text-[10px] font-medium ${
+                            task.status === "In progress"
+                              ? "bg-indigo-50 text-indigo-700"
+                              : task.status === "Review"
+                                ? "bg-emerald-50 text-emerald-700"
+                                : "bg-slate-100 text-slate-600"
+                          }`}
+                        >
+                          {task.status}
+                        </span>
+                      </td>
+                      <td className="py-4 pl-3">
+                        <button
+                          type="button"
+                          onClick={() => updateTaskStatus(task.id)}
+                          title="Cycle task status"
+                          className="rounded-lg border border-slate-200 p-2 text-slate-500 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600"
+                        >
+                          <ArrowRight size={14} />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
-            <div className="divide-y divide-slate-100 dark:divide-slate-800">
-              {visibleActivities.map((activity) => (
-                <div
-                  key={activity.id}
-                  className="flex gap-4 px-5 py-4 transition hover:bg-slate-50 dark:hover:bg-slate-800/30 sm:px-6"
-                >
-                  <ActivityIcon type={activity.type} />
+            {filteredTasks.length === 0 && (
+              <p className="py-8 text-center text-xs text-slate-500">
+                No tasks match this status.
+              </p>
+            )}
 
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-col justify-between gap-1 sm:flex-row">
-                      <h3 className="text-sm font-semibold">
-                        {activity.title}
-                      </h3>
+            <p className="mt-4 text-[10px] leading-5 text-slate-400">
+              Sample tasks are shown here. Task status changes on this page
+              remain local until connected to your task API.
+            </p>
+          </div>
+        </Card>
 
-                      <span className="shrink-0 text-xs text-slate-400">
-                        {activity.time}
-                      </span>
-                    </div>
+        <div className="space-y-5">
+          <Card className="p-5">
+            <SectionHeading
+              title="Project health"
+              subtitle="Current project status"
+            />
 
-                    <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                      {activity.description}
-                    </p>
+            <div className="space-y-4">
+              {[
+                {
+                  label: "On track",
+                  count: projects.filter((p) => p.status === "On track").length,
+                  color: "bg-emerald-500",
+                  text: "text-emerald-700",
+                },
+                {
+                  label: "At risk",
+                  count: projects.filter((p) => p.status === "At risk").length,
+                  color: "bg-amber-500",
+                  text: "text-amber-700",
+                },
+                {
+                  label: "Completed",
+                  count: completedProjects,
+                  color: "bg-indigo-500",
+                  text: "text-indigo-700",
+                },
+              ].map((item) => (
+                <div key={item.label}>
+                  <div className="mb-2 flex items-center justify-between">
+                    <span className="text-xs font-medium text-slate-600">
+                      {item.label}
+                    </span>
+                    <span className={`text-xs font-bold ${item.text}`}>
+                      {item.count}
+                    </span>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+                    <div
+                      className={`h-full rounded-full ${item.color}`}
+                      style={{
+                        width: `${
+                          projects.length
+                            ? (item.count / projects.length) * 100
+                            : 0
+                        }%`,
+                      }}
+                    />
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </Card>
 
-          {/* AI COMMAND CENTER */}
-
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-950 via-indigo-950 to-violet-950 p-6 text-white shadow-xl">
-            <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-violet-500/20 blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-indigo-500/20 blur-3xl" />
-
-            <div className="relative">
-              <div className="flex items-center justify-between">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 backdrop-blur">
-                  <BrainCircuit className="h-5 w-5 text-violet-300" />
-                </div>
-
-                <span className="flex items-center gap-1.5 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-300">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                  AI Online
-                </span>
+          <Card className="overflow-hidden border-indigo-100">
+            <div className="bg-gradient-to-br from-indigo-50 to-violet-50 p-5">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-indigo-600 shadow-sm">
+                <BrainCircuit size={20} />
               </div>
-
-              <h2 className="mt-6 text-xl font-bold">
-                DevSync AI Command Center
-              </h2>
-
-              <p className="mt-2 text-sm leading-6 text-slate-300">
-                Let AI analyze your projects, predict risks, plan sprints,
-                summarize standups and identify what your team should focus on
-                next.
+              <h3 className="mt-4 text-sm font-bold text-slate-900">
+                AI workspace insights
+              </h3>
+              <p className="mt-2 text-xs leading-5 text-slate-600">
+                Keep an eye on projects that need attention and review tasks
+                that are ready for the next step.
               </p>
 
-              <div className="mt-6 space-y-2.5">
-                {[
-                  {
-                    icon: AlertTriangle,
-                    text: "Analyze project risks",
-                  },
-                  {
-                    icon: Zap,
-                    text: "Generate next sprint",
-                  },
-                  {
-                    icon: Users,
-                    text: "Create standup summary",
-                  },
-                  {
-                    icon: TrendingUp,
-                    text: "Analyze team velocity",
-                  },
-                ].map((item) => {
-                  const Icon = item.icon;
+              {projects.some((project) => project.status === "At risk") ? (
+                <div className="mt-4 flex items-start gap-2 rounded-xl border border-amber-200/80 bg-white/80 p-3">
+                  <CircleAlert
+                    size={16}
+                    className="mt-0.5 shrink-0 text-amber-600"
+                  />
+                  <div>
+                    <p className="text-xs font-semibold text-slate-800">
+                      Review at-risk projects
+                    </p>
+                    <p className="mt-1 text-[10px] leading-4 text-slate-500">
+                      {projects.filter((p) => p.status === "At risk").length}{" "}
+                      project(s) currently need attention in this dashboard.
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="mt-4 flex items-center gap-2 rounded-xl bg-white/80 p-3 text-xs text-slate-600">
+                  <CheckCircle2 size={16} className="text-emerald-600" />
+                  No at-risk projects in this view.
+                </div>
+              )}
 
-                  return (
-                    <button
-                      key={item.text}
-                      className="flex w-full items-center justify-between rounded-xl border border-white/10 bg-white/5 px-3.5 py-3 text-left text-sm transition hover:border-white/20 hover:bg-white/10"
-                    >
-                      <span className="flex items-center gap-3">
-                        <Icon className="h-4 w-4 text-violet-300" />
-                        {item.text}
-                      </span>
-
-                      <ChevronRight className="h-4 w-4 text-slate-500" />
-                    </button>
-                  );
-                })}
-              </div>
-
-              <button className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-bold text-slate-950 transition hover:bg-slate-100">
-                <Sparkles className="h-4 w-4" />
-                Open AI Workspace
-              </button>
+              <p className="mt-3 text-[10px] leading-4 text-slate-400">
+                These are dashboard observations, not AI-generated analysis.
+                Connect your AI endpoint to enable live insights.
+              </p>
             </div>
-          </div>
-        </section>
-
-        {/* ---------------------------------------------------------------- */}
-        {/* FOOTER STATUS                                                    */}
-        {/* ---------------------------------------------------------------- */}
-
-        <div className="mt-6 flex flex-col justify-between gap-3 pb-8 text-xs text-slate-400 sm:flex-row sm:items-center">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-            All systems operational
-          </div>
-
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5">
-              <Clock3 className="h-3.5 w-3.5" />
-              Last synced 2 min ago
-            </span>
-
-            <span className="flex items-center gap-1.5">
-              <GitBranch className="h-3.5 w-3.5" />
-              main
-            </span>
-          </div>
+          </Card>
         </div>
       </div>
-    </main>
+
+      {/* Footer note */}
+      <div className="flex flex-col gap-2 border-t border-slate-200/80 py-4 text-[10px] text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+        <span className="flex items-center gap-2">
+          <Activity size={13} />
+          DevSync AI workspace overview
+        </span>
+        <span className="flex items-center gap-1.5">
+          <Clock3 size={12} />
+          Dashboard data may be illustrative until connected to the API.
+        </span>
+      </div>
+
+      {/* Create project modal */}
+      {showCreateProject && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-slate-950/50 p-4 backdrop-blur-sm"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              setShowCreateProject(false);
+            }
+          }}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="create-project-title"
+            className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                  <Plus size={21} />
+                </div>
+                <h2
+                  id="create-project-title"
+                  className="mt-4 text-lg font-bold text-slate-900"
+                >
+                  Create a project
+                </h2>
+                <p className="mt-1 text-xs leading-5 text-slate-500">
+                  Add a project to the current dashboard view.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowCreateProject(false)}
+                aria-label="Close dialog"
+                className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700"
+              >
+                <span className="text-lg">×</span>
+              </button>
+            </div>
+
+            <form onSubmit={createProject} className="mt-6 space-y-4">
+              <div>
+                <label
+                  htmlFor="project-name"
+                  className="mb-2 block text-xs font-semibold text-slate-700"
+                >
+                  Project name
+                </label>
+                <input
+                  id="project-name"
+                  required
+                  autoFocus
+                  value={newProjectName}
+                  onChange={(event) => setNewProjectName(event.target.value)}
+                  placeholder="e.g. Customer Portal"
+                  className="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-50"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="project-description"
+                  className="mb-2 block text-xs font-semibold text-slate-700"
+                >
+                  Description
+                </label>
+                <textarea
+                  id="project-description"
+                  rows={3}
+                  value={newProjectDescription}
+                  onChange={(event) =>
+                    setNewProjectDescription(event.target.value)
+                  }
+                  placeholder="What are you building?"
+                  className="w-full resize-y rounded-xl border border-slate-200 px-3 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-50"
+                />
+              </div>
+
+              <div className="flex flex-col-reverse gap-2 pt-2 sm:flex-row sm:justify-end">
+                <button
+                  type="button"
+                  onClick={() => setShowCreateProject(false)}
+                  className="rounded-xl border border-slate-200 px-4 py-2.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-50"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-indigo-700"
+                >
+                  <Plus size={15} />
+                  Create project
+                </button>
+              </div>
+
+              <p className="text-[10px] leading-4 text-slate-400">
+                This starter form updates local page state only. It does not
+                create a record in your backend database.
+              </p>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

@@ -235,3 +235,26 @@ select:focus {
 .text-balance {
   text-wrap: balance;
 }
+
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+input,
+textarea,
+select {
+  color: #0f172a;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8;
+}

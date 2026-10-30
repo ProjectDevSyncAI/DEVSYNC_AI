@@ -53,7 +53,7 @@ interface RequestOptions {
    TOKEN STORAGE
    ========================================================= */
 
-const ACCESS_TOKEN_KEY = "devsync_access_token";
+const ACCESS_TOKEN_KEY = "devsync_auth_token";
 
 export function getAccessToken(): string | null {
   try {
@@ -205,19 +205,29 @@ async function request<T>(
      ------------------------- */
 
   if (response.status === 401) {
-    clearAccessToken();
+  console.error("DevSync AI: 401 Unauthorized", {
+    endpoint: normalizedEndpoint,
+    method,
+    response: responseBody,
+    hasToken: Boolean(token),
+  });
 
-    window.dispatchEvent(
-      new CustomEvent("devsync:unauthorized"),
-    );
+  clearAccessToken();
 
-    throw new ApiError(
-      "Your session has expired. Please log in again.",
-      401,
-      "UNAUTHORIZED",
+  window.dispatchEvent(
+    new CustomEvent("devsync:unauthorized"),
+  );
+
+  throw new ApiError(
+    extractErrorMessage(
       responseBody,
-    );
-  }
+      "Authentication failed. Please log in again.",
+    ),
+    401,
+    "UNAUTHORIZED",
+    responseBody,
+  );
+}
 
   /* -------------------------
      Other errors
@@ -326,7 +336,9 @@ export interface LoginPayload {
 }
 
 export interface RegisterPayload {
-  name: string;
+  username: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   organization?: string;
@@ -366,6 +378,53 @@ export const authApi = {
   },
 };
 
+
+/* =========================================================
+   ORGANIZATION API
+   ========================================================= */
+
+export interface Organization {
+  id: string;
+  name: string;
+  slug: string;
+  description?: string | null;
+  role?: string;
+  joinedAt?: string;
+}
+
+export const organizationApi = {
+  list() {
+    return api.get<Organization[]>("/organizations");
+  },
+
+  get(organizationId: string) {
+    return api.get<Organization>(
+      `/organizations/${organizationId}`,
+    );
+  },
+
+  create(payload: {
+    name: string;
+    slug: string;
+    description?: string;
+  }) {
+    return api.post<Organization>("/organizations", payload);
+  },
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================================================
    PROJECT API
    ========================================================= */
@@ -382,39 +441,34 @@ export interface Project {
 
 export interface CreateProjectPayload {
   name: string;
-  key?: string;
+  key: string;
   description?: string;
+  status?: string;
+  startDate?: string;
+  targetDate?: string;
 }
 
 export const projectApi = {
-  list() {
-    return api.get<Project[]>("/projects");
+  list(organizationId: string) {
+    return api.get<Project[]>(
+      `/projects?organizationId=${encodeURIComponent(organizationId)}`
+    );
   },
 
   get(projectId: string) {
     return api.get<Project>(`/projects/${projectId}`);
   },
 
-  create(payload: CreateProjectPayload) {
-    return api.post<Project>("/projects", payload);
-  },
-
-  update(
-    projectId: string,
-    payload: Partial<CreateProjectPayload>,
-  ) {
-    return api.patch<Project>(
-      `/projects/${projectId}`,
-      payload,
-    );
-  },
-
-  remove(projectId: string) {
-    return api.delete<void>(
-      `/projects/${projectId}`,
+  create(organizationId: string, payload: CreateProjectPayload) {
+    return api.post<Project>(
+      `/projects?organizationId=${encodeURIComponent(organizationId)}`,
+      payload
     );
   },
 };
+
+
+
 
 /* =========================================================
    TASK API
