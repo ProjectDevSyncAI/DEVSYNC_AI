@@ -23,6 +23,14 @@ export * from './enums.js';
  */
 export type User = Prisma.UserModel
 /**
+<<<<<<< HEAD
+ * Model EmailVerificationToken
+ * 
+ */
+export type EmailVerificationToken = Prisma.EmailVerificationTokenModel
+/**
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
  * Model Organization
  * 
  */

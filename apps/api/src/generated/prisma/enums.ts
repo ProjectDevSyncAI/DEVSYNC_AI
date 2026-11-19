@@ -19,6 +19,17 @@ export const UserStatus = {
 export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
 
 
+<<<<<<< HEAD
+export const PlatformRole = {
+  USER: 'USER',
+  ADMIN: 'ADMIN'
+} as const
+
+export type PlatformRole = (typeof PlatformRole)[keyof typeof PlatformRole]
+
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 export const OrganizationRole = {
   OWNER: 'OWNER',
   ADMIN: 'ADMIN',
@@ -279,3 +290,14 @@ export const WebhookEventType = {
 } as const
 
 export type WebhookEventType = (typeof WebhookEventType)[keyof typeof WebhookEventType]
+<<<<<<< HEAD
+
+
+export const VerificationPurpose = {
+  INITIAL_VERIFICATION: 'INITIAL_VERIFICATION',
+  EMAIL_CHANGE: 'EMAIL_CHANGE'
+} as const
+
+export type VerificationPurpose = (typeof VerificationPurpose)[keyof typeof VerificationPurpose]
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c

@@ -1,3 +1,26 @@
+<<<<<<< HEAD
+import {
+  dashboardApi,
+  type DashboardOverviewResponse,
+  type ProjectMetadataOverview,
+  type TaskMetricsOverview,
+  type IssueMetricsOverview,
+  type ActiveSprintOverview,
+} from "../../../lib/api";
+
+export type {
+  DashboardOverviewResponse,
+  ProjectMetadataOverview,
+  TaskMetricsOverview,
+  IssueMetricsOverview,
+  ActiveSprintOverview,
+};
+
+/**
+ * Legacy UI component interfaces preserved for type compatibility
+ */
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 export interface DashboardProject {
   id: string;
   name: string;
@@ -13,16 +36,31 @@ export interface DashboardActivity {
   id: string;
   title: string;
   description: string;
+<<<<<<< HEAD
+  type: "task" | "project" | "comment" | "deployment" | "member";
+=======
   type:
     | "task"
     | "project"
     | "comment"
     | "deployment"
     | "member";
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   createdAt: string;
   userName: string;
 }
 
+<<<<<<< HEAD
+/**
+ * Fetches real-time operational dashboard overview metrics for a given project.
+ * Directly integrates with backend endpoint GET /analytics/project/:projectId/dashboard
+ */
+export async function getDashboardOverview(
+  projectId: string,
+): Promise<DashboardOverviewResponse> {
+  return dashboardApi.getDashboardOverview(projectId);
+}
+=======
 export interface DashboardStats {
   projects: number;
   activeProjects: number;
@@ -118,3 +156,4 @@ export async function getDashboardData(): Promise<DashboardData> {
     ],
   };
 }
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c

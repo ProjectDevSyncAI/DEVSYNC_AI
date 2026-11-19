@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import React, { useEffect, useState } from "react";
+=======
 import React from "react";
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 import {
   ArrowLeft,
   BarChart3,
@@ -9,6 +13,10 @@ import {
   Code2,
   GitBranch,
   Layers3,
+<<<<<<< HEAD
+  Loader2,
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   MoreHorizontal,
   Plus,
   Settings2,
@@ -16,6 +24,11 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+<<<<<<< HEAD
+import { organizationApi, projectApi, taskApi } from "../lib/api";
+import type { Project, Task } from "../lib/api";
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
 type Stat = {
   name: string;
@@ -46,6 +59,8 @@ const stats: Stat[] = [
   },
 ];
 
+<<<<<<< HEAD
+=======
 const tasks = [
   {
     title: "Authentication system",
@@ -77,6 +92,7 @@ const tasks = [
   },
 ];
 
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 const activity = [
   {
     text: "AI Sprint Planner generated a new sprint",
@@ -123,6 +139,78 @@ function priorityClasses(priority: string) {
 }
 
 export default function ProjectDetail() {
+<<<<<<< HEAD
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [currentProject, setCurrentProject] = useState<Project | null>(null);
+  const [liveTasks, setLiveTasks] = useState<Task[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setLoading(true);
+        const orgs = await organizationApi.list();
+        if (orgs.length > 0) {
+          const projs = await projectApi.list(orgs[0].id);
+          setProjects(projs);
+          if (projs.length > 0) {
+            setCurrentProject(projs[0]);
+            const taskList = await taskApi.list(projs[0].id);
+            setLiveTasks(taskList);
+          }
+        }
+      } catch {
+        // Fallback to sample data
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+
+  const handleSelectProject = async (projId: string) => {
+    const proj = projects.find((p) => p.id === projId);
+    if (!proj) return;
+    setCurrentProject(proj);
+    try {
+      setLoading(true);
+      const taskList = await taskApi.list(proj.id);
+      setLiveTasks(taskList);
+    } catch {
+      // Keep existing
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const computedStats: Stat[] = [
+    {
+      name: "Total Tasks",
+      value: String(liveTasks.length),
+      icon: Layers3,
+    },
+    {
+      name: "Completed",
+      value: String(
+        liveTasks.filter((t) => t.status === "DONE").length,
+      ),
+      icon: CheckCircle2,
+    },
+    {
+      name: "In Progress",
+      value: String(
+        liveTasks.filter((t) => t.status === "IN_PROGRESS" || t.status === "IN_REVIEW").length,
+      ),
+      icon: Clock3,
+    },
+    {
+      name: "Team Members",
+      value: String(currentProject?.members?.length ?? 1),
+      icon: Users,
+    },
+  ];
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <main className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
@@ -141,13 +229,35 @@ export default function ProjectDetail() {
             <div>
               <div className="mb-3 flex items-center gap-2">
                 <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+<<<<<<< HEAD
+                  {currentProject?.key ? `PROJECT ${currentProject.key}` : "ACTIVE PROJECT"}
+=======
                   ACTIVE PROJECT
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
                 </span>
 
                 <span className="flex items-center gap-1 text-xs text-emerald-600">
                   <CircleDot className="h-3.5 w-3.5" />
                   Healthy
                 </span>
+<<<<<<< HEAD
+
+                {loading && (
+                  <span className="flex items-center gap-1 text-xs text-slate-400">
+                    <Loader2 className="h-3 w-3 animate-spin" />
+                    Syncing...
+                  </span>
+                )}
+              </div>
+
+              <h1 className="text-3xl font-bold tracking-tight">
+                {currentProject?.name || "DevSync AI Platform"}
+              </h1>
+
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
+                {currentProject?.description ||
+                  "AI-powered project management workspace for planning, collaboration, standups and engineering intelligence."}
+=======
               </div>
 
               <h1 className="text-3xl font-bold tracking-tight">
@@ -157,10 +267,28 @@ export default function ProjectDetail() {
               <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
                 AI-powered project management workspace for planning,
                 collaboration, standups and engineering intelligence.
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
               </p>
             </div>
 
             <div className="flex items-center gap-3">
+<<<<<<< HEAD
+              {projects.length > 1 && (
+                <select
+                  value={currentProject?.id || ""}
+                  onChange={(e) => handleSelectProject(e.target.value)}
+                  className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold text-slate-700 shadow-sm"
+                >
+                  {projects.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.name}
+                    </option>
+                  ))}
+                </select>
+              )}
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
               <button
                 type="button"
                 className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold shadow-sm transition hover:border-slate-300 hover:shadow"
@@ -182,7 +310,11 @@ export default function ProjectDetail() {
 
         {/* Stats */}
         <div className="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+<<<<<<< HEAD
+          {computedStats.map(({ name, value, icon: Icon }) => (
+=======
           {stats.map(({ name, value, icon: Icon }) => (
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
             <div
               key={name}
               className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
@@ -281,6 +413,40 @@ export default function ProjectDetail() {
               </div>
 
               <div className="divide-y divide-slate-100">
+<<<<<<< HEAD
+                {liveTasks.length === 0 ? (
+                  <div className="p-8 text-center text-xs text-slate-500">
+                    No tasks created for this project yet.
+                  </div>
+                ) : (
+                  liveTasks.map((t) => {
+                    const task = {
+                      title: t.title,
+                      description: t.description || "Project deliverable task item.",
+                      status:
+                        t.status === "DONE"
+                          ? "Completed"
+                          : t.status === "IN_PROGRESS" || t.status === "IN_REVIEW"
+                            ? "In Progress"
+                            : "Todo",
+                      priority:
+                        t.priority === "URGENT" || t.priority === "HIGH"
+                          ? "High"
+                          : t.priority === "MEDIUM"
+                            ? "Medium"
+                            : "Low",
+                      assignee: "DS",
+                    };
+                    return (
+                      <div
+                        key={t.id || task.title}
+                        className="flex flex-col gap-4 p-5 transition hover:bg-slate-50/70 md:flex-row md:items-center md:justify-between"
+                      >
+                        <div className="flex min-w-0 items-start gap-4">
+                          <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100">
+                            <Code2 className="h-4 w-4 text-slate-600" />
+                          </div>
+=======
                 {tasks.map((task) => (
                   <div
                     key={task.title}
@@ -290,6 +456,7 @@ export default function ProjectDetail() {
                       <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100">
                         <Code2 className="h-4 w-4 text-slate-600" />
                       </div>
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
                       <div className="min-w-0">
                         <h3 className="font-semibold">{task.title}</h3>
@@ -324,7 +491,12 @@ export default function ProjectDetail() {
                       </div>
                     </div>
                   </div>
+<<<<<<< HEAD
+                );
+              }))}
+=======
                 ))}
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
               </div>
             </div>
           </section>

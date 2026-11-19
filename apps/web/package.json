@@ -10,6 +10,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "@monaco-editor/react": "^4.7.0",
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     "@tanstack/react-query": "^5.85.5",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",

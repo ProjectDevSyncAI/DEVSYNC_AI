@@ -2,7 +2,11 @@
   "name": "@devsync/api",
   "version": "1.0.0",
   "private": true,
+<<<<<<< HEAD
+  "type": "module",
+=======
   "type":"module",
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   "scripts": {
     "dev": "nest start --watch",
     "build": "nest build",
@@ -24,6 +28,10 @@
     "@nestjs/platform-socket.io": "^11.1.6",
     "@nestjs/swagger": "^11.2.0",
     "@nestjs/websockets": "^11.1.6",
+<<<<<<< HEAD
+    "@octokit/rest": "^22.0.1",
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     "@prisma/adapter-pg": "^7.0.0",
     "@prisma/client": "7.0.0",
     "axios": "^1.11.0",
@@ -33,6 +41,10 @@
     "class-validator": "^0.14.2",
     "compression": "^1.8.1",
     "helmet": "^8.1.0",
+<<<<<<< HEAD
+    "nodemailer": "^10.6.0",
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     "octokit": "^5.0.3",
     "openai": "^5.12.2",
     "passport": "^0.7.0",
@@ -50,6 +62,10 @@
     "@types/express": "^5.0.3",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.3.0",
+<<<<<<< HEAD
+    "@types/nodemailer": "^8.0.2",
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     "@types/passport-jwt": "^4.0.1",
     "@types/pg": "^8.15.5",
     "jest": "^30.0.5",

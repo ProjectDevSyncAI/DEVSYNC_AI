@@ -6,6 +6,10 @@ import { DatabaseModule } from './database/database.module.js';
 import { HealthModule } from './health/health.module.js';
 import { AuthModule } from './auth/auth.module.js';
 import authConfig from './config/auth.config.js';
+<<<<<<< HEAD
+import emailVerificationConfig from './config/email-verification.config.js';
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 import { OrganizationsModule } from './organizations/organizations.module.js';
 import { ProjectsModule } from './projects/projects.module.js';
 import { TasksModule } from './tasks/tasks.module.js';
@@ -51,10 +55,20 @@ import { RequestLoggerMiddleware } from './common/middleware/request-logger.midd
 @Module({
   imports: [
     ConfigModule.forRoot({
+<<<<<<< HEAD
+  isGlobal: true,
+  envFilePath: [
+    join(process.cwd(), '.env'),
+    join(process.cwd(), '../../.env'),
+  ],
+  load: [authConfig, emailVerificationConfig],
+}),
+=======
       isGlobal: true,
       envFilePath: join(process.cwd(), '../../.env'),
       load: [authConfig],
     }),
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
     DatabaseModule,
     HealthModule,

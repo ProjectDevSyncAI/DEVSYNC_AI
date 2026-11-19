@@ -456,6 +456,20 @@ export default function Register() {
                 </span>
               </label>
 
+<<<<<<< HEAD
+              {/* Verification requirement notice */}
+              <div className="rounded-xl border border-indigo-500/20 bg-indigo-500/10 p-3 text-xs text-indigo-300">
+                <div className="font-semibold flex items-center gap-1.5 mb-1 text-indigo-200">
+                  <Sparkles size={13} />
+                  <span>Email Verification Notice</span>
+                </div>
+                <p className="text-white/60 leading-relaxed">
+                  Upon registration, an email verification link will be issued for your account. (Notice: In development mode, email dispatch is simulated; no physical email is sent to external inboxes).
+                </p>
+              </div>
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
               {/* Messages */}
               {error && (
                 <div

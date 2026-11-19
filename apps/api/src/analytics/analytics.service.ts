@@ -58,6 +58,20 @@ export class AnalyticsService {
     });
   }
 
+<<<<<<< HEAD
+  async findAllForProjects(projectIds: string[]) {
+    return this.prisma.projectAnalytics.findMany({
+      where: {
+        projectId: { in: projectIds },
+      },
+      orderBy: {
+        date: 'desc',
+      },
+    });
+  }
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   async findById(id: string) {
     const analytics = await this.prisma.projectAnalytics.findUnique({
       where: { id },

@@ -3,6 +3,10 @@ import { useEffect, useMemo, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   Activity,
+<<<<<<< HEAD
+  BarChart3,
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   Bell,
   BookOpen,
   BrainCircuit,
@@ -22,13 +26,21 @@ import {
   PanelLeftOpen,
   Rocket,
   Search,
+<<<<<<< HEAD
+  Settings as SettingsIcon,
+=======
   Settings,
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   ShieldAlert,
   Sparkles,
   Target,
   Users,
   X,
   Zap,
+<<<<<<< HEAD
+  Code2,
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 } from "lucide-react";
 
 import Dashboard from "./pages/Dashboard";
@@ -42,11 +54,36 @@ import RiskEngine from "./pages/Risks";
 import SprintPlanner from "./pages/SprintPlanner";
 import { clearAccessToken, getAccessToken } from "./lib/api";
 import BugTracking from "./pages/BugTracking";
+<<<<<<< HEAD
+import Standup from "./pages/Standup";
+import Chat from "./pages/Chat";
+import KnowledgeBase from "./pages/KnowledgeBase";
+import Settings from "./pages/Settings";
+import Analytics from "./pages/Analytics";
+import ReleaseManagement from "./pages/ReleaseManagement";
+import InviteAccept from "./pages/InviteAccept";
+import VerifyEmail from "./pages/VerifyEmail";
+import { EmailVerificationBanner } from "./components/notifications/EmailVerificationBanner";
+import { useEmailVerificationStore } from "./store/email-verification.store";
+import { useNotificationStore, formatNotificationTime, mapNotificationType } from "./store/notification.store";
+import CodeEditor from "./pages/codeEditor";
+
+
+
+
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
 type PageId =
   | "dashboard"
   | "projects"
   | "tasks"
+<<<<<<< HEAD
+  | "chat"
+  | "analytics"
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   | "team"
   | "insights"
   | "risks"
@@ -55,8 +92,16 @@ type PageId =
   | "bugs"
   | "release"
   | "knowledge"
+<<<<<<< HEAD
+  | "ide"
   | "settings";
 
+
+
+=======
+  | "settings";
+
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 type AuthPage = "login" | "register";
 
 type CurrentUser = {
@@ -105,6 +150,21 @@ const navigation: NavGroup[] = [
         icon: CheckSquare,
       },
       {
+<<<<<<< HEAD
+        id: "chat",
+        label: "Team Chat",
+        description: "Real-time communication",
+        icon: MessageSquare,
+      },
+      {
+        id: "analytics",
+        label: "Analytics",
+        description: "Velocity & performance metrics",
+        icon: BarChart3,
+      },
+      {
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
         id: "team",
         label: "Team",
         description: "People and collaboration",
@@ -161,6 +221,15 @@ const navigation: NavGroup[] = [
         icon: BookOpen,
   
       },
+<<<<<<< HEAD
+      {
+        id: "ide",
+        label: "Code Editor",
+        description: "Integrated development environment",
+        icon: Code2,
+      },
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     ],
   },
   {
@@ -170,7 +239,11 @@ const navigation: NavGroup[] = [
         id: "settings",
         label: "Settings",
         description: "Workspace preferences",
+<<<<<<< HEAD
+        icon: SettingsIcon,
+=======
         icon: Settings,
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       
       },
     ],
@@ -196,11 +269,29 @@ const pageInfo: Record<
     subtitle: "Stay focused on your work",
     icon: CheckSquare,
   },
+<<<<<<< HEAD
+  chat: {
+    title: "Team Chat",
+    subtitle: "Real-time messaging & AI assistant",
+    icon: MessageSquare,
+  },
+  analytics: {
+    title: "Analytics & Velocity",
+    subtitle: "Sprint velocity, PR turnaround & throughput",
+    icon: BarChart3,
+  },
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   team: {
     title: "Team",
     subtitle: "Collaborate with your team",
     icon: Users,
   },
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   insights: {
     title: "AI Insights",
     subtitle: "Turn project data into actionable insights",
@@ -236,10 +327,22 @@ const pageInfo: Record<
     subtitle: "Keep technical knowledge organized",
     icon: BookOpen,
   },
+<<<<<<< HEAD
+  ide: {
+    title: "DevSync AI IDE",
+    subtitle: "Write, run and debug code in your workspace",
+    icon: Code2,
+  },
+  settings: {
+    title: "Settings",
+    subtitle: "Manage your workspace preferences",
+    icon: SettingsIcon,
+=======
   settings: {
     title: "Settings",
     subtitle: "Manage your workspace preferences",
     icon: Settings,
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   },
 };
 
@@ -348,6 +451,26 @@ export default function App() {
     () => Boolean(getAccessToken())
   );
 
+<<<<<<< HEAD
+  const [isInvite, setIsInvite] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const path = window.location.pathname.toLowerCase();
+    return (
+      path === "/invite" ||
+      path === "/invite/" ||
+      path === "/invite/accept" ||
+      path === "/invite/accept/"
+    );
+  });
+
+  const [isVerifyEmail, setIsVerifyEmail] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const path = window.location.pathname.toLowerCase();
+    return path === "/verify-email" || path === "/verify-email/";
+  });
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   const [authPage, setAuthPage] = useState<AuthPage>(() =>
     window.location.pathname.toLowerCase().includes("register")
       ? "register"
@@ -365,9 +488,46 @@ export default function App() {
   const [profileOpen, setProfileOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
 
+<<<<<<< HEAD
+  // Notification store
+  const {
+    notifications,
+    unreadCount,
+    isLoading: notifLoading,
+    fetchNotifications,
+    fetchUnreadCount,
+    markAsRead,
+    markAllAsRead,
+    deleteNotification,
+    clearNotificationState,
+  } = useNotificationStore();
+
+  // Load unread count and email verification status on mount (authenticated), then poll unread count
+  useEffect(() => {
+    if (!authenticated) return;
+    fetchUnreadCount();
+    useEmailVerificationStore.getState().fetchStatus();
+    const interval = setInterval(fetchUnreadCount, 60_000);
+    return () => clearInterval(interval);
+  }, [authenticated, fetchUnreadCount]);
+
+  // Fetch full list when dropdown opens
+  useEffect(() => {
+    if (notificationsOpen && authenticated) {
+      fetchNotifications();
+    }
+  }, [notificationsOpen, authenticated, fetchNotifications]);
+
+
   useEffect(() => {
     const handleUnauthorized = () => {
       clearAccessToken();
+      useEmailVerificationStore.getState().clearVerificationState();
+=======
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      clearAccessToken();
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       setAuthenticated(false);
       setCurrentUser(null);
       setAuthPage("login");
@@ -377,6 +537,10 @@ export default function App() {
     const handleLogin = () => {
       setAuthenticated(Boolean(getAccessToken()));
       setCurrentUser(readCurrentUser());
+<<<<<<< HEAD
+      useEmailVerificationStore.getState().fetchStatus();
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       setAuthPage("login");
       setActivePage("dashboard");
       window.history.replaceState({}, "", "/");
@@ -385,6 +549,31 @@ export default function App() {
     const handlePopState = () => {
       const path = window.location.pathname.toLowerCase();
 
+<<<<<<< HEAD
+      if (
+        path === "/invite" ||
+        path === "/invite/" ||
+        path === "/invite/accept" ||
+        path === "/invite/accept/"
+      ) {
+        setIsInvite(true);
+        setIsVerifyEmail(false);
+      } else if (path === "/verify-email" || path === "/verify-email/") {
+        setIsVerifyEmail(true);
+        setIsInvite(false);
+      } else {
+        setIsInvite(false);
+        setIsVerifyEmail(false);
+        if (path.includes("register")) {
+          setAuthPage("register");
+        } else if (path.includes("login")) {
+          setAuthPage("login");
+        } else if (getAccessToken()) {
+          setAuthenticated(true);
+        } else {
+          setAuthPage("login");
+        }
+=======
       if (path.includes("register")) {
         setAuthPage("register");
       } else if (path.includes("login")) {
@@ -393,6 +582,7 @@ export default function App() {
         setAuthenticated(true);
       } else {
         setAuthPage("login");
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       }
     };
 
@@ -457,6 +647,11 @@ export default function App() {
     clearAccessToken();
     localStorage.removeItem("devsync_user");
 
+<<<<<<< HEAD
+    clearNotificationState();
+    useEmailVerificationStore.getState().clearVerificationState();
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     setAuthenticated(false);
     setCurrentUser(null);
     setActivePage("dashboard");
@@ -467,6 +662,49 @@ export default function App() {
     window.history.replaceState({}, "", "/login");
   }
 
+<<<<<<< HEAD
+  if (isInvite) {
+    return (
+      <InviteAccept
+        onNavigate={(page) => {
+          setIsInvite(false);
+          if (page === "dashboard") {
+            setActivePage("dashboard");
+            window.history.pushState({}, "", "/");
+          } else if (page === "login") {
+            setAuthPage("login");
+            window.history.pushState({}, "", "/login");
+          } else if (page === "register") {
+            setAuthPage("register");
+            window.history.pushState({}, "", "/register");
+          }
+        }}
+      />
+    );
+  }
+
+  if (isVerifyEmail) {
+    return (
+      <VerifyEmail
+        onNavigate={(page) => {
+          setIsVerifyEmail(false);
+          if (page === "dashboard") {
+            setActivePage("dashboard");
+            window.history.pushState({}, "", "/");
+          } else if (page === "login") {
+            setAuthPage("login");
+            window.history.pushState({}, "", "/login");
+          } else if (page === "register") {
+            setAuthPage("register");
+            window.history.pushState({}, "", "/register");
+          }
+        }}
+      />
+    );
+  }
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   if (!authenticated || !getAccessToken()) {
     return authPage === "register" ? (
       <Register />
@@ -486,17 +724,58 @@ export default function App() {
       case "tasks":
         return <MyTasks />;
 
+<<<<<<< HEAD
+      case "chat":
+        return <Chat />;
+
+      case "analytics":
+        return <Analytics />;
+
+      case "team":
+        return <Team />;
+
+
+      case "insights":
+        return <AIInsights />;
+
+=======
       case "team":
         return <Team />;
 
       case "insights":
         return <AIInsights />;
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       case "risks":
         return <RiskEngine />;
 
       case "sprint":
         return <SprintPlanner />;
 
+<<<<<<< HEAD
+      case "standup":
+        return <Standup />;
+
+      case "bugs":
+        return <BugTracking />;
+
+      case "knowledge":
+        return <KnowledgeBase />;
+
+      case "release":
+        return <ReleaseManagement />;
+
+      case "ide":
+        return <CodeEditor />;
+
+      case "settings":
+        return <Settings />;
+
+
+
+
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       default:
         return activeItem ? (
           <PlaceholderPage
@@ -794,7 +1073,11 @@ export default function App() {
                   onClick={() => navigateTo("settings")}
                   className="flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-xs text-slate-300 hover:bg-white/[0.07] hover:text-white"
                 >
+<<<<<<< HEAD
+                  <SettingsIcon size={15} />
+=======
                   <Settings size={15} />
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
                   Settings
                 </button>
 
@@ -912,6 +1195,123 @@ export default function App() {
                 className="relative rounded-xl border border-slate-200 p-2.5 text-slate-500 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600 dark:border-slate-700 dark:hover:bg-slate-800"
               >
                 <Bell size={17} />
+<<<<<<< HEAD
+                {unreadCount > 0 && (
+                  <span className="absolute -right-1 -top-1 flex h-4 min-w-[1rem] items-center justify-center rounded-full bg-indigo-600 px-0.5 text-[10px] font-bold text-white">
+                    {unreadCount > 99 ? "99+" : unreadCount}
+                  </span>
+                )}
+              </button>
+
+              {notificationsOpen && (
+                <div className="absolute right-0 top-full z-50 mt-3 w-80 rounded-2xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900">
+                  {/* Header */}
+                  <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3 dark:border-slate-800">
+                    <div className="flex items-center gap-2 font-semibold text-slate-900 dark:text-white">
+                      <Bell size={16} className="text-indigo-600" />
+                      Notifications
+                      {unreadCount > 0 && (
+                        <span className="rounded-full bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300">
+                          {unreadCount} new
+                        </span>
+                      )}
+                    </div>
+                    {unreadCount > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => markAllAsRead()}
+                        className="text-xs font-medium text-indigo-600 hover:text-indigo-700 dark:text-indigo-400"
+                      >
+                        Mark all read
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Body */}
+                  <div className="max-h-80 overflow-y-auto">
+                    {notifLoading && notifications.length === 0 ? (
+                      <p className="px-4 py-6 text-center text-sm text-slate-400">
+                        Loading…
+                      </p>
+                    ) : notifications.length === 0 ? (
+                      <p className="px-4 py-6 text-center text-sm text-slate-400 dark:text-slate-500">
+                        You're all caught up! No notifications.
+                      </p>
+                    ) : (
+                      notifications.slice(0, 20).map((n) => {
+                        const isUnread = n.readAt === null;
+                        const displayType = mapNotificationType(n.type);
+                        const timeLabel = formatNotificationTime(n.createdAt);
+
+                        const typeColors: Record<string, string> = {
+                          task: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
+                          mention: "bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300",
+                          pull_request: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
+                          ai: "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300",
+                          chat: "bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300",
+                          sprint: "bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300",
+                          system: "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
+                        };
+
+                        return (
+                          <div
+                            key={n.id}
+                            className={`group flex items-start gap-3 border-b border-slate-50 px-4 py-3 last:border-0 hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-800/50 ${isUnread ? "bg-indigo-50/40 dark:bg-indigo-900/10" : ""}`}
+                          >
+                            <div className="mt-0.5 flex-1 min-w-0">
+                              <div className="flex items-center gap-2">
+                                {isUnread && (
+                                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" />
+                                )}
+                                <span className={`rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase ${typeColors[displayType] ?? typeColors.system}`}>
+                                  {displayType.replace("_", " ")}
+                                </span>
+                                <span className="ml-auto shrink-0 text-[10px] text-slate-400">{timeLabel}</span>
+                              </div>
+                              <p className="mt-1 truncate text-xs font-semibold text-slate-800 dark:text-slate-200">
+                                {n.title}
+                              </p>
+                              <p className="mt-0.5 line-clamp-2 text-xs text-slate-500 dark:text-slate-400">
+                                {n.message}
+                              </p>
+                            </div>
+                            <div className="flex shrink-0 flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                              {isUnread && (
+                                <button
+                                  type="button"
+                                  onClick={() => markAsRead(n.id)}
+                                  title="Mark as read"
+                                  className="rounded p-1 text-indigo-500 hover:bg-indigo-100 dark:hover:bg-indigo-900/40"
+                                >
+                                  <CheckSquare size={13} />
+                                </button>
+                              )}
+                              <button
+                                type="button"
+                                onClick={() => deleteNotification(n.id)}
+                                title="Delete"
+                                className="rounded p-1 text-slate-400 hover:bg-slate-200 hover:text-red-500 dark:hover:bg-slate-700"
+                              >
+                                <X size={13} />
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })
+                    )}
+                  </div>
+
+                  {/* Footer */}
+                  <div className="border-t border-slate-100 px-4 py-2.5 dark:border-slate-800">
+                    <button
+                      type="button"
+                      onClick={() => setNotificationsOpen(false)}
+                      className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400"
+                    >
+                      Close
+                    </button>
+                  </div>
+=======
               </button>
 
               {notificationsOpen && (
@@ -933,10 +1333,15 @@ export default function App() {
                   >
                     Close
                   </button>
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
                 </div>
               )}
             </div>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
             <div className="hidden h-8 w-px bg-slate-200 dark:bg-slate-700 sm:block" />
 
             <button
@@ -965,6 +1370,10 @@ export default function App() {
         </header>
 
         <main className="min-h-[calc(100vh-76px)]">
+<<<<<<< HEAD
+          <EmailVerificationBanner onNavigateSettings={() => navigateTo("settings")} />
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
           <div className="px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
             {renderPage()}
           </div>

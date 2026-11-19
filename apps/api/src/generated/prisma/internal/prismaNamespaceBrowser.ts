@@ -52,6 +52,10 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
+<<<<<<< HEAD
+  EmailVerificationToken: 'EmailVerificationToken',
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   Organization: 'Organization',
   OrganizationMember: 'OrganizationMember',
   OrganizationInvitation: 'OrganizationInvitation',
@@ -109,6 +113,10 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
+<<<<<<< HEAD
+  pendingEmail: 'pendingEmail',
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: 'username',
   firstName: 'firstName',
   lastName: 'lastName',
@@ -116,6 +124,11 @@ export const UserScalarFieldEnum = {
   bio: 'bio',
   passwordHash: 'passwordHash',
   status: 'status',
+<<<<<<< HEAD
+  platformRole: 'platformRole',
+  tokenVersion: 'tokenVersion',
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt: 'lastLoginAt',
   emailVerifiedAt: 'emailVerifiedAt',
   createdAt: 'createdAt',
@@ -125,6 +138,23 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+<<<<<<< HEAD
+export const EmailVerificationTokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  email: 'email',
+  tokenHash: 'tokenHash',
+  purpose: 'purpose',
+  expiresAt: 'expiresAt',
+  consumedAt: 'consumedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type EmailVerificationTokenScalarFieldEnum = (typeof EmailVerificationTokenScalarFieldEnum)[keyof typeof EmailVerificationTokenScalarFieldEnum]
+
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 export const OrganizationScalarFieldEnum = {
   id: 'id',
   name: 'name',

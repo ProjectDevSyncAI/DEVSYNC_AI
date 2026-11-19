@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+import {
+  Activity,
+  AlertTriangle,
+  CalendarDays,
+  CheckCircle2,
+  CircleAlert,
+  Clock3,
+  FolderKanban,
+  Layers,
+  RefreshCw,
+  Sparkles,
+  Target,
+  Users,
+  Zap,
+} from "lucide-react";
+import { useDashboard } from "../features/dashboard/hooks/useDashboard";
+import { useProjectStore } from "../store/project.store";
+=======
 
 import { useMemo, useState } from "react";
 import {
@@ -163,6 +182,7 @@ const colorStyles: Record<
     soft: "from-emerald-500/10 to-emerald-500/[0.02]",
   },
 };
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
 function Card({
   children,
@@ -202,6 +222,8 @@ function SectionHeading({
   );
 }
 
+<<<<<<< HEAD
+=======
 function StatusBadge({ status }: { status: ProjectStatus }) {
   const styles: Record<ProjectStatus, string> = {
     "On track": "bg-emerald-50 text-emerald-700 ring-emerald-600/15",
@@ -219,6 +241,7 @@ function StatusBadge({ status }: { status: ProjectStatus }) {
   );
 }
 
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 function ProgressBar({
   value,
   color = "bg-indigo-500",
@@ -226,6 +249,21 @@ function ProgressBar({
   value: number;
   color?: string;
 }) {
+<<<<<<< HEAD
+  const clamped = Math.min(100, Math.max(0, value));
+  return (
+    <div
+      className="h-2 overflow-hidden rounded-full bg-slate-100"
+      role="progressbar"
+      aria-valuenow={clamped}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label={`${clamped}% complete`}
+    >
+      <div
+        className={`h-full rounded-full transition-all duration-500 ${color}`}
+        style={{ width: `${clamped}%` }}
+=======
   return (
     <div
       className="h-1.5 overflow-hidden rounded-full bg-slate-100"
@@ -238,11 +276,72 @@ function ProgressBar({
       <div
         className={`h-full rounded-full transition-all duration-500 ${color}`}
         style={{ width: `${value}%` }}
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       />
     </div>
   );
 }
 
+<<<<<<< HEAD
+function formatDate(dateString?: string | Date | null): string {
+  if (!dateString) return "Not specified";
+  const date = new Date(dateString);
+  if (Number.isNaN(date.getTime())) return String(dateString);
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function formatDateTime(dateString?: string | Date | null): string {
+  if (!dateString) return "Just now";
+  const date = new Date(dateString);
+  if (Number.isNaN(date.getTime())) return "Recently";
+  return date.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+}
+
+export default function Dashboard() {
+  const { activeProject } = useProjectStore();
+  const { data, isLoading, error, refresh } = useDashboard(activeProject?.id);
+
+  // ─── 1. Empty State: No Active Project Selected ─────────────────────────
+  if (!activeProject) {
+    return (
+      <div className="mx-auto max-w-[1600px] space-y-6">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-semibold text-indigo-600">
+              <Sparkles size={14} />
+              YOUR WORKSPACE
+            </div>
+            <h1 className="mt-2 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+              Project Dashboard
+            </h1>
+            <p className="mt-2 text-sm text-slate-500">
+              Select an active project to view real-time operational metrics.
+            </p>
+          </div>
+        </div>
+
+        <Card className="p-12 text-center">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600">
+            <FolderKanban size={28} />
+          </div>
+          <h2 className="mt-4 text-base font-bold text-slate-900">
+            No active project selected
+          </h2>
+          <p className="mx-auto mt-2 max-w-md text-xs leading-5 text-slate-500">
+            Please select an existing project from the organization selector or
+            create a project to monitor tasks, issues, and active sprint health.
+          </p>
+        </Card>
+      </div>
+=======
 export default function Dashboard() {
   const [projects, setProjects] = useState<Project[]>(initialProjects);
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
@@ -324,16 +423,44 @@ export default function Dashboard() {
             }
           : task,
       ),
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     );
   }
 
   return (
     <div className="mx-auto max-w-[1600px] space-y-6">
+<<<<<<< HEAD
+      {/* ─── Header ──────────────────────────────────────────────────────── */}
+=======
       {/* Welcome header */}
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <div className="flex items-center gap-2 text-xs font-semibold text-indigo-600">
             <Sparkles size={14} />
+<<<<<<< HEAD
+            LIVE PROJECT DASHBOARD
+          </div>
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            <h1 className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+              {activeProject.name}
+            </h1>
+            {activeProject.key && (
+              <span className="rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-600">
+                {activeProject.key}
+              </span>
+            )}
+            {activeProject.status && (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
+                <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                {activeProject.status}
+              </span>
+            )}
+          </div>
+          <p className="mt-2 text-sm text-slate-500">
+            {activeProject.description ||
+              "Real-time operational overview aggregated from live database entities."}
+=======
             YOUR WORKSPACE
           </div>
           <h1 className="mt-2 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
@@ -341,6 +468,7 @@ export default function Dashboard() {
           </h1>
           <p className="mt-2 text-sm text-slate-500">
             Here’s what’s happening across your development workspace.
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
           </p>
         </div>
 
@@ -358,15 +486,52 @@ export default function Dashboard() {
 
           <button
             type="button"
+<<<<<<< HEAD
+            onClick={() => void refresh()}
+            disabled={isLoading}
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 disabled:opacity-50"
+            title="Reload live metrics"
+          >
+            <RefreshCw
+              size={15}
+              className={`text-slate-500 ${isLoading ? "animate-spin" : ""}`}
+            />
+            <span>Refresh</span>
+=======
             onClick={() => setShowCreateProject(true)}
             className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white shadow-sm shadow-indigo-600/20 transition hover:bg-indigo-700"
           >
             <Plus size={16} />
             New project
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
           </button>
         </div>
       </div>
 
+<<<<<<< HEAD
+      {/* ─── Error Alert Banner ────────────────────────────────────────── */}
+      {error && (
+        <div
+          role="alert"
+          className="flex flex-col justify-between gap-3 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800 sm:flex-row sm:items-center"
+        >
+          <div className="flex items-center gap-3">
+            <AlertTriangle size={18} className="shrink-0 text-rose-600" />
+            <div>
+              <p className="font-semibold text-rose-900">
+                Failed to load dashboard metrics
+              </p>
+              <p className="text-xs text-rose-700">{error}</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => void refresh()}
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-rose-600 px-3.5 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-rose-700"
+          >
+            <RefreshCw size={13} />
+            Retry
+=======
       {notice && (
         <div
           role="status"
@@ -382,10 +547,632 @@ export default function Dashboard() {
             className="text-xs font-semibold hover:underline"
           >
             Dismiss
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
           </button>
         </div>
       )}
 
+<<<<<<< HEAD
+      {/* ─── Multiple Active Sprints Notice ───────────────────────────── */}
+      {data?.activeSprint?.hasMultipleActiveSprints && (
+        <div
+          role="status"
+          className="flex items-center gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-800"
+        >
+          <CircleAlert size={16} className="shrink-0 text-amber-600" />
+          <span>
+            Multiple sprints are currently active in this project. Showing
+            metrics for the most recently started active sprint (
+            <strong>{data.activeSprint.name}</strong>).
+          </span>
+        </div>
+      )}
+
+      {/* ─── Loading Skeleton ─────────────────────────────────────────── */}
+      {isLoading && !data && (
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {[1, 2, 3, 4].map((idx) => (
+              <Card key={idx} className="animate-pulse p-5">
+                <div className="h-10 w-10 rounded-xl bg-slate-100" />
+                <div className="mt-4 h-3 w-20 rounded bg-slate-100" />
+                <div className="mt-2 h-7 w-14 rounded bg-slate-200" />
+                <div className="mt-2 h-2.5 w-28 rounded bg-slate-100" />
+              </Card>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 gap-5 xl:grid-cols-3">
+            <Card className="animate-pulse p-6 xl:col-span-2">
+              <div className="h-4 w-32 rounded bg-slate-200" />
+              <div className="mt-2 h-3 w-48 rounded bg-slate-100" />
+              <div className="mt-8 space-y-4">
+                <div className="h-8 rounded bg-slate-100" />
+                <div className="h-8 rounded bg-slate-100" />
+                <div className="h-8 rounded bg-slate-100" />
+              </div>
+            </Card>
+            <Card className="animate-pulse p-6">
+              <div className="h-4 w-32 rounded bg-slate-200" />
+              <div className="mt-2 h-3 w-48 rounded bg-slate-100" />
+              <div className="mt-8 space-y-4">
+                <div className="h-10 rounded bg-slate-100" />
+                <div className="h-10 rounded bg-slate-100" />
+              </div>
+            </Card>
+          </div>
+        </div>
+      )}
+
+      {/* ─── Live Dashboard Content ───────────────────────────────────── */}
+      {data && (
+        <>
+          {/* KPI Summary Cards */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {/* 1. Total Tasks */}
+            <Card className="p-5 transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                  <CheckCircle2 size={21} />
+                </div>
+                <span className="flex items-center gap-1 rounded-full bg-slate-50 px-2 py-1 text-[10px] font-medium text-slate-500">
+                  <Activity size={12} />
+                  Operational
+                </span>
+              </div>
+              <p className="mt-5 text-xs font-medium text-slate-500">
+                Total Tasks
+              </p>
+              <div className="mt-1 flex items-end justify-between gap-2">
+                <p className="text-3xl font-bold tracking-tight text-slate-950">
+                  {data.tasks.total}
+                </p>
+                <span className="pb-1 text-[11px] text-slate-500">
+                  {data.tasks.completed} completed
+                </span>
+              </div>
+              <div className="mt-3 flex items-center gap-2 text-[10px] text-slate-400">
+                <span>{data.tasks.inProgress} in progress</span>
+                <span>·</span>
+                <span>{data.tasks.todo} to do</span>
+              </div>
+            </Card>
+
+            {/* 2. Overdue Tasks */}
+            <Card className="p-5 transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+              <div className="flex items-start justify-between gap-3">
+                <div
+                  className={`flex h-11 w-11 items-center justify-center rounded-xl ${
+                    data.tasks.overdue > 0
+                      ? "bg-rose-50 text-rose-600"
+                      : "bg-emerald-50 text-emerald-600"
+                  }`}
+                >
+                  <Clock3 size={21} />
+                </div>
+                <span
+                  className={`flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-medium ${
+                    data.tasks.overdue > 0
+                      ? "bg-rose-50 text-rose-700 font-semibold"
+                      : "bg-slate-50 text-slate-500"
+                  }`}
+                >
+                  {data.tasks.overdue > 0 ? "Requires action" : "On schedule"}
+                </span>
+              </div>
+              <p className="mt-5 text-xs font-medium text-slate-500">
+                Overdue Tasks
+              </p>
+              <div className="mt-1 flex items-end justify-between gap-2">
+                <p
+                  className={`text-3xl font-bold tracking-tight ${
+                    data.tasks.overdue > 0 ? "text-rose-600" : "text-slate-950"
+                  }`}
+                >
+                  {data.tasks.overdue}
+                </p>
+                <span className="pb-1 text-[11px] text-slate-500">
+                  past due date
+                </span>
+              </div>
+              <div className="mt-3 text-[10px] text-slate-400">
+                {data.tasks.overdue > 0
+                  ? "Tasks due before now, excluding completed"
+                  : "No overdue tasks currently pending"}
+              </div>
+            </Card>
+
+            {/* 3. Active Issues */}
+            <Card className="p-5 transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+                  <CircleAlert size={21} />
+                </div>
+                <span className="flex items-center gap-1 rounded-full bg-slate-50 px-2 py-1 text-[10px] font-medium text-slate-500">
+                  {data.issues.byPriority.CRITICAL > 0
+                    ? `${data.issues.byPriority.CRITICAL} Critical`
+                    : "No critical bugs"}
+                </span>
+              </div>
+              <p className="mt-5 text-xs font-medium text-slate-500">
+                Active Issues
+              </p>
+              <div className="mt-1 flex items-end justify-between gap-2">
+                <p className="text-3xl font-bold tracking-tight text-slate-950">
+                  {data.issues.open + data.issues.inProgress}
+                </p>
+                <span className="pb-1 text-[11px] text-slate-500">
+                  of {data.issues.total} total
+                </span>
+              </div>
+              <div className="mt-3 flex items-center gap-2 text-[10px] text-slate-400">
+                <span>{data.issues.resolved + data.issues.closed} resolved</span>
+                <span>·</span>
+                <span>{data.issues.reopened} reopened</span>
+              </div>
+            </Card>
+
+            {/* 4. Active Sprint */}
+            <Card className="p-5 transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-50 text-violet-600">
+                  <Target size={21} />
+                </div>
+                <span className="flex items-center gap-1 rounded-full bg-slate-50 px-2 py-1 text-[10px] font-medium text-slate-500">
+                  {data.activeSprint ? "Active" : "No Sprint"}
+                </span>
+              </div>
+              <p className="mt-5 text-xs font-medium text-slate-500">
+                Sprint Progress
+              </p>
+              <div className="mt-1 flex items-end justify-between gap-2">
+                <p className="text-3xl font-bold tracking-tight text-slate-950">
+                  {data.activeSprint
+                    ? `${data.activeSprint.completionPercentage}%`
+                    : "—"}
+                </p>
+                <span className="pb-1 text-[11px] text-slate-500">
+                  {data.activeSprint
+                    ? `${data.activeSprint.completedTasks}/${data.activeSprint.totalTasks} tasks`
+                    : "No active sprint"}
+                </span>
+              </div>
+              <div className="mt-3 truncate text-[10px] text-slate-400">
+                {data.activeSprint
+                  ? data.activeSprint.name
+                  : "Start a sprint in Sprint Planner"}
+              </div>
+            </Card>
+          </div>
+
+          {/* Project Details Banner */}
+          <section className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-950 via-indigo-950 to-violet-950 p-5 text-white sm:p-7">
+            <div className="absolute -right-10 -top-24 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
+            <div className="absolute bottom-[-90px] right-1/3 h-52 w-52 rounded-full bg-violet-500/20 blur-3xl" />
+
+            <div className="relative flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[10px] font-semibold tracking-wide text-indigo-100">
+                  <Layers size={14} />
+                  PROJECT SPECIFICATION
+                  <span className="rounded bg-white/15 px-1.5 py-0.5">
+                    {data.project.key}
+                  </span>
+                </div>
+                <h2 className="mt-4 text-xl font-bold tracking-tight sm:text-2xl">
+                  {data.project.name}
+                </h2>
+                <p className="mt-2 max-w-xl text-sm leading-6 text-indigo-100/75">
+                  {data.project.description ||
+                    "No project description provided. Update project settings to add mission details."}
+                </p>
+              </div>
+
+              <div className="flex shrink-0 flex-wrap items-center gap-4 rounded-xl border border-white/10 bg-white/[0.07] p-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-400/20 text-indigo-200">
+                    <Users size={22} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium text-indigo-100/70">
+                      Team Members
+                    </p>
+                    <p className="mt-1 text-2xl font-bold">
+                      {data.project.memberCount}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="hidden h-10 w-px bg-white/10 sm:block" />
+
+                <div>
+                  <p className="text-[10px] text-indigo-100/60">Created</p>
+                  <p className="mt-1 text-xs font-semibold">
+                    {formatDate(data.project.createdAt)}
+                  </p>
+                </div>
+
+                <div className="hidden h-10 w-px bg-white/10 sm:block" />
+
+                <div>
+                  <p className="text-[10px] text-indigo-100/60">Status</p>
+                  <p className="mt-1 text-xs font-semibold">
+                    {data.project.status}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ─── Task & Issue Breakdown Grid ──────────────────────────── */}
+          <div className="grid grid-cols-1 gap-5 xl:grid-cols-3">
+            {/* Task Status Breakdown */}
+            <Card className="p-5 sm:p-6 xl:col-span-2">
+              <SectionHeading
+                title="Task Distribution"
+                subtitle={`${data.tasks.total} operational tasks categorized across workflow statuses`}
+              />
+
+              {data.tasks.total === 0 ? (
+                <div className="rounded-xl border border-dashed border-slate-200 py-12 text-center">
+                  <CheckCircle2
+                    size={28}
+                    className="mx-auto text-slate-300"
+                  />
+                  <p className="mt-3 text-sm font-semibold text-slate-700">
+                    No tasks created yet
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    Add tasks in the Task Board to start tracking project work.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {[
+                    {
+                      label: "Completed (DONE)",
+                      count: data.tasks.completed,
+                      color: "bg-emerald-500",
+                      barColor: "bg-emerald-500",
+                      badge: "bg-emerald-50 text-emerald-700",
+                    },
+                    {
+                      label: "In Progress",
+                      count: data.tasks.inProgress,
+                      color: "bg-indigo-500",
+                      barColor: "bg-indigo-500",
+                      badge: "bg-indigo-50 text-indigo-700",
+                    },
+                    {
+                      label: "In Review",
+                      count: data.tasks.inReview,
+                      color: "bg-violet-500",
+                      barColor: "bg-violet-500",
+                      badge: "bg-violet-50 text-violet-700",
+                    },
+                    {
+                      label: "To Do",
+                      count: data.tasks.todo,
+                      color: "bg-sky-500",
+                      barColor: "bg-sky-500",
+                      badge: "bg-sky-50 text-sky-700",
+                    },
+                    {
+                      label: "Blocked",
+                      count: data.tasks.blocked,
+                      color: "bg-amber-500",
+                      barColor: "bg-amber-500",
+                      badge: "bg-amber-50 text-amber-700",
+                    },
+                    {
+                      label: "Cancelled",
+                      count: data.tasks.cancelled,
+                      color: "bg-slate-400",
+                      barColor: "bg-slate-400",
+                      badge: "bg-slate-100 text-slate-600",
+                    },
+                  ].map((item) => {
+                    const percentage =
+                      data.tasks.total > 0
+                        ? Math.round((item.count / data.tasks.total) * 100)
+                        : 0;
+
+                    return (
+                      <div key={item.label} className="space-y-1.5">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="flex items-center gap-2 font-medium text-slate-700">
+                            <span
+                              className={`h-2.5 w-2.5 rounded-sm ${item.color}`}
+                            />
+                            {item.label}
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-slate-900">
+                              {item.count}
+                            </span>
+                            <span className="text-[10px] text-slate-400">
+                              ({percentage}%)
+                            </span>
+                          </div>
+                        </div>
+                        <ProgressBar
+                          value={percentage}
+                          color={item.barColor}
+                        />
+                      </div>
+                    );
+                  })}
+
+                  {data.tasks.overdue > 0 && (
+                    <div className="mt-4 flex items-center justify-between rounded-xl border border-rose-200 bg-rose-50/70 px-4 py-2.5 text-xs text-rose-800">
+                      <span className="flex items-center gap-2 font-semibold">
+                        <Clock3 size={14} className="text-rose-600" />
+                        Overdue Tasks
+                      </span>
+                      <span className="rounded-md bg-rose-600 px-2 py-0.5 text-[11px] font-bold text-white">
+                        {data.tasks.overdue} tasks
+                      </span>
+                    </div>
+                  )}
+                </div>
+              )}
+            </Card>
+
+            {/* Issue Status & Priority Overview */}
+            <Card className="p-5 sm:p-6">
+              <SectionHeading
+                title="Issue Status & Health"
+                subtitle={`${data.issues.total} total logged issues`}
+              />
+
+              {data.issues.total === 0 ? (
+                <div className="rounded-xl border border-dashed border-slate-200 py-12 text-center">
+                  <CircleAlert
+                    size={28}
+                    className="mx-auto text-slate-300"
+                  />
+                  <p className="mt-3 text-sm font-semibold text-slate-700">
+                    No issues reported
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    Great news! No bugs or blockers have been filed for this
+                    project.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-5">
+                  {/* Status distribution */}
+                  <div>
+                    <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">
+                      Status Distribution
+                    </h3>
+                    <div className="space-y-2">
+                      {[
+                        { label: "Open", count: data.issues.open, color: "text-blue-700 bg-blue-50" },
+                        { label: "In Progress", count: data.issues.inProgress, color: "text-violet-700 bg-violet-50" },
+                        { label: "Resolved", count: data.issues.resolved, color: "text-emerald-700 bg-emerald-50" },
+                        { label: "Closed", count: data.issues.closed, color: "text-slate-600 bg-slate-100" },
+                        { label: "Reopened", count: data.issues.reopened, color: "text-amber-700 bg-amber-50" },
+                      ].map((s) => (
+                        <div
+                          key={s.label}
+                          className="flex items-center justify-between text-xs"
+                        >
+                          <span className="text-slate-600">{s.label}</span>
+                          <span
+                            className={`rounded px-2 py-0.5 text-[10px] font-semibold ${s.color}`}
+                          >
+                            {s.count}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Priority distribution */}
+                  <div className="border-t border-slate-100 pt-4">
+                    <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">
+                      By Priority
+                    </h3>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="rounded-xl border border-rose-100 bg-rose-50/50 p-2.5">
+                        <span className="text-[10px] font-semibold text-rose-700">
+                          CRITICAL
+                        </span>
+                        <p className="mt-1 text-lg font-bold text-rose-900">
+                          {data.issues.byPriority.CRITICAL}
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-amber-100 bg-amber-50/50 p-2.5">
+                        <span className="text-[10px] font-semibold text-amber-700">
+                          HIGH
+                        </span>
+                        <p className="mt-1 text-lg font-bold text-amber-900">
+                          {data.issues.byPriority.HIGH}
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-indigo-100 bg-indigo-50/50 p-2.5">
+                        <span className="text-[10px] font-semibold text-indigo-700">
+                          MEDIUM
+                        </span>
+                        <p className="mt-1 text-lg font-bold text-indigo-900">
+                          {data.issues.byPriority.MEDIUM}
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-slate-100 bg-slate-50 p-2.5">
+                        <span className="text-[10px] font-semibold text-slate-600">
+                          LOW
+                        </span>
+                        <p className="mt-1 text-lg font-bold text-slate-900">
+                          {data.issues.byPriority.LOW}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Type distribution */}
+                  <div className="border-t border-slate-100 pt-4">
+                    <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-400">
+                      By Category
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5">
+                      {[
+                        { label: "Bug", count: data.issues.byType.BUG },
+                        { label: "Feature", count: data.issues.byType.FEATURE },
+                        { label: "Task", count: data.issues.byType.TASK },
+                        { label: "Improvement", count: data.issues.byType.IMPROVEMENT },
+                        { label: "Epic", count: data.issues.byType.EPIC },
+                      ]
+                        .filter((t) => t.count > 0)
+                        .map((t) => (
+                          <span
+                            key={t.label}
+                            className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-[10px] font-semibold text-slate-700"
+                          >
+                            <span>{t.label}:</span>
+                            <span className="font-bold text-indigo-600">
+                              {t.count}
+                            </span>
+                          </span>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </Card>
+          </div>
+
+          {/* ─── Active Sprint Section ─────────────────────────────────── */}
+          <Card className="p-5 sm:p-6">
+            <SectionHeading
+              title="Active Sprint Overview"
+              subtitle={
+                data.activeSprint
+                  ? `Sprint tracking for ${data.activeSprint.name}`
+                  : "No sprint is currently in progress for this project"
+              }
+            />
+
+            {data.activeSprint ? (
+              <div className="space-y-6">
+                <div className="flex flex-col justify-between gap-4 rounded-xl border border-slate-200 bg-gradient-to-r from-slate-50 to-indigo-50/30 p-4 sm:flex-row sm:items-center">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Target size={18} className="text-indigo-600" />
+                      <h3 className="text-base font-bold text-slate-900">
+                        {data.activeSprint.name}
+                      </h3>
+                      <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
+                        Active
+                      </span>
+                    </div>
+                    {data.activeSprint.goal && (
+                      <p className="mt-1 text-xs text-slate-600">
+                        <strong>Goal:</strong> {data.activeSprint.goal}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
+                    <div>
+                      <span className="block text-[10px] text-slate-400">
+                        Timeline
+                      </span>
+                      <span className="font-medium text-slate-700">
+                        {formatDate(data.activeSprint.startDate)} –{" "}
+                        {formatDate(data.activeSprint.endDate)}
+                      </span>
+                    </div>
+                    {data.activeSprint.capacity && (
+                      <div>
+                        <span className="block text-[10px] text-slate-400">
+                          Capacity
+                        </span>
+                        <span className="font-medium text-slate-700">
+                          {data.activeSprint.capacity} pts
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Progress bar */}
+                <div>
+                  <div className="mb-2 flex items-center justify-between text-xs font-semibold">
+                    <span className="text-slate-600">Sprint Completion</span>
+                    <span className="text-indigo-600">
+                      {data.activeSprint.completionPercentage}%
+                    </span>
+                  </div>
+                  <ProgressBar
+                    value={data.activeSprint.completionPercentage}
+                    color="bg-indigo-600"
+                  />
+                </div>
+
+                {/* Sprint Metrics Grid */}
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  <div className="rounded-xl border border-slate-100 bg-slate-50/70 p-3">
+                    <p className="text-[10px] font-medium text-slate-400">
+                      Total Tasks
+                    </p>
+                    <p className="mt-1 text-xl font-bold text-slate-900">
+                      {data.activeSprint.totalTasks}
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-slate-100 bg-slate-50/70 p-3">
+                    <p className="text-[10px] font-medium text-slate-400">
+                      Completed Tasks
+                    </p>
+                    <p className="mt-1 text-xl font-bold text-emerald-600">
+                      {data.activeSprint.completedTasks}
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-slate-100 bg-slate-50/70 p-3">
+                    <p className="text-[10px] font-medium text-slate-400">
+                      Remaining Tasks
+                    </p>
+                    <p className="mt-1 text-xl font-bold text-amber-600">
+                      {data.activeSprint.remainingTasks}
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-slate-100 bg-slate-50/70 p-3">
+                    <p className="text-[10px] font-medium text-slate-400">
+                      Story Points
+                    </p>
+                    <p className="mt-1 text-xl font-bold text-indigo-600">
+                      {data.activeSprint.completedStoryPoints} /{" "}
+                      {data.activeSprint.plannedStoryPoints}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="rounded-xl border border-dashed border-slate-200 py-10 text-center">
+                <Target size={28} className="mx-auto text-slate-300" />
+                <p className="mt-3 text-sm font-semibold text-slate-700">
+                  No active sprint running
+                </p>
+                <p className="mx-auto mt-1 max-w-sm text-xs text-slate-500">
+                  Plan and activate a sprint from the Sprint Planner module to
+                  track tasks, velocity, and story point burn rate.
+                </p>
+              </div>
+            )}
+          </Card>
+
+          {/* ─── Footer Freshness Note ─────────────────────────────────── */}
+          <div className="flex flex-col gap-2 border-t border-slate-200/80 py-4 text-[10px] text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+            <span className="flex items-center gap-2">
+              <Zap size={13} className="text-indigo-500" />
+              Live operational metrics — aggregated from Prisma entities
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Clock3 size={12} />
+              Refreshed at {formatDateTime(data.timestamp)}
+            </span>
+          </div>
+        </>
+=======
       {/* AI banner */}
       <section className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-950 via-indigo-950 to-violet-950 p-5 text-white sm:p-7">
         <div className="absolute -right-10 -top-24 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
@@ -1091,6 +1878,7 @@ export default function Dashboard() {
             </form>
           </div>
         </div>
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       )}
     </div>
   );

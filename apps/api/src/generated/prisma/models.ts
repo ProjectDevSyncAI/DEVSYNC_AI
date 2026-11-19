@@ -9,6 +9,10 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/User.js'
+<<<<<<< HEAD
+export type * from './models/EmailVerificationToken.js'
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 export type * from './models/Organization.js'
 export type * from './models/OrganizationMember.js'
 export type * from './models/OrganizationInvitation.js'

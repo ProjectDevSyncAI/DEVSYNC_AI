@@ -27,11 +27,21 @@ export class CreateIssueDto {
   @IsUUID()
   assigneeId?: string;
 
+<<<<<<< HEAD
+  @IsOptional()
+  @IsUUID()
+  reporterId?: string;
+
+  @IsOptional()
+  @IsUUID()
+  creatorId?: string;
+=======
   @IsUUID()
   reporterId!: string;
 
   @IsUUID()
   creatorId!: string;
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
   @IsString()
   @MaxLength(250)

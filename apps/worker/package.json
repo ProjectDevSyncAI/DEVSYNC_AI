@@ -15,6 +15,10 @@
     "ioredis": "^5.7.0",
     "openai": "^5.12.2",
     "pg": "^8.16.3",
+<<<<<<< HEAD
+    "@prisma/adapter-pg": "^7.0.0",
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     "@prisma/client": "^7.0.0"
   },
   "devDependencies": {

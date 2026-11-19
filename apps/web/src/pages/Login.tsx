@@ -21,6 +21,20 @@ export default function Login() {
   password,
 });
 
+<<<<<<< HEAD
+      if (!response?.accessToken) {
+        console.error("Unexpected login response:", response);
+        throw new Error("Login response did not contain an access token.");
+      }
+
+      setAccessToken(response.accessToken);
+
+      if (response.user) {
+        localStorage.setItem("devsync_user", JSON.stringify(response.user));
+      }
+
+      window.dispatchEvent(new CustomEvent("devsync:login"));
+=======
 // Backend may return { data: { accessToken, user } }
 const auth = (response as any).data ?? response;
 
@@ -36,6 +50,7 @@ if (auth.user) {
 }
 
 window.dispatchEvent(new CustomEvent("devsync:login"));
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     } catch (err) {
       setError(
         err instanceof Error

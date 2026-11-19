@@ -44,6 +44,20 @@ export class AuthService {
         firstName: dto.firstName.trim(),
         lastName: dto.lastName.trim(),
         passwordHash,
+<<<<<<< HEAD
+        platformRole: 'USER',
+        tokenVersion: 1,
+      },
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        firstName: true,
+        lastName: true,
+        platformRole: true,
+        tokenVersion: true,
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       },
     });
 
@@ -75,6 +89,18 @@ export class AuthService {
       data: {
         lastLoginAt: new Date(),
       },
+<<<<<<< HEAD
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        firstName: true,
+        lastName: true,
+        platformRole: true,
+        tokenVersion: true,
+      },
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     });
 
     return this.createAuthResponse(updatedUser);
@@ -92,6 +118,11 @@ export class AuthService {
         avatarUrl: true,
         bio: true,
         status: true,
+<<<<<<< HEAD
+        platformRole: true,
+        tokenVersion: true,
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
         lastLoginAt: true,
         emailVerifiedAt: true,
         createdAt: true,
@@ -112,11 +143,26 @@ export class AuthService {
     username: string;
     firstName: string;
     lastName: string;
+<<<<<<< HEAD
+    platformRole?: string;
+    tokenVersion?: number;
   }) {
+    const platformRole = user.platformRole || 'USER';
+    const tokenVersion = user.tokenVersion ?? 1;
+
+=======
+  }) {
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     const payload = {
       sub: user.id,
       email: user.email,
       username: user.username,
+<<<<<<< HEAD
+      platformRole,
+      tokenVersion,
+      roles: [platformRole],
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     };
 
     const accessToken = this.jwtService.sign(payload);
@@ -129,6 +175,10 @@ export class AuthService {
         username: user.username,
         firstName: user.firstName,
         lastName: user.lastName,
+<<<<<<< HEAD
+        platformRole,
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       },
     };
   }

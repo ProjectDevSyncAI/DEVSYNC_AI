@@ -1,7 +1,14 @@
 
+<<<<<<< HEAD
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  Activity,
+  AlertCircle,
+=======
 import { useMemo, useState } from "react";
 import {
   Activity,
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   AlertTriangle,
   ArrowDownRight,
   ArrowRight,
@@ -17,7 +24,18 @@ import {
   Target,
   TrendingUp,
   Zap,
+<<<<<<< HEAD
+  Bot,
+  Send,
+  MessageSquare,
 } from "lucide-react";
+import { aiApi } from "../lib/api";
+import { useProjectStore } from "../store/project.store";
+import { AIInsightsStreamController } from "../lib/ai-insights-stream";
+
+=======
+} from "lucide-react";
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
 type InsightCategory = "All" | "Productivity" | "Risks" | "Planning";
 
@@ -173,6 +191,40 @@ export default function AIInsights() {
     });
   }, [activeFilter, search, dismissed]);
 
+<<<<<<< HEAD
+  const { activeProject } = useProjectStore();
+  const [userPrompt, setUserPrompt] = useState("");
+  const [aiAnswer, setAiAnswer] = useState<string | null>(null);
+  const [aiSources, setAiSources] = useState<any[]>([]);
+  const [isAnswering, setIsAnswering] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const controllerRef = useRef<AIInsightsStreamController | null>(null);
+  if (!controllerRef.current) {
+    controllerRef.current = new AIInsightsStreamController({
+      setIsAnswering,
+      setAiAnswer,
+      setAiSources,
+      setUserPrompt,
+      setErrorMessage,
+    });
+  }
+
+  // Clear query context and abort any active streams when active project changes
+  useEffect(() => {
+    controllerRef.current?.handleProjectChange();
+    return () => {
+      controllerRef.current?.handleUnmount();
+    };
+  }, [activeProject?.id]);
+
+  async function handleAskQuestion(customQuery?: string) {
+    const q = customQuery !== undefined ? customQuery : userPrompt;
+    await controllerRef.current?.askQuestion(activeProject, q);
+  }
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   function refreshInsights() {
     setRefreshMessage(
       "Your insight cards have been refreshed. Connect your project data to generate live analysis."
@@ -181,6 +233,124 @@ export default function AIInsights() {
 
   return (
     <div className="mx-auto max-w-[1500px] space-y-7">
+<<<<<<< HEAD
+      {/* Interactive AI Project Assistant Bar */}
+      <section className="rounded-3xl border border-indigo-500/30 bg-gradient-to-r from-slate-900 via-indigo-950/70 to-slate-900 p-6 text-white shadow-xl shadow-indigo-950/20">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="h-10 w-10 rounded-xl bg-indigo-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+            <Bot size={22} />
+          </div>
+          <div>
+            <h2 className="text-lg font-bold tracking-tight">Project Intelligence Assistant</h2>
+            <p className="text-xs text-indigo-300">
+              {activeProject
+                ? `Ask natural language questions about ${activeProject.name} (${activeProject.key})`
+                : "Select an active project to query code, commits, open bugs, and documentation"}
+            </p>
+          </div>
+        </div>
+
+        {!activeProject && (
+          <div className="my-3 flex items-center gap-2 rounded-2xl border border-amber-500/30 bg-amber-500/10 p-3 text-xs text-amber-200">
+            <AlertCircle size={16} className="shrink-0 text-amber-400" />
+            <span>
+              No active project selected. Select a project in the navigation header to query AI intelligence.
+            </span>
+          </div>
+        )}
+
+        {errorMessage && (
+          <div className="my-3 flex items-center gap-2 rounded-2xl border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-200">
+            <AlertCircle size={16} className="shrink-0 text-rose-400" />
+            <span>{errorMessage}</span>
+          </div>
+        )}
+
+        {/* Quick Question Buttons */}
+        <div className="flex flex-wrap gap-2 my-3">
+          <button
+            type="button"
+            disabled={!activeProject || isAnswering}
+            onClick={() => handleAskQuestion("What changed in the authentication module this week?")}
+            className="rounded-xl border border-indigo-500/30 bg-indigo-500/10 px-3 py-1.5 text-xs font-medium text-indigo-200 hover:bg-indigo-500/20 transition disabled:opacity-50"
+          >
+            "What changed in the authentication module this week?"
+          </button>
+          <button
+            type="button"
+            disabled={!activeProject || isAnswering}
+            onClick={() => handleAskQuestion("Summarize unresolved bugs and suggest priorities")}
+            className="rounded-xl border border-indigo-500/30 bg-indigo-500/10 px-3 py-1.5 text-xs font-medium text-indigo-200 hover:bg-indigo-500/20 transition disabled:opacity-50"
+          >
+            "Summarize unresolved bugs and suggest priorities"
+          </button>
+          <button
+            type="button"
+            disabled={!activeProject || isAnswering}
+            onClick={() => handleAskQuestion("Summarize active sprint goals and team blockers")}
+            className="rounded-xl border border-indigo-500/30 bg-indigo-500/10 px-3 py-1.5 text-xs font-medium text-indigo-200 hover:bg-indigo-500/20 transition disabled:opacity-50"
+          >
+            "Summarize active sprint goals & blockers"
+          </button>
+        </div>
+
+        {/* Question Input Form */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleAskQuestion();
+          }}
+          className="relative flex items-center gap-2 mt-4"
+        >
+          <input
+            type="text"
+            value={userPrompt}
+            onChange={(e) => setUserPrompt(e.target.value)}
+            disabled={!activeProject || isAnswering}
+            placeholder={
+              activeProject
+                ? `Ask about ${activeProject.name} activity, commits, unresolved bugs, or architecture...`
+                : "Please select an active project first..."
+            }
+            className="w-full rounded-2xl border border-slate-700 bg-slate-950/80 py-3.5 pl-4 pr-14 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400 transition disabled:opacity-50"
+          />
+          <button
+            type="submit"
+            disabled={!activeProject || !userPrompt.trim() || isAnswering}
+            className="absolute right-2 top-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 px-4 py-2 text-white font-semibold text-xs disabled:opacity-40 transition flex items-center gap-1.5"
+          >
+            {isAnswering ? <RefreshCw size={14} className="animate-spin" /> : <Send size={14} />}
+            <span>Ask</span>
+          </button>
+        </form>
+
+        {/* AI Answer Card */}
+        {aiAnswer && (
+          <div className="mt-5 rounded-2xl border border-indigo-500/40 bg-indigo-950/40 p-5 shadow-inner">
+            <div className="flex items-center gap-2 text-indigo-300 font-semibold text-xs mb-3">
+              <Sparkles size={16} />
+              <span>DevSync AI Synthesis</span>
+            </div>
+            <div className="text-sm text-slate-200 leading-relaxed whitespace-pre-wrap">
+              {aiAnswer}
+            </div>
+
+            {aiSources && aiSources.length > 0 && (
+              <div className="mt-4 pt-3 border-t border-indigo-900/40 flex flex-wrap gap-2 text-[11px] text-slate-400">
+                <span className="font-semibold text-indigo-300">Sources:</span>
+                {aiSources.map((s, idx) => (
+                  <span key={idx} className="bg-slate-900/60 px-2 py-0.5 rounded border border-indigo-900/40">
+                    {(s.metadata as any)?.title ?? `Document Chunk #${s.chunkIndex}`}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </section>
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-indigo-950 to-violet-950 p-6 text-white shadow-xl shadow-indigo-950/10 sm:p-9">
         <div className="absolute -right-12 -top-24 h-72 w-72 rounded-full bg-indigo-500/20 blur-3xl" />
         <div className="absolute -bottom-28 left-1/3 h-64 w-64 rounded-full bg-violet-500/20 blur-3xl" />
@@ -246,6 +416,10 @@ export default function AIInsights() {
         </div>
       </section>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       {refreshMessage && (
         <div
           role="status"

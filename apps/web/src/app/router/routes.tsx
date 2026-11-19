@@ -56,4 +56,13 @@ export const appRoutes: AppRoute[] = [
     label: "Register",
     protected: false,
   },
+<<<<<<< HEAD
+  {
+    path: "/verify-email",
+    label: "Verify Email",
+    description: "Confirm email verification token",
+    protected: false,
+  },
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 ];

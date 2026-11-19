@@ -20,13 +20,33 @@ export type UserModel = runtime.Types.Result.DefaultSelection<Prisma.$UserPayloa
 
 export type AggregateUser = {
   _count: UserCountAggregateOutputType | null
+<<<<<<< HEAD
+  _avg: UserAvgAggregateOutputType | null
+  _sum: UserSumAggregateOutputType | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
+}
+
+<<<<<<< HEAD
+export type UserAvgAggregateOutputType = {
+  tokenVersion: number | null
+}
+
+export type UserSumAggregateOutputType = {
+  tokenVersion: number | null
 }
 
 export type UserMinAggregateOutputType = {
   id: string | null
   email: string | null
+  pendingEmail: string | null
+=======
+export type UserMinAggregateOutputType = {
+  id: string | null
+  email: string | null
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string | null
   firstName: string | null
   lastName: string | null
@@ -34,6 +54,11 @@ export type UserMinAggregateOutputType = {
   bio: string | null
   passwordHash: string | null
   status: $Enums.UserStatus | null
+<<<<<<< HEAD
+  platformRole: $Enums.PlatformRole | null
+  tokenVersion: number | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt: Date | null
   emailVerifiedAt: Date | null
   createdAt: Date | null
@@ -43,6 +68,10 @@ export type UserMinAggregateOutputType = {
 export type UserMaxAggregateOutputType = {
   id: string | null
   email: string | null
+<<<<<<< HEAD
+  pendingEmail: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string | null
   firstName: string | null
   lastName: string | null
@@ -50,6 +79,11 @@ export type UserMaxAggregateOutputType = {
   bio: string | null
   passwordHash: string | null
   status: $Enums.UserStatus | null
+<<<<<<< HEAD
+  platformRole: $Enums.PlatformRole | null
+  tokenVersion: number | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt: Date | null
   emailVerifiedAt: Date | null
   createdAt: Date | null
@@ -59,6 +93,10 @@ export type UserMaxAggregateOutputType = {
 export type UserCountAggregateOutputType = {
   id: number
   email: number
+<<<<<<< HEAD
+  pendingEmail: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: number
   firstName: number
   lastName: number
@@ -66,6 +104,11 @@ export type UserCountAggregateOutputType = {
   bio: number
   passwordHash: number
   status: number
+<<<<<<< HEAD
+  platformRole: number
+  tokenVersion: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt: number
   emailVerifiedAt: number
   createdAt: number
@@ -74,9 +117,24 @@ export type UserCountAggregateOutputType = {
 }
 
 
+<<<<<<< HEAD
+export type UserAvgAggregateInputType = {
+  tokenVersion?: true
+}
+
+export type UserSumAggregateInputType = {
+  tokenVersion?: true
+}
+
 export type UserMinAggregateInputType = {
   id?: true
   email?: true
+  pendingEmail?: true
+=======
+export type UserMinAggregateInputType = {
+  id?: true
+  email?: true
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: true
   firstName?: true
   lastName?: true
@@ -84,6 +142,11 @@ export type UserMinAggregateInputType = {
   bio?: true
   passwordHash?: true
   status?: true
+<<<<<<< HEAD
+  platformRole?: true
+  tokenVersion?: true
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: true
   emailVerifiedAt?: true
   createdAt?: true
@@ -93,6 +156,10 @@ export type UserMinAggregateInputType = {
 export type UserMaxAggregateInputType = {
   id?: true
   email?: true
+<<<<<<< HEAD
+  pendingEmail?: true
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: true
   firstName?: true
   lastName?: true
@@ -100,6 +167,11 @@ export type UserMaxAggregateInputType = {
   bio?: true
   passwordHash?: true
   status?: true
+<<<<<<< HEAD
+  platformRole?: true
+  tokenVersion?: true
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: true
   emailVerifiedAt?: true
   createdAt?: true
@@ -109,6 +181,10 @@ export type UserMaxAggregateInputType = {
 export type UserCountAggregateInputType = {
   id?: true
   email?: true
+<<<<<<< HEAD
+  pendingEmail?: true
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: true
   firstName?: true
   lastName?: true
@@ -116,6 +192,11 @@ export type UserCountAggregateInputType = {
   bio?: true
   passwordHash?: true
   status?: true
+<<<<<<< HEAD
+  platformRole?: true
+  tokenVersion?: true
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: true
   emailVerifiedAt?: true
   createdAt?: true
@@ -161,6 +242,21 @@ export type UserAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+<<<<<<< HEAD
+   * Select which fields to average
+  **/
+  _avg?: UserAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: UserSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
    * Select which fields to find the minimum value
   **/
   _min?: UserMinAggregateInputType
@@ -191,6 +287,11 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   _count?: UserCountAggregateInputType | true
+<<<<<<< HEAD
+  _avg?: UserAvgAggregateInputType
+  _sum?: UserSumAggregateInputType
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   _min?: UserMinAggregateInputType
   _max?: UserMaxAggregateInputType
 }
@@ -198,6 +299,10 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type UserGroupByOutputType = {
   id: string
   email: string
+<<<<<<< HEAD
+  pendingEmail: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -205,11 +310,21 @@ export type UserGroupByOutputType = {
   bio: string | null
   passwordHash: string
   status: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole: $Enums.PlatformRole
+  tokenVersion: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt: Date | null
   emailVerifiedAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
+<<<<<<< HEAD
+  _avg: UserAvgAggregateOutputType | null
+  _sum: UserSumAggregateOutputType | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
 }
@@ -235,6 +350,10 @@ export type UserWhereInput = {
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.UuidFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.StringNullableFilter<"User"> | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFilter<"User"> | string
   firstName?: Prisma.StringFilter<"User"> | string
   lastName?: Prisma.StringFilter<"User"> | string
@@ -242,6 +361,11 @@ export type UserWhereInput = {
   bio?: Prisma.StringNullableFilter<"User"> | string | null
   passwordHash?: Prisma.StringFilter<"User"> | string
   status?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFilter<"User"> | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFilter<"User"> | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   emailVerifiedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -271,11 +395,19 @@ export type UserWhereInput = {
   mentionedInComments?: Prisma.CommentMentionListRelationFilter
   mentionedInMessages?: Prisma.MessageMentionListRelationFilter
   activities?: Prisma.ActivityListRelationFilter
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenListRelationFilter
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
+<<<<<<< HEAD
+  pendingEmail?: Prisma.SortOrderInput | Prisma.SortOrder
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.SortOrder
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
@@ -283,6 +415,11 @@ export type UserOrderByWithRelationInput = {
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   status?: Prisma.SortOrder
+<<<<<<< HEAD
+  platformRole?: Prisma.SortOrder
+  tokenVersion?: Prisma.SortOrder
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   emailVerifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -312,6 +449,10 @@ export type UserOrderByWithRelationInput = {
   mentionedInComments?: Prisma.CommentMentionOrderByRelationAggregateInput
   mentionedInMessages?: Prisma.MessageMentionOrderByRelationAggregateInput
   activities?: Prisma.ActivityOrderByRelationAggregateInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenOrderByRelationAggregateInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -321,12 +462,21 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
+<<<<<<< HEAD
+  pendingEmail?: Prisma.StringNullableFilter<"User"> | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   firstName?: Prisma.StringFilter<"User"> | string
   lastName?: Prisma.StringFilter<"User"> | string
   avatarUrl?: Prisma.StringNullableFilter<"User"> | string | null
   bio?: Prisma.StringNullableFilter<"User"> | string | null
   passwordHash?: Prisma.StringFilter<"User"> | string
   status?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFilter<"User"> | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFilter<"User"> | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   emailVerifiedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -356,11 +506,19 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   mentionedInComments?: Prisma.CommentMentionListRelationFilter
   mentionedInMessages?: Prisma.MessageMentionListRelationFilter
   activities?: Prisma.ActivityListRelationFilter
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenListRelationFilter
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }, "id" | "email" | "username">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
+<<<<<<< HEAD
+  pendingEmail?: Prisma.SortOrderInput | Prisma.SortOrder
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.SortOrder
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
@@ -368,13 +526,25 @@ export type UserOrderByWithAggregationInput = {
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   status?: Prisma.SortOrder
+<<<<<<< HEAD
+  platformRole?: Prisma.SortOrder
+  tokenVersion?: Prisma.SortOrder
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   emailVerifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
+<<<<<<< HEAD
+  _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
+  _sum?: Prisma.UserSumOrderByAggregateInput
+=======
+  _max?: Prisma.UserMaxOrderByAggregateInput
+  _min?: Prisma.UserMinOrderByAggregateInput
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserScalarWhereWithAggregatesInput = {
@@ -383,6 +553,10 @@ export type UserScalarWhereWithAggregatesInput = {
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"User"> | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringWithAggregatesFilter<"User"> | string
   firstName?: Prisma.StringWithAggregatesFilter<"User"> | string
   lastName?: Prisma.StringWithAggregatesFilter<"User"> | string
@@ -390,6 +564,11 @@ export type UserScalarWhereWithAggregatesInput = {
   bio?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   passwordHash?: Prisma.StringWithAggregatesFilter<"User"> | string
   status?: Prisma.EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleWithAggregatesFilter<"User"> | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntWithAggregatesFilter<"User"> | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   emailVerifiedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -399,6 +578,10 @@ export type UserScalarWhereWithAggregatesInput = {
 export type UserCreateInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -406,6 +589,11 @@ export type UserCreateInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -435,11 +623,19 @@ export type UserCreateInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -447,6 +643,11 @@ export type UserUncheckedCreateInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -476,11 +677,19 @@ export type UserUncheckedCreateInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -488,6 +697,11 @@ export type UserUpdateInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -517,11 +731,19 @@ export type UserUpdateInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -529,6 +751,11 @@ export type UserUncheckedUpdateInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -558,11 +785,19 @@ export type UserUncheckedUpdateInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateManyInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -570,6 +805,11 @@ export type UserCreateManyInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -579,6 +819,10 @@ export type UserCreateManyInput = {
 export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -586,6 +830,11 @@ export type UserUpdateManyMutationInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -595,6 +844,10 @@ export type UserUpdateManyMutationInput = {
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -602,6 +855,11 @@ export type UserUncheckedUpdateManyInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -611,6 +869,10 @@ export type UserUncheckedUpdateManyInput = {
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
+<<<<<<< HEAD
+  pendingEmail?: Prisma.SortOrder
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.SortOrder
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
@@ -618,15 +880,31 @@ export type UserCountOrderByAggregateInput = {
   bio?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   status?: Prisma.SortOrder
+<<<<<<< HEAD
+  platformRole?: Prisma.SortOrder
+  tokenVersion?: Prisma.SortOrder
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.SortOrder
   emailVerifiedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
+<<<<<<< HEAD
+export type UserAvgOrderByAggregateInput = {
+  tokenVersion?: Prisma.SortOrder
+}
+
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  pendingEmail?: Prisma.SortOrder
+=======
+export type UserMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.SortOrder
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
@@ -634,6 +912,11 @@ export type UserMaxOrderByAggregateInput = {
   bio?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   status?: Prisma.SortOrder
+<<<<<<< HEAD
+  platformRole?: Prisma.SortOrder
+  tokenVersion?: Prisma.SortOrder
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.SortOrder
   emailVerifiedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -643,6 +926,10 @@ export type UserMaxOrderByAggregateInput = {
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
+<<<<<<< HEAD
+  pendingEmail?: Prisma.SortOrder
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.SortOrder
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
@@ -650,12 +937,24 @@ export type UserMinOrderByAggregateInput = {
   bio?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   status?: Prisma.SortOrder
+<<<<<<< HEAD
+  platformRole?: Prisma.SortOrder
+  tokenVersion?: Prisma.SortOrder
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.SortOrder
   emailVerifiedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
+<<<<<<< HEAD
+export type UserSumOrderByAggregateInput = {
+  tokenVersion?: Prisma.SortOrder
+}
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 export type UserScalarRelationFilter = {
   is?: Prisma.UserWhereInput
   isNot?: Prisma.UserWhereInput
@@ -678,6 +977,21 @@ export type EnumUserStatusFieldUpdateOperationsInput = {
   set?: $Enums.UserStatus
 }
 
+<<<<<<< HEAD
+export type EnumPlatformRoleFieldUpdateOperationsInput = {
+  set?: $Enums.PlatformRole
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }
@@ -686,6 +1000,23 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+<<<<<<< HEAD
+export type UserCreateNestedOneWithoutEmailVerificationTokensInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutEmailVerificationTokensInput, Prisma.UserUncheckedCreateWithoutEmailVerificationTokensInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEmailVerificationTokensInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutEmailVerificationTokensNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutEmailVerificationTokensInput, Prisma.UserUncheckedCreateWithoutEmailVerificationTokensInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEmailVerificationTokensInput
+  upsert?: Prisma.UserUpsertWithoutEmailVerificationTokensInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutEmailVerificationTokensInput, Prisma.UserUpdateWithoutEmailVerificationTokensInput>, Prisma.UserUncheckedUpdateWithoutEmailVerificationTokensInput>
+}
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 export type UserCreateNestedOneWithoutOwnedOrganizationsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutOwnedOrganizationsInput, Prisma.UserUncheckedCreateWithoutOwnedOrganizationsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutOwnedOrganizationsInput
@@ -1052,9 +1383,11 @@ export type UserUpdateOneWithoutActivitiesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutActivitiesInput, Prisma.UserUpdateWithoutActivitiesInput>, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
 }
 
-export type UserCreateWithoutOwnedOrganizationsInput = {
+<<<<<<< HEAD
+export type UserCreateWithoutEmailVerificationTokensInput = {
   id?: string
   email: string
+  pendingEmail?: string | null
   username: string
   firstName: string
   lastName: string
@@ -1062,6 +1395,208 @@ export type UserCreateWithoutOwnedOrganizationsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+  lastLoginAt?: Date | string | null
+  emailVerifiedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.OrganizationMemberCreateNestedManyWithoutUserInput
+  ownedOrganizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberCreateNestedManyWithoutUserInput
+  chatMemberships?: Prisma.ChatChannelMemberCreateNestedManyWithoutUserInput
+  assignedTasks?: Prisma.TaskCreateNestedManyWithoutAssigneeInput
+  createdTasks?: Prisma.TaskCreateNestedManyWithoutCreatorInput
+  assignedIssues?: Prisma.IssueCreateNestedManyWithoutAssigneeInput
+  reportedIssues?: Prisma.IssueCreateNestedManyWithoutReporterInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  commits?: Prisma.CommitCreateNestedManyWithoutAuthorInput
+  pullRequests?: Prisma.PullRequestCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.PullRequestReviewCreateNestedManyWithoutReviewerInput
+  sprintMemberships?: Prisma.SprintMemberCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  aiConversations?: Prisma.AIConversationCreateNestedManyWithoutUserInput
+  aiMessages?: Prisma.AIMessageCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  githubAccount?: Prisma.GitHubAccountCreateNestedOneWithoutUserInput
+  createdProjects?: Prisma.ProjectCreateNestedManyWithoutCreatedByInput
+  createdIssues?: Prisma.IssueCreateNestedManyWithoutCreatorInput
+  createdSprints?: Prisma.SprintCreateNestedManyWithoutCreatorInput
+  mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
+  mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutEmailVerificationTokensInput = {
+  id?: string
+  email: string
+  pendingEmail?: string | null
+  username: string
+  firstName: string
+  lastName: string
+  avatarUrl?: string | null
+  bio?: string | null
+  passwordHash: string
+  status?: $Enums.UserStatus
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+  lastLoginAt?: Date | string | null
+  emailVerifiedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutUserInput
+  ownedOrganizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+  chatMemberships?: Prisma.ChatChannelMemberUncheckedCreateNestedManyWithoutUserInput
+  assignedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAssigneeInput
+  createdTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutCreatorInput
+  assignedIssues?: Prisma.IssueUncheckedCreateNestedManyWithoutAssigneeInput
+  reportedIssues?: Prisma.IssueUncheckedCreateNestedManyWithoutReporterInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  commits?: Prisma.CommitUncheckedCreateNestedManyWithoutAuthorInput
+  pullRequests?: Prisma.PullRequestUncheckedCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.PullRequestReviewUncheckedCreateNestedManyWithoutReviewerInput
+  sprintMemberships?: Prisma.SprintMemberUncheckedCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  aiConversations?: Prisma.AIConversationUncheckedCreateNestedManyWithoutUserInput
+  aiMessages?: Prisma.AIMessageUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  githubAccount?: Prisma.GitHubAccountUncheckedCreateNestedOneWithoutUserInput
+  createdProjects?: Prisma.ProjectUncheckedCreateNestedManyWithoutCreatedByInput
+  createdIssues?: Prisma.IssueUncheckedCreateNestedManyWithoutCreatorInput
+  createdSprints?: Prisma.SprintUncheckedCreateNestedManyWithoutCreatorInput
+  mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
+  mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutEmailVerificationTokensInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutEmailVerificationTokensInput, Prisma.UserUncheckedCreateWithoutEmailVerificationTokensInput>
+}
+
+export type UserUpsertWithoutEmailVerificationTokensInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutEmailVerificationTokensInput, Prisma.UserUncheckedUpdateWithoutEmailVerificationTokensInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutEmailVerificationTokensInput, Prisma.UserUncheckedCreateWithoutEmailVerificationTokensInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutEmailVerificationTokensInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutEmailVerificationTokensInput, Prisma.UserUncheckedUpdateWithoutEmailVerificationTokensInput>
+}
+
+export type UserUpdateWithoutEmailVerificationTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.OrganizationMemberUpdateManyWithoutUserNestedInput
+  ownedOrganizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUpdateManyWithoutUserNestedInput
+  chatMemberships?: Prisma.ChatChannelMemberUpdateManyWithoutUserNestedInput
+  assignedTasks?: Prisma.TaskUpdateManyWithoutAssigneeNestedInput
+  createdTasks?: Prisma.TaskUpdateManyWithoutCreatorNestedInput
+  assignedIssues?: Prisma.IssueUpdateManyWithoutAssigneeNestedInput
+  reportedIssues?: Prisma.IssueUpdateManyWithoutReporterNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  commits?: Prisma.CommitUpdateManyWithoutAuthorNestedInput
+  pullRequests?: Prisma.PullRequestUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.PullRequestReviewUpdateManyWithoutReviewerNestedInput
+  sprintMemberships?: Prisma.SprintMemberUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  aiConversations?: Prisma.AIConversationUpdateManyWithoutUserNestedInput
+  aiMessages?: Prisma.AIMessageUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  githubAccount?: Prisma.GitHubAccountUpdateOneWithoutUserNestedInput
+  createdProjects?: Prisma.ProjectUpdateManyWithoutCreatedByNestedInput
+  createdIssues?: Prisma.IssueUpdateManyWithoutCreatorNestedInput
+  createdSprints?: Prisma.SprintUpdateManyWithoutCreatorNestedInput
+  mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
+  mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutEmailVerificationTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutUserNestedInput
+  ownedOrganizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+  chatMemberships?: Prisma.ChatChannelMemberUncheckedUpdateManyWithoutUserNestedInput
+  assignedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAssigneeNestedInput
+  createdTasks?: Prisma.TaskUncheckedUpdateManyWithoutCreatorNestedInput
+  assignedIssues?: Prisma.IssueUncheckedUpdateManyWithoutAssigneeNestedInput
+  reportedIssues?: Prisma.IssueUncheckedUpdateManyWithoutReporterNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  commits?: Prisma.CommitUncheckedUpdateManyWithoutAuthorNestedInput
+  pullRequests?: Prisma.PullRequestUncheckedUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.PullRequestReviewUncheckedUpdateManyWithoutReviewerNestedInput
+  sprintMemberships?: Prisma.SprintMemberUncheckedUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  aiConversations?: Prisma.AIConversationUncheckedUpdateManyWithoutUserNestedInput
+  aiMessages?: Prisma.AIMessageUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  githubAccount?: Prisma.GitHubAccountUncheckedUpdateOneWithoutUserNestedInput
+  createdProjects?: Prisma.ProjectUncheckedUpdateManyWithoutCreatedByNestedInput
+  createdIssues?: Prisma.IssueUncheckedUpdateManyWithoutCreatorNestedInput
+  createdSprints?: Prisma.SprintUncheckedUpdateManyWithoutCreatorNestedInput
+  mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
+  mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutOwnedOrganizationsInput = {
+  id?: string
+  email: string
+  pendingEmail?: string | null
+=======
+export type UserCreateWithoutOwnedOrganizationsInput = {
+  id?: string
+  email: string
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
+  username: string
+  firstName: string
+  lastName: string
+  avatarUrl?: string | null
+  bio?: string | null
+  passwordHash: string
+  status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -1090,11 +1625,19 @@ export type UserCreateWithoutOwnedOrganizationsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutOwnedOrganizationsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -1102,6 +1645,11 @@ export type UserUncheckedCreateWithoutOwnedOrganizationsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -1130,6 +1678,10 @@ export type UserUncheckedCreateWithoutOwnedOrganizationsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutOwnedOrganizationsInput = {
@@ -1151,6 +1703,10 @@ export type UserUpdateToOneWithWhereWithoutOwnedOrganizationsInput = {
 export type UserUpdateWithoutOwnedOrganizationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1158,6 +1714,11 @@ export type UserUpdateWithoutOwnedOrganizationsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1186,11 +1747,19 @@ export type UserUpdateWithoutOwnedOrganizationsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutOwnedOrganizationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1198,6 +1767,11 @@ export type UserUncheckedUpdateWithoutOwnedOrganizationsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1226,11 +1800,19 @@ export type UserUncheckedUpdateWithoutOwnedOrganizationsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutMembershipsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -1238,6 +1820,11 @@ export type UserCreateWithoutMembershipsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -1266,11 +1853,19 @@ export type UserCreateWithoutMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutMembershipsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -1278,6 +1873,11 @@ export type UserUncheckedCreateWithoutMembershipsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -1306,6 +1906,10 @@ export type UserUncheckedCreateWithoutMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutMembershipsInput = {
@@ -1327,6 +1931,10 @@ export type UserUpdateToOneWithWhereWithoutMembershipsInput = {
 export type UserUpdateWithoutMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1334,6 +1942,11 @@ export type UserUpdateWithoutMembershipsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1362,11 +1975,19 @@ export type UserUpdateWithoutMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1374,6 +1995,11 @@ export type UserUncheckedUpdateWithoutMembershipsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1402,11 +2028,19 @@ export type UserUncheckedUpdateWithoutMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutCreatedProjectsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -1414,6 +2048,11 @@ export type UserCreateWithoutCreatedProjectsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -1442,11 +2081,19 @@ export type UserCreateWithoutCreatedProjectsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutCreatedProjectsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -1454,6 +2101,11 @@ export type UserUncheckedCreateWithoutCreatedProjectsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -1482,6 +2134,10 @@ export type UserUncheckedCreateWithoutCreatedProjectsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutCreatedProjectsInput = {
@@ -1503,6 +2159,10 @@ export type UserUpdateToOneWithWhereWithoutCreatedProjectsInput = {
 export type UserUpdateWithoutCreatedProjectsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1510,6 +2170,11 @@ export type UserUpdateWithoutCreatedProjectsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1538,11 +2203,19 @@ export type UserUpdateWithoutCreatedProjectsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutCreatedProjectsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1550,6 +2223,11 @@ export type UserUncheckedUpdateWithoutCreatedProjectsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1578,11 +2256,19 @@ export type UserUncheckedUpdateWithoutCreatedProjectsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutProjectMembershipsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -1590,6 +2276,11 @@ export type UserCreateWithoutProjectMembershipsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -1618,11 +2309,19 @@ export type UserCreateWithoutProjectMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutProjectMembershipsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -1630,6 +2329,11 @@ export type UserUncheckedCreateWithoutProjectMembershipsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -1658,6 +2362,10 @@ export type UserUncheckedCreateWithoutProjectMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutProjectMembershipsInput = {
@@ -1679,6 +2387,10 @@ export type UserUpdateToOneWithWhereWithoutProjectMembershipsInput = {
 export type UserUpdateWithoutProjectMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1686,6 +2398,11 @@ export type UserUpdateWithoutProjectMembershipsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1714,11 +2431,19 @@ export type UserUpdateWithoutProjectMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutProjectMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1726,6 +2451,11 @@ export type UserUncheckedUpdateWithoutProjectMembershipsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1754,11 +2484,19 @@ export type UserUncheckedUpdateWithoutProjectMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutCommitsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -1766,6 +2504,11 @@ export type UserCreateWithoutCommitsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -1794,11 +2537,19 @@ export type UserCreateWithoutCommitsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutCommitsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -1806,6 +2557,11 @@ export type UserUncheckedCreateWithoutCommitsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -1834,6 +2590,10 @@ export type UserUncheckedCreateWithoutCommitsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutCommitsInput = {
@@ -1855,6 +2615,10 @@ export type UserUpdateToOneWithWhereWithoutCommitsInput = {
 export type UserUpdateWithoutCommitsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1862,6 +2626,11 @@ export type UserUpdateWithoutCommitsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1890,11 +2659,19 @@ export type UserUpdateWithoutCommitsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutCommitsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1902,6 +2679,11 @@ export type UserUncheckedUpdateWithoutCommitsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1930,11 +2712,19 @@ export type UserUncheckedUpdateWithoutCommitsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutAssignedTasksInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -1942,6 +2732,11 @@ export type UserCreateWithoutAssignedTasksInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -1970,11 +2765,19 @@ export type UserCreateWithoutAssignedTasksInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutAssignedTasksInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -1982,6 +2785,11 @@ export type UserUncheckedCreateWithoutAssignedTasksInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -2010,6 +2818,10 @@ export type UserUncheckedCreateWithoutAssignedTasksInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutAssignedTasksInput = {
@@ -2020,6 +2832,10 @@ export type UserCreateOrConnectWithoutAssignedTasksInput = {
 export type UserCreateWithoutCreatedTasksInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -2027,6 +2843,11 @@ export type UserCreateWithoutCreatedTasksInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -2055,11 +2876,19 @@ export type UserCreateWithoutCreatedTasksInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutCreatedTasksInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -2067,6 +2896,11 @@ export type UserUncheckedCreateWithoutCreatedTasksInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -2095,6 +2929,10 @@ export type UserUncheckedCreateWithoutCreatedTasksInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutCreatedTasksInput = {
@@ -2116,6 +2954,10 @@ export type UserUpdateToOneWithWhereWithoutAssignedTasksInput = {
 export type UserUpdateWithoutAssignedTasksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2123,6 +2965,11 @@ export type UserUpdateWithoutAssignedTasksInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2151,11 +2998,19 @@ export type UserUpdateWithoutAssignedTasksInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutAssignedTasksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2163,6 +3018,11 @@ export type UserUncheckedUpdateWithoutAssignedTasksInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2191,6 +3051,10 @@ export type UserUncheckedUpdateWithoutAssignedTasksInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUpsertWithoutCreatedTasksInput = {
@@ -2207,6 +3071,10 @@ export type UserUpdateToOneWithWhereWithoutCreatedTasksInput = {
 export type UserUpdateWithoutCreatedTasksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2214,6 +3082,11 @@ export type UserUpdateWithoutCreatedTasksInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2242,11 +3115,19 @@ export type UserUpdateWithoutCreatedTasksInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutCreatedTasksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2254,6 +3135,11 @@ export type UserUncheckedUpdateWithoutCreatedTasksInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2282,11 +3168,19 @@ export type UserUncheckedUpdateWithoutCreatedTasksInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutAssignedIssuesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -2294,6 +3188,11 @@ export type UserCreateWithoutAssignedIssuesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -2322,11 +3221,19 @@ export type UserCreateWithoutAssignedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutAssignedIssuesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -2334,6 +3241,11 @@ export type UserUncheckedCreateWithoutAssignedIssuesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -2362,6 +3274,10 @@ export type UserUncheckedCreateWithoutAssignedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutAssignedIssuesInput = {
@@ -2372,6 +3288,10 @@ export type UserCreateOrConnectWithoutAssignedIssuesInput = {
 export type UserCreateWithoutReportedIssuesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -2379,6 +3299,11 @@ export type UserCreateWithoutReportedIssuesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -2407,11 +3332,19 @@ export type UserCreateWithoutReportedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutReportedIssuesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -2419,6 +3352,11 @@ export type UserUncheckedCreateWithoutReportedIssuesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -2447,6 +3385,10 @@ export type UserUncheckedCreateWithoutReportedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutReportedIssuesInput = {
@@ -2457,6 +3399,10 @@ export type UserCreateOrConnectWithoutReportedIssuesInput = {
 export type UserCreateWithoutCreatedIssuesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -2464,6 +3410,11 @@ export type UserCreateWithoutCreatedIssuesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -2492,11 +3443,19 @@ export type UserCreateWithoutCreatedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutCreatedIssuesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -2504,6 +3463,11 @@ export type UserUncheckedCreateWithoutCreatedIssuesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -2532,6 +3496,10 @@ export type UserUncheckedCreateWithoutCreatedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutCreatedIssuesInput = {
@@ -2553,6 +3521,10 @@ export type UserUpdateToOneWithWhereWithoutAssignedIssuesInput = {
 export type UserUpdateWithoutAssignedIssuesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2560,6 +3532,11 @@ export type UserUpdateWithoutAssignedIssuesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2588,11 +3565,19 @@ export type UserUpdateWithoutAssignedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutAssignedIssuesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2600,6 +3585,11 @@ export type UserUncheckedUpdateWithoutAssignedIssuesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2628,6 +3618,10 @@ export type UserUncheckedUpdateWithoutAssignedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUpsertWithoutReportedIssuesInput = {
@@ -2644,6 +3638,10 @@ export type UserUpdateToOneWithWhereWithoutReportedIssuesInput = {
 export type UserUpdateWithoutReportedIssuesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2651,6 +3649,11 @@ export type UserUpdateWithoutReportedIssuesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2679,11 +3682,19 @@ export type UserUpdateWithoutReportedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutReportedIssuesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2691,6 +3702,11 @@ export type UserUncheckedUpdateWithoutReportedIssuesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2719,6 +3735,10 @@ export type UserUncheckedUpdateWithoutReportedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUpsertWithoutCreatedIssuesInput = {
@@ -2735,6 +3755,10 @@ export type UserUpdateToOneWithWhereWithoutCreatedIssuesInput = {
 export type UserUpdateWithoutCreatedIssuesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2742,6 +3766,11 @@ export type UserUpdateWithoutCreatedIssuesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2770,11 +3799,19 @@ export type UserUpdateWithoutCreatedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutCreatedIssuesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2782,6 +3819,11 @@ export type UserUncheckedUpdateWithoutCreatedIssuesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2810,11 +3852,19 @@ export type UserUncheckedUpdateWithoutCreatedIssuesInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutCreatedSprintsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -2822,6 +3872,11 @@ export type UserCreateWithoutCreatedSprintsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -2850,11 +3905,19 @@ export type UserCreateWithoutCreatedSprintsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutCreatedSprintsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -2862,6 +3925,11 @@ export type UserUncheckedCreateWithoutCreatedSprintsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -2890,6 +3958,10 @@ export type UserUncheckedCreateWithoutCreatedSprintsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutCreatedSprintsInput = {
@@ -2911,6 +3983,10 @@ export type UserUpdateToOneWithWhereWithoutCreatedSprintsInput = {
 export type UserUpdateWithoutCreatedSprintsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2918,6 +3994,11 @@ export type UserUpdateWithoutCreatedSprintsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2946,11 +4027,19 @@ export type UserUpdateWithoutCreatedSprintsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutCreatedSprintsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2958,6 +4047,11 @@ export type UserUncheckedUpdateWithoutCreatedSprintsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2986,11 +4080,19 @@ export type UserUncheckedUpdateWithoutCreatedSprintsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutSprintMembershipsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -2998,6 +4100,11 @@ export type UserCreateWithoutSprintMembershipsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3026,11 +4133,19 @@ export type UserCreateWithoutSprintMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutSprintMembershipsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -3038,6 +4153,11 @@ export type UserUncheckedCreateWithoutSprintMembershipsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3066,6 +4186,10 @@ export type UserUncheckedCreateWithoutSprintMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutSprintMembershipsInput = {
@@ -3087,6 +4211,10 @@ export type UserUpdateToOneWithWhereWithoutSprintMembershipsInput = {
 export type UserUpdateWithoutSprintMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3094,6 +4222,11 @@ export type UserUpdateWithoutSprintMembershipsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3122,11 +4255,19 @@ export type UserUpdateWithoutSprintMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutSprintMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3134,6 +4275,11 @@ export type UserUncheckedUpdateWithoutSprintMembershipsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3162,11 +4308,19 @@ export type UserUncheckedUpdateWithoutSprintMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutPullRequestsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -3174,6 +4328,11 @@ export type UserCreateWithoutPullRequestsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3202,11 +4361,19 @@ export type UserCreateWithoutPullRequestsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutPullRequestsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -3214,6 +4381,11 @@ export type UserUncheckedCreateWithoutPullRequestsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3242,6 +4414,10 @@ export type UserUncheckedCreateWithoutPullRequestsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutPullRequestsInput = {
@@ -3263,6 +4439,10 @@ export type UserUpdateToOneWithWhereWithoutPullRequestsInput = {
 export type UserUpdateWithoutPullRequestsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3270,6 +4450,11 @@ export type UserUpdateWithoutPullRequestsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3298,11 +4483,19 @@ export type UserUpdateWithoutPullRequestsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutPullRequestsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3310,6 +4503,11 @@ export type UserUncheckedUpdateWithoutPullRequestsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3338,11 +4536,19 @@ export type UserUncheckedUpdateWithoutPullRequestsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutReviewsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -3350,6 +4556,11 @@ export type UserCreateWithoutReviewsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3378,11 +4589,19 @@ export type UserCreateWithoutReviewsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutReviewsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -3390,6 +4609,11 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3418,6 +4642,10 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutReviewsInput = {
@@ -3439,6 +4667,10 @@ export type UserUpdateToOneWithWhereWithoutReviewsInput = {
 export type UserUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3446,6 +4678,11 @@ export type UserUpdateWithoutReviewsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3474,11 +4711,19 @@ export type UserUpdateWithoutReviewsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3486,6 +4731,11 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3514,11 +4764,19 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutCommentsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -3526,6 +4784,11 @@ export type UserCreateWithoutCommentsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3554,11 +4817,19 @@ export type UserCreateWithoutCommentsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -3566,6 +4837,11 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3594,6 +4870,10 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -3615,6 +4895,10 @@ export type UserUpdateToOneWithWhereWithoutCommentsInput = {
 export type UserUpdateWithoutCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3622,6 +4906,11 @@ export type UserUpdateWithoutCommentsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3650,11 +4939,19 @@ export type UserUpdateWithoutCommentsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3662,6 +4959,11 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3690,11 +4992,19 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutMentionedInCommentsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -3702,6 +5012,11 @@ export type UserCreateWithoutMentionedInCommentsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3730,11 +5045,19 @@ export type UserCreateWithoutMentionedInCommentsInput = {
   createdSprints?: Prisma.SprintCreateNestedManyWithoutCreatorInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutMentionedInCommentsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -3742,6 +5065,11 @@ export type UserUncheckedCreateWithoutMentionedInCommentsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3770,6 +5098,10 @@ export type UserUncheckedCreateWithoutMentionedInCommentsInput = {
   createdSprints?: Prisma.SprintUncheckedCreateNestedManyWithoutCreatorInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutMentionedInCommentsInput = {
@@ -3791,6 +5123,10 @@ export type UserUpdateToOneWithWhereWithoutMentionedInCommentsInput = {
 export type UserUpdateWithoutMentionedInCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3798,6 +5134,11 @@ export type UserUpdateWithoutMentionedInCommentsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3826,11 +5167,19 @@ export type UserUpdateWithoutMentionedInCommentsInput = {
   createdSprints?: Prisma.SprintUpdateManyWithoutCreatorNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutMentionedInCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3838,6 +5187,11 @@ export type UserUncheckedUpdateWithoutMentionedInCommentsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3866,11 +5220,19 @@ export type UserUncheckedUpdateWithoutMentionedInCommentsInput = {
   createdSprints?: Prisma.SprintUncheckedUpdateManyWithoutCreatorNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutChatMembershipsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -3878,6 +5240,11 @@ export type UserCreateWithoutChatMembershipsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3906,11 +5273,19 @@ export type UserCreateWithoutChatMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutChatMembershipsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -3918,6 +5293,11 @@ export type UserUncheckedCreateWithoutChatMembershipsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -3946,6 +5326,10 @@ export type UserUncheckedCreateWithoutChatMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutChatMembershipsInput = {
@@ -3967,6 +5351,10 @@ export type UserUpdateToOneWithWhereWithoutChatMembershipsInput = {
 export type UserUpdateWithoutChatMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3974,6 +5362,11 @@ export type UserUpdateWithoutChatMembershipsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4002,11 +5395,19 @@ export type UserUpdateWithoutChatMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutChatMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -4014,6 +5415,11 @@ export type UserUncheckedUpdateWithoutChatMembershipsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4042,11 +5448,19 @@ export type UserUncheckedUpdateWithoutChatMembershipsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutSentMessagesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4054,6 +5468,11 @@ export type UserCreateWithoutSentMessagesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -4082,11 +5501,19 @@ export type UserCreateWithoutSentMessagesInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutSentMessagesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4094,6 +5521,11 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -4122,6 +5554,10 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutSentMessagesInput = {
@@ -4143,6 +5579,10 @@ export type UserUpdateToOneWithWhereWithoutSentMessagesInput = {
 export type UserUpdateWithoutSentMessagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -4150,6 +5590,11 @@ export type UserUpdateWithoutSentMessagesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4178,11 +5623,19 @@ export type UserUpdateWithoutSentMessagesInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutSentMessagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -4190,6 +5643,11 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4218,11 +5676,19 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutMentionedInMessagesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4230,6 +5696,11 @@ export type UserCreateWithoutMentionedInMessagesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -4258,11 +5729,19 @@ export type UserCreateWithoutMentionedInMessagesInput = {
   createdSprints?: Prisma.SprintCreateNestedManyWithoutCreatorInput
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutMentionedInMessagesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4270,6 +5749,11 @@ export type UserUncheckedCreateWithoutMentionedInMessagesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -4298,6 +5782,10 @@ export type UserUncheckedCreateWithoutMentionedInMessagesInput = {
   createdSprints?: Prisma.SprintUncheckedCreateNestedManyWithoutCreatorInput
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutMentionedInMessagesInput = {
@@ -4319,6 +5807,10 @@ export type UserUpdateToOneWithWhereWithoutMentionedInMessagesInput = {
 export type UserUpdateWithoutMentionedInMessagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -4326,6 +5818,11 @@ export type UserUpdateWithoutMentionedInMessagesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4354,11 +5851,19 @@ export type UserUpdateWithoutMentionedInMessagesInput = {
   createdSprints?: Prisma.SprintUpdateManyWithoutCreatorNestedInput
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutMentionedInMessagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -4366,6 +5871,11 @@ export type UserUncheckedUpdateWithoutMentionedInMessagesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4394,11 +5904,19 @@ export type UserUncheckedUpdateWithoutMentionedInMessagesInput = {
   createdSprints?: Prisma.SprintUncheckedUpdateManyWithoutCreatorNestedInput
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutNotificationsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4406,6 +5924,11 @@ export type UserCreateWithoutNotificationsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -4434,11 +5957,19 @@ export type UserCreateWithoutNotificationsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4446,6 +5977,11 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -4474,6 +6010,10 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -4495,6 +6035,10 @@ export type UserUpdateToOneWithWhereWithoutNotificationsInput = {
 export type UserUpdateWithoutNotificationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -4502,6 +6046,11 @@ export type UserUpdateWithoutNotificationsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4530,11 +6079,19 @@ export type UserUpdateWithoutNotificationsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -4542,6 +6099,11 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4570,11 +6132,19 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutAiConversationsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4582,6 +6152,11 @@ export type UserCreateWithoutAiConversationsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -4610,11 +6185,19 @@ export type UserCreateWithoutAiConversationsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutAiConversationsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4622,6 +6205,11 @@ export type UserUncheckedCreateWithoutAiConversationsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -4650,6 +6238,10 @@ export type UserUncheckedCreateWithoutAiConversationsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutAiConversationsInput = {
@@ -4671,6 +6263,10 @@ export type UserUpdateToOneWithWhereWithoutAiConversationsInput = {
 export type UserUpdateWithoutAiConversationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -4678,6 +6274,11 @@ export type UserUpdateWithoutAiConversationsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4706,11 +6307,19 @@ export type UserUpdateWithoutAiConversationsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutAiConversationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -4718,6 +6327,11 @@ export type UserUncheckedUpdateWithoutAiConversationsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4746,11 +6360,19 @@ export type UserUncheckedUpdateWithoutAiConversationsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutAiMessagesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4758,6 +6380,11 @@ export type UserCreateWithoutAiMessagesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -4786,11 +6413,19 @@ export type UserCreateWithoutAiMessagesInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutAiMessagesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4798,6 +6433,11 @@ export type UserUncheckedCreateWithoutAiMessagesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -4826,6 +6466,10 @@ export type UserUncheckedCreateWithoutAiMessagesInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutAiMessagesInput = {
@@ -4847,6 +6491,10 @@ export type UserUpdateToOneWithWhereWithoutAiMessagesInput = {
 export type UserUpdateWithoutAiMessagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -4854,6 +6502,11 @@ export type UserUpdateWithoutAiMessagesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4882,11 +6535,19 @@ export type UserUpdateWithoutAiMessagesInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutAiMessagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -4894,6 +6555,11 @@ export type UserUncheckedUpdateWithoutAiMessagesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -4922,11 +6588,19 @@ export type UserUncheckedUpdateWithoutAiMessagesInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutGithubAccountInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4934,6 +6608,11 @@ export type UserCreateWithoutGithubAccountInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -4962,11 +6641,19 @@ export type UserCreateWithoutGithubAccountInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutGithubAccountInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -4974,6 +6661,11 @@ export type UserUncheckedCreateWithoutGithubAccountInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -5002,6 +6694,10 @@ export type UserUncheckedCreateWithoutGithubAccountInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutGithubAccountInput = {
@@ -5023,6 +6719,10 @@ export type UserUpdateToOneWithWhereWithoutGithubAccountInput = {
 export type UserUpdateWithoutGithubAccountInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -5030,6 +6730,11 @@ export type UserUpdateWithoutGithubAccountInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -5058,11 +6763,19 @@ export type UserUpdateWithoutGithubAccountInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutGithubAccountInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -5070,6 +6783,11 @@ export type UserUncheckedUpdateWithoutGithubAccountInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -5098,11 +6816,19 @@ export type UserUncheckedUpdateWithoutGithubAccountInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutAuditLogsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -5110,6 +6836,11 @@ export type UserCreateWithoutAuditLogsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -5138,11 +6869,19 @@ export type UserCreateWithoutAuditLogsInput = {
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutAuditLogsInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -5150,6 +6889,11 @@ export type UserUncheckedCreateWithoutAuditLogsInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -5178,6 +6922,10 @@ export type UserUncheckedCreateWithoutAuditLogsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutAuditLogsInput = {
@@ -5199,6 +6947,10 @@ export type UserUpdateToOneWithWhereWithoutAuditLogsInput = {
 export type UserUpdateWithoutAuditLogsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -5206,6 +6958,11 @@ export type UserUpdateWithoutAuditLogsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -5234,11 +6991,19 @@ export type UserUpdateWithoutAuditLogsInput = {
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutAuditLogsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -5246,6 +7011,11 @@ export type UserUncheckedUpdateWithoutAuditLogsInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -5274,11 +7044,19 @@ export type UserUncheckedUpdateWithoutAuditLogsInput = {
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateWithoutActivitiesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -5286,6 +7064,11 @@ export type UserCreateWithoutActivitiesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -5314,11 +7097,19 @@ export type UserCreateWithoutActivitiesInput = {
   createdSprints?: Prisma.SprintCreateNestedManyWithoutCreatorInput
   mentionedInComments?: Prisma.CommentMentionCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedCreateWithoutActivitiesInput = {
   id?: string
   email: string
+<<<<<<< HEAD
+  pendingEmail?: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: string
   firstName: string
   lastName: string
@@ -5326,6 +7117,11 @@ export type UserUncheckedCreateWithoutActivitiesInput = {
   bio?: string | null
   passwordHash: string
   status?: $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: $Enums.PlatformRole
+  tokenVersion?: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Date | string | null
   emailVerifiedAt?: Date | string | null
   createdAt?: Date | string
@@ -5354,6 +7150,10 @@ export type UserUncheckedCreateWithoutActivitiesInput = {
   createdSprints?: Prisma.SprintUncheckedCreateNestedManyWithoutCreatorInput
   mentionedInComments?: Prisma.CommentMentionUncheckedCreateNestedManyWithoutUserInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedCreateNestedManyWithoutUserInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCreateOrConnectWithoutActivitiesInput = {
@@ -5375,6 +7175,10 @@ export type UserUpdateToOneWithWhereWithoutActivitiesInput = {
 export type UserUpdateWithoutActivitiesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -5382,6 +7186,11 @@ export type UserUpdateWithoutActivitiesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -5410,11 +7219,19 @@ export type UserUpdateWithoutActivitiesInput = {
   createdSprints?: Prisma.SprintUpdateManyWithoutCreatorNestedInput
   mentionedInComments?: Prisma.CommentMentionUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserUncheckedUpdateWithoutActivitiesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
+  pendingEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -5422,6 +7239,11 @@ export type UserUncheckedUpdateWithoutActivitiesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+<<<<<<< HEAD
+  platformRole?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tokenVersion?: Prisma.IntFieldUpdateOperationsInput | number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -5450,6 +7272,10 @@ export type UserUncheckedUpdateWithoutActivitiesInput = {
   createdSprints?: Prisma.SprintUncheckedUpdateManyWithoutCreatorNestedInput
   mentionedInComments?: Prisma.CommentMentionUncheckedUpdateManyWithoutUserNestedInput
   mentionedInMessages?: Prisma.MessageMentionUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+  emailVerificationTokens?: Prisma.EmailVerificationTokenUncheckedUpdateManyWithoutUserNestedInput
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 
@@ -5482,6 +7308,10 @@ export type UserCountOutputType = {
   mentionedInComments: number
   mentionedInMessages: number
   activities: number
+<<<<<<< HEAD
+  emailVerificationTokens: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -5509,6 +7339,10 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   mentionedInComments?: boolean | UserCountOutputTypeCountMentionedInCommentsArgs
   mentionedInMessages?: boolean | UserCountOutputTypeCountMentionedInMessagesArgs
   activities?: boolean | UserCountOutputTypeCountActivitiesArgs
+<<<<<<< HEAD
+  emailVerificationTokens?: boolean | UserCountOutputTypeCountEmailVerificationTokensArgs
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }
 
 /**
@@ -5689,10 +7523,24 @@ export type UserCountOutputTypeCountActivitiesArgs<ExtArgs extends runtime.Types
   where?: Prisma.ActivityWhereInput
 }
 
+<<<<<<< HEAD
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountEmailVerificationTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EmailVerificationTokenWhereInput
+}
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   email?: boolean
+<<<<<<< HEAD
+  pendingEmail?: boolean
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: boolean
   firstName?: boolean
   lastName?: boolean
@@ -5700,6 +7548,11 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   bio?: boolean
   passwordHash?: boolean
   status?: boolean
+<<<<<<< HEAD
+  platformRole?: boolean
+  tokenVersion?: boolean
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: boolean
   emailVerifiedAt?: boolean
   createdAt?: boolean
@@ -5729,12 +7582,20 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   mentionedInComments?: boolean | Prisma.User$mentionedInCommentsArgs<ExtArgs>
   mentionedInMessages?: boolean | Prisma.User$mentionedInMessagesArgs<ExtArgs>
   activities?: boolean | Prisma.User$activitiesArgs<ExtArgs>
+<<<<<<< HEAD
+  emailVerificationTokens?: boolean | Prisma.User$emailVerificationTokensArgs<ExtArgs>
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   email?: boolean
+<<<<<<< HEAD
+  pendingEmail?: boolean
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: boolean
   firstName?: boolean
   lastName?: boolean
@@ -5742,6 +7603,11 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   bio?: boolean
   passwordHash?: boolean
   status?: boolean
+<<<<<<< HEAD
+  platformRole?: boolean
+  tokenVersion?: boolean
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: boolean
   emailVerifiedAt?: boolean
   createdAt?: boolean
@@ -5751,6 +7617,10 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   email?: boolean
+<<<<<<< HEAD
+  pendingEmail?: boolean
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: boolean
   firstName?: boolean
   lastName?: boolean
@@ -5758,6 +7628,11 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   bio?: boolean
   passwordHash?: boolean
   status?: boolean
+<<<<<<< HEAD
+  platformRole?: boolean
+  tokenVersion?: boolean
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: boolean
   emailVerifiedAt?: boolean
   createdAt?: boolean
@@ -5767,6 +7642,10 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 export type UserSelectScalar = {
   id?: boolean
   email?: boolean
+<<<<<<< HEAD
+  pendingEmail?: boolean
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username?: boolean
   firstName?: boolean
   lastName?: boolean
@@ -5774,13 +7653,22 @@ export type UserSelectScalar = {
   bio?: boolean
   passwordHash?: boolean
   status?: boolean
+<<<<<<< HEAD
+  platformRole?: boolean
+  tokenVersion?: boolean
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt?: boolean
   emailVerifiedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
+<<<<<<< HEAD
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "pendingEmail" | "username" | "firstName" | "lastName" | "avatarUrl" | "bio" | "passwordHash" | "status" | "platformRole" | "tokenVersion" | "lastLoginAt" | "emailVerifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+=======
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "username" | "firstName" | "lastName" | "avatarUrl" | "bio" | "passwordHash" | "status" | "lastLoginAt" | "emailVerifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   memberships?: boolean | Prisma.User$membershipsArgs<ExtArgs>
   ownedOrganizations?: boolean | Prisma.User$ownedOrganizationsArgs<ExtArgs>
@@ -5807,6 +7695,10 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   mentionedInComments?: boolean | Prisma.User$mentionedInCommentsArgs<ExtArgs>
   mentionedInMessages?: boolean | Prisma.User$mentionedInMessagesArgs<ExtArgs>
   activities?: boolean | Prisma.User$activitiesArgs<ExtArgs>
+<<<<<<< HEAD
+  emailVerificationTokens?: boolean | Prisma.User$emailVerificationTokensArgs<ExtArgs>
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -5840,10 +7732,18 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     mentionedInComments: Prisma.$CommentMentionPayload<ExtArgs>[]
     mentionedInMessages: Prisma.$MessageMentionPayload<ExtArgs>[]
     activities: Prisma.$ActivityPayload<ExtArgs>[]
+<<<<<<< HEAD
+    emailVerificationTokens: Prisma.$EmailVerificationTokenPayload<ExtArgs>[]
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     email: string
+<<<<<<< HEAD
+    pendingEmail: string | null
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     username: string
     firstName: string
     lastName: string
@@ -5851,6 +7751,11 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     bio: string | null
     passwordHash: string
     status: $Enums.UserStatus
+<<<<<<< HEAD
+    platformRole: $Enums.PlatformRole
+    tokenVersion: number
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     lastLoginAt: Date | null
     emailVerifiedAt: Date | null
     createdAt: Date
@@ -6274,6 +8179,10 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   mentionedInComments<T extends Prisma.User$mentionedInCommentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$mentionedInCommentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentMentionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   mentionedInMessages<T extends Prisma.User$mentionedInMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$mentionedInMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessageMentionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activities<T extends Prisma.User$activitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$activitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+<<<<<<< HEAD
+  emailVerificationTokens<T extends Prisma.User$emailVerificationTokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$emailVerificationTokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmailVerificationTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6305,6 +8214,10 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
+<<<<<<< HEAD
+  readonly pendingEmail: Prisma.FieldRef<"User", 'String'>
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   readonly username: Prisma.FieldRef<"User", 'String'>
   readonly firstName: Prisma.FieldRef<"User", 'String'>
   readonly lastName: Prisma.FieldRef<"User", 'String'>
@@ -6312,6 +8225,11 @@ export interface UserFieldRefs {
   readonly bio: Prisma.FieldRef<"User", 'String'>
   readonly passwordHash: Prisma.FieldRef<"User", 'String'>
   readonly status: Prisma.FieldRef<"User", 'UserStatus'>
+<<<<<<< HEAD
+  readonly platformRole: Prisma.FieldRef<"User", 'PlatformRole'>
+  readonly tokenVersion: Prisma.FieldRef<"User", 'Int'>
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   readonly lastLoginAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly emailVerifiedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
@@ -7299,6 +9217,33 @@ export type User$activitiesArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
+<<<<<<< HEAD
+ * User.emailVerificationTokens
+ */
+export type User$emailVerificationTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EmailVerificationToken
+   */
+  select?: Prisma.EmailVerificationTokenSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EmailVerificationToken
+   */
+  omit?: Prisma.EmailVerificationTokenOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EmailVerificationTokenInclude<ExtArgs> | null
+  where?: Prisma.EmailVerificationTokenWhereInput
+  orderBy?: Prisma.EmailVerificationTokenOrderByWithRelationInput | Prisma.EmailVerificationTokenOrderByWithRelationInput[]
+  cursor?: Prisma.EmailVerificationTokenWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EmailVerificationTokenScalarFieldEnum | Prisma.EmailVerificationTokenScalarFieldEnum[]
+}
+
+/**
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
  * User without action
  */
 export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {

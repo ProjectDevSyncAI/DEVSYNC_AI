@@ -12,6 +12,10 @@ import {
 interface ProjectState {
   projects: Project[];
   activeProject: Project | null;
+<<<<<<< HEAD
+  currentOrganizationId: string | null;
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
   isLoading: boolean;
   isCreating: boolean;
@@ -19,7 +23,13 @@ interface ProjectState {
 
   error: string | null;
 
+<<<<<<< HEAD
+  setOrganizationId: (orgId: string | null) => void;
+
+  fetchProjects: (organizationId?: string) => Promise<void>;
+=======
   fetchProjects: () => Promise<void>;
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
   fetchProject: (
     projectId: string,
@@ -27,6 +37,10 @@ interface ProjectState {
 
   createProject: (
     payload: CreateProjectPayload,
+<<<<<<< HEAD
+    organizationId?: string,
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   ) => Promise<Project>;
 
   updateProject: (
@@ -71,6 +85,11 @@ export const useProjectStore =
 
     activeProject: null,
 
+<<<<<<< HEAD
+    currentOrganizationId: null,
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     isLoading: false,
 
     isCreating: false,
@@ -80,6 +99,43 @@ export const useProjectStore =
     error: null,
 
     /* -------------------------------------------------------
+<<<<<<< HEAD
+       SET ORGANIZATION & PREVENT STALE PROJECT DATA
+       ------------------------------------------------------- */
+
+    setOrganizationId: (orgId: string | null) => {
+      const prevOrgId = get().currentOrganizationId;
+      if (prevOrgId !== orgId) {
+        set({
+          currentOrganizationId: orgId,
+          projects: [],
+          activeProject: null,
+          error: null,
+        });
+      }
+    },
+
+    /* -------------------------------------------------------
+       FETCH PROJECTS (BY ORGANIZATION)
+       ------------------------------------------------------- */
+
+    fetchProjects: async (organizationId?: string) => {
+      const targetOrgId = organizationId ?? get().currentOrganizationId;
+      if (!targetOrgId) {
+        set({
+          projects: [],
+          activeProject: null,
+          isLoading: false,
+          error: null,
+        });
+        return;
+      }
+
+      set({
+        isLoading: true,
+        error: null,
+        currentOrganizationId: targetOrgId,
+=======
        FETCH PROJECTS
        ------------------------------------------------------- */
 
@@ -87,11 +143,16 @@ export const useProjectStore =
       set({
         isLoading: true,
         error: null,
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       });
 
       try {
         const projects =
+<<<<<<< HEAD
+          await projectApi.list(targetOrgId);
+=======
           await projectApi.list();
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
         const currentActive =
           get().activeProject;
@@ -102,7 +163,11 @@ export const useProjectStore =
                 (project) =>
                   project.id ===
                   currentActive.id,
+<<<<<<< HEAD
+              ) ?? projects[0] ?? null
+=======
               ) ?? null
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
             : projects[0] ?? null;
 
         set({
@@ -178,7 +243,19 @@ export const useProjectStore =
 
     createProject: async (
       payload,
+<<<<<<< HEAD
+      organizationId,
     ) => {
+      const targetOrgId = organizationId ?? get().currentOrganizationId;
+      if (!targetOrgId) {
+        const errorMsg = "Cannot create project without selecting an organization.";
+        set({ error: errorMsg });
+        throw new Error(errorMsg);
+      }
+
+=======
+    ) => {
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
       set({
         isCreating: true,
         error: null,
@@ -187,6 +264,10 @@ export const useProjectStore =
       try {
         const project =
           await projectApi.create(
+<<<<<<< HEAD
+            targetOrgId,
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
             payload,
           );
 
@@ -332,6 +413,10 @@ export const useProjectStore =
       set({
         projects: [],
         activeProject: null,
+<<<<<<< HEAD
+        currentOrganizationId: null,
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
         error: null,
       });
     },

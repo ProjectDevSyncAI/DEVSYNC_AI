@@ -25,5 +25,14 @@
     "tsx": "^4.20.3",
     "turbo": "^2.5.6",
     "typescript": "^5.9.3"
+<<<<<<< HEAD
+  },
+  "dependencies": {
+    "@types/pdf-parse": "^1.1.5",
+    "gpt-tokenizer": "^4.1.2",
+    "mammoth": "^1.13.0",
+    "pdf-parse": "^2.4.5"
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   }
 }

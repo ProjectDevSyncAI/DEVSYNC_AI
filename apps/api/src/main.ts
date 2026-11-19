@@ -14,7 +14,11 @@ declare const process: {
 };
 
 async function bootstrap() {
+<<<<<<< HEAD
+  const app = await NestFactory.create(AppModule, { rawBody: true });
+=======
   const app = await NestFactory.create(AppModule);
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
   app.setGlobalPrefix('api');
 

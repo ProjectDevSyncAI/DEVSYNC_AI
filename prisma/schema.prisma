@@ -24,6 +24,14 @@ enum UserStatus {
   DEACTIVATED
 }
 
+<<<<<<< HEAD
+enum PlatformRole {
+  USER
+  ADMIN
+}
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 enum OrganizationRole {
   OWNER
   ADMIN
@@ -227,8 +235,14 @@ enum WebhookEventType {
 model User {
   id String @id @default(uuid()) @db.Uuid
 
+<<<<<<< HEAD
+  email        String  @unique @db.VarChar(320)
+  pendingEmail String? @db.VarChar(320)
+  username     String  @unique @db.VarChar(80)
+=======
   email    String @unique @db.VarChar(320)
   username String @unique @db.VarChar(80)
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
   firstName String @db.VarChar(80)
   lastName  String @db.VarChar(80)
@@ -239,6 +253,11 @@ model User {
   passwordHash String
 
   status UserStatus @default(ACTIVE)
+<<<<<<< HEAD
+  platformRole PlatformRole @default(USER)
+  tokenVersion Int          @default(1)
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
   lastLoginAt     DateTime?
   emailVerifiedAt DateTime?
@@ -290,6 +309,10 @@ model User {
 
   mentionedInMessages MessageMention[]
   activities          Activity[]
+<<<<<<< HEAD
+  emailVerificationTokens EmailVerificationToken[]
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
   @@index([email])
   @@index([username])
@@ -298,6 +321,38 @@ model User {
 }
 
 // ============================================================
+<<<<<<< HEAD
+// EMAIL VERIFICATION
+// ============================================================
+
+enum VerificationPurpose {
+  INITIAL_VERIFICATION
+  EMAIL_CHANGE
+}
+
+model EmailVerificationToken {
+  id String @id @default(uuid()) @db.Uuid
+
+  userId String @db.Uuid
+  email  String @db.VarChar(320)
+
+  tokenHash String              @unique @db.VarChar(64)
+  purpose   VerificationPurpose @default(INITIAL_VERIFICATION)
+
+  expiresAt  DateTime
+  consumedAt DateTime?
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([email])
+  @@index([expiresAt])
+}
+
+// ============================================================
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 // ORGANIZATION
 // ============================================================
 
@@ -1473,4 +1528,8 @@ model Activity {
   @@index([type])
   @@index([entityType, entityId])
   @@index([createdAt])
+<<<<<<< HEAD
+  @@index([projectId, createdAt(sort: Desc)])
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }

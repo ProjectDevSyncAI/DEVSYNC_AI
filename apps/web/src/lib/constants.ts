@@ -4,10 +4,21 @@ export const APP_DESCRIPTION =
   "AI-powered engineering intelligence platform for modern development teams.";
 
 export const API_BASE_URL =
+<<<<<<< HEAD
+  (typeof import.meta !== "undefined" && (import.meta as any).env?.VITE_API_URL) ||
+  (typeof globalThis !== "undefined" && (globalThis as any).process?.env?.VITE_API_URL) ||
+  "http://localhost:3000/api";
+
+export const SOCKET_URL =
+  (typeof import.meta !== "undefined" && (import.meta as any).env?.VITE_SOCKET_URL) ||
+  (typeof globalThis !== "undefined" && (globalThis as any).process?.env?.VITE_SOCKET_URL) ||
+  "http://localhost:3000";
+=======
   import.meta.env.VITE_API_URL || "http://localhost:3000/api";
 
 export const SOCKET_URL =
   import.meta.env.VITE_SOCKET_URL || "http://localhost:3000";
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
 export const STORAGE_KEYS = {
   AUTH_TOKEN: "devsync_auth_token",
@@ -24,6 +35,10 @@ export const ROUTES = {
   PROJECTS: "/projects",
   TASKS: "/tasks",
   SETTINGS: "/settings",
+<<<<<<< HEAD
+  INVITE: "/invite",
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   NOT_FOUND: "*",
 } as const;
 

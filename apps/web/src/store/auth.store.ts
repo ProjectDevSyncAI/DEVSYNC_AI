@@ -98,6 +98,15 @@ export const useAuthStore = create<AuthState>(
         const user =
           await authApi.me();
 
+<<<<<<< HEAD
+        try {
+          localStorage.setItem("devsync_user", JSON.stringify(user));
+        } catch {
+          // ignore storage error
+        }
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
         set({
           user,
           isAuthenticated: true,
@@ -107,6 +116,12 @@ export const useAuthStore = create<AuthState>(
         });
       } catch {
         clearAccessToken();
+<<<<<<< HEAD
+        try {
+          localStorage.removeItem("devsync_user");
+        } catch {}
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
         set({
           user: null,
@@ -136,6 +151,15 @@ export const useAuthStore = create<AuthState>(
           response.accessToken,
         );
 
+<<<<<<< HEAD
+        try {
+          localStorage.setItem("devsync_user", JSON.stringify(response.user));
+        } catch {
+          // ignore storage error
+        }
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
         set({
           user: response.user,
           isAuthenticated: true,
@@ -185,6 +209,15 @@ export const useAuthStore = create<AuthState>(
           response.accessToken,
         );
 
+<<<<<<< HEAD
+        try {
+          localStorage.setItem("devsync_user", JSON.stringify(response.user));
+        } catch {
+          // ignore storage error
+        }
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
         set({
           user: response.user,
           isAuthenticated: true,
@@ -233,6 +266,12 @@ export const useAuthStore = create<AuthState>(
          */
       } finally {
         clearAccessToken();
+<<<<<<< HEAD
+        try {
+          localStorage.removeItem("devsync_user");
+        } catch {}
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
         set({
           user: null,
@@ -342,6 +381,12 @@ if (
     "devsync:unauthorized",
     () => {
       clearAccessToken();
+<<<<<<< HEAD
+      try {
+        localStorage.removeItem("devsync_user");
+      } catch {}
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
       useAuthStore.setState({
         user: null,

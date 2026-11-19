@@ -1,5 +1,9 @@
 import {
+<<<<<<< HEAD
+  IsObject,
+=======
   IsJSON,
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   IsOptional,
   IsString,
   IsUUID,
@@ -25,6 +29,10 @@ export class CreateActivityDto {
 
   @IsOptional()
   @IsString()
+<<<<<<< HEAD
+  @MaxLength(2000, { message: 'Activity description cannot exceed 2000 characters' })
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   description?: string;
 
   @IsOptional()
@@ -38,5 +46,11 @@ export class CreateActivityDto {
   entityId?: string;
 
   @IsOptional()
+<<<<<<< HEAD
+  @IsObject({ message: 'Metadata must be a valid JSON object' })
   metadata?: Record<string, unknown>;
 }
+=======
+  metadata?: Record<string, unknown>;
+}
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c

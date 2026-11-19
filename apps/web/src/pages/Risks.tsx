@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import { useCallback, useEffect, useMemo, useState } from "react";
+=======
 import { useMemo, useState } from "react";
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 import type { LucideIcon } from "lucide-react";
 import {
   Activity,
@@ -13,6 +17,10 @@ import {
   Clock3,
   Filter,
   Gauge,
+<<<<<<< HEAD
+  Loader2,
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   Plus,
   Search,
   Shield,
@@ -23,6 +31,15 @@ import {
   X,
   Zap,
 } from "lucide-react";
+<<<<<<< HEAD
+import {
+  organizationApi,
+  projectApi,
+  riskApi,
+} from "../lib/api";
+import type { Project, ProjectRisk } from "../lib/api";
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
 type RiskLevel = "Critical" | "High" | "Medium" | "Low";
 type RiskStatus = "Open" | "Mitigating" | "Resolved";
@@ -287,8 +304,63 @@ function LevelBadge({ level }: { level: RiskLevel }) {
   );
 }
 
+<<<<<<< HEAD
+function mapApiRiskToRisk(apiRisk: ProjectRisk, projectName = "DevSync Web"): Risk {
+  const levelMap: Record<string, RiskLevel> = {
+    CRITICAL: "Critical",
+    HIGH: "High",
+    MEDIUM: "Medium",
+    LOW: "Low",
+  };
+  const statusMap: Record<string, RiskStatus> = {
+    OPEN: "Open",
+    ACKNOWLEDGED: "Mitigating",
+    MITIGATED: "Mitigating",
+    RESOLVED: "Resolved",
+    IGNORED: "Resolved",
+  };
+  const prob =
+    apiRisk.probability !== undefined && apiRisk.probability !== null
+      ? Math.round(apiRisk.probability * 100)
+      : 65;
+  const imp =
+    apiRisk.impact !== undefined && apiRisk.impact !== null
+      ? Math.round(apiRisk.impact * 100)
+      : 70;
+  return {
+    id:
+      apiRisk.id.length > 8
+        ? `RSK-${apiRisk.id.slice(0, 4).toUpperCase()}`
+        : apiRisk.id,
+    title: apiRisk.title,
+    description: apiRisk.description,
+    category: "Technical",
+    level: levelMap[apiRisk.severity] || "Medium",
+    status: statusMap[apiRisk.status] || "Open",
+    probability: prob,
+    impact: imp,
+    owner: "Engineering Lead",
+    project: projectName,
+    dueDate: apiRisk.detectedAt
+      ? new Date(apiRisk.detectedAt).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+        })
+      : "Active",
+    mitigation:
+      "Systematically monitor blockers, add automated tests, and review architecture.",
+  };
+}
+
+export default function RiskEngine() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [selectedProjectId, setSelectedProjectId] = useState<string>("");
+  const [risks, setRisks] = useState<Risk[]>(initialRisks);
+  const [loading, setLoading] = useState(false);
+=======
 export default function RiskEngine() {
   const [risks, setRisks] = useState<Risk[]>(initialRisks);
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   const [search, setSearch] = useState("");
   const [levelFilter, setLevelFilter] = useState("All levels");
   const [statusFilter, setStatusFilter] = useState("All statuses");
@@ -298,6 +370,43 @@ export default function RiskEngine() {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [notice, setNotice] = useState("");
 
+<<<<<<< HEAD
+  const loadRisks = useCallback(async (projId: string) => {
+    try {
+      setLoading(true);
+      const items = await riskApi.listByProject(projId);
+      if (items && items.length > 0) {
+        const projName =
+          projects.find((p) => p.id === projId)?.name || "DevSync Web";
+        setRisks(items.map((r) => mapApiRiskToRisk(r, projName)));
+      }
+    } catch {
+      // keep fallback
+    } finally {
+      setLoading(false);
+    }
+  }, [projects]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const orgs = await organizationApi.list();
+        if (orgs.length > 0) {
+          const projs = await projectApi.list(orgs[0].id);
+          setProjects(projs);
+          if (projs.length > 0) {
+            setSelectedProjectId(projs[0].id);
+            loadRisks(projs[0].id);
+          }
+        }
+      } catch {
+        // keep fallback
+      }
+    })();
+  }, [loadRisks]);
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   const stats = useMemo(() => {
     const open = risks.filter((risk) => risk.status !== "Resolved");
     const critical = open.filter((risk) => risk.level === "Critical").length;
@@ -379,7 +488,11 @@ export default function RiskEngine() {
     [risks],
   );
 
+<<<<<<< HEAD
+  async function updateRiskStatus(id: string, status: RiskStatus) {
+=======
   function updateRiskStatus(id: string, status: RiskStatus) {
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     setRisks((current) =>
       current.map((risk) =>
         risk.id === id ? { ...risk, status } : risk,
@@ -391,9 +504,26 @@ export default function RiskEngine() {
     );
 
     setNotice(`Risk ${id} updated to ${status.toLowerCase()}.`);
+<<<<<<< HEAD
+
+    const apiStatusMap: Record<RiskStatus, "OPEN" | "MITIGATED" | "RESOLVED"> = {
+      Open: "OPEN",
+      Mitigating: "MITIGATED",
+      Resolved: "RESOLVED",
+    };
+    try {
+      await riskApi.updateStatus(id, apiStatusMap[status]);
+    } catch {
+      // non-blocking
+    }
+  }
+
+  async function addRisk(formData: FormData) {
+=======
   }
 
   function addRisk(formData: FormData) {
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     const title = String(formData.get("title") || "").trim();
     const description = String(formData.get("description") || "").trim();
     const category = String(
@@ -425,11 +555,46 @@ export default function RiskEngine() {
 
     setRisks((current) => [newRisk, ...current]);
     setShowCreateForm(false);
+<<<<<<< HEAD
+    setNotice("Risk created successfully.");
+=======
     setNotice("Risk created successfully in this demo.");
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     setSearch("");
     setLevelFilter("All levels");
     setStatusFilter("All statuses");
     setCategoryFilter("All categories");
+<<<<<<< HEAD
+
+    if (selectedProjectId) {
+      try {
+        const sevMap: Record<RiskLevel, "CRITICAL" | "HIGH" | "MEDIUM" | "LOW"> = {
+          Critical: "CRITICAL",
+          High: "HIGH",
+          Medium: "MEDIUM",
+          Low: "LOW",
+        };
+        const created = await riskApi.create({
+          projectId: selectedProjectId,
+          title: newRisk.title,
+          description: newRisk.description,
+          severity: sevMap[newRisk.level],
+          probability: probability / 100,
+          impact: impact / 100,
+        });
+        if (created?.id) {
+          setRisks((current) =>
+            current.map((r) =>
+              r.id === newRisk.id ? { ...r, id: created.id } : r,
+            ),
+          );
+        }
+      } catch {
+        // non-blocking
+      }
+    }
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   }
 
   function resetFilters() {
@@ -463,6 +628,26 @@ export default function RiskEngine() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
+<<<<<<< HEAD
+            {projects.length > 0 && (
+              <select
+                value={selectedProjectId}
+                onChange={(e) => {
+                  setSelectedProjectId(e.target.value);
+                  loadRisks(e.target.value);
+                }}
+                className="rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm"
+              >
+                {projects.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name}
+                  </option>
+                ))}
+              </select>
+            )}
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
             <button
               type="button"
               onClick={() => {
@@ -485,6 +670,29 @@ export default function RiskEngine() {
           </div>
         </div>
 
+<<<<<<< HEAD
+        {/* Live sync banner */}
+        <div className="flex items-start justify-between gap-3 rounded-xl border border-emerald-100 bg-emerald-50/80 p-4">
+          <div className="flex items-start gap-3">
+            <div className="mt-0.5 rounded-lg bg-emerald-100 p-2 text-emerald-700">
+              <ShieldCheck size={18} />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-emerald-900">
+                Live AI Risk Intelligence
+              </p>
+              <p className="mt-1 text-sm leading-5 text-emerald-800/80">
+                Risk probabilities, impact scores, and mitigation actions are connected to your PostgreSQL database and the DevSync AI risk evaluation engine.
+              </p>
+            </div>
+          </div>
+          {loading && (
+            <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700">
+              <Loader2 size={14} className="animate-spin" />
+              Syncing…
+            </div>
+          )}
+=======
         {/* Demo data disclosure */}
         <div className="flex items-start gap-3 rounded-xl border border-blue-100 bg-blue-50/80 p-4">
           <div className="mt-0.5 rounded-lg bg-blue-100 p-2 text-blue-700">
@@ -500,6 +708,7 @@ export default function RiskEngine() {
               they are not live AI predictions or backend-synchronized records.
             </p>
           </div>
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
         </div>
 
         {/* KPI cards */}

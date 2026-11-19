@@ -8,11 +8,20 @@ services:
     image: pgvector/pgvector:pg17
     container_name: devsync-postgres
     restart: unless-stopped
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     environment:
       POSTGRES_USER: devsync
       POSTGRES_PASSWORD: devsync_password
       POSTGRES_DB: devsync
+<<<<<<< HEAD
+    ports:
+      - "5440:5432"
+    volumes:
+      - devsync_postgres_data:/var/lib/postgresql/data
+=======
 
     ports:
       - "5440:5432"
@@ -20,6 +29,7 @@ services:
     volumes:
       - devsync_postgres_data:/var/lib/postgresql/data
 
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     healthcheck:
       test:
         [
@@ -30,7 +40,10 @@ services:
       timeout: 5s
       retries: 10
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   # ==========================================================
   # REDIS
   # ==========================================================
@@ -39,6 +52,12 @@ services:
     image: redis:8-alpine
     container_name: devsync-redis
     restart: unless-stopped
+<<<<<<< HEAD
+    ports:
+      - "6379:6379"
+    volumes:
+      - devsync_redis_data:/data
+=======
 
     ports:
       - "6379:6379"
@@ -46,11 +65,15 @@ services:
     volumes:
       - devsync_redis_data:/data
 
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     command:
       - redis-server
       - --appendonly
       - "yes"
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     healthcheck:
       test:
         [
@@ -62,13 +85,85 @@ services:
       timeout: 3s
       retries: 10
 
+<<<<<<< HEAD
+  # ==========================================================
+  # NESTJS API (Full Profile)
+  # ==========================================================
+
+  api:
+    profiles: ["full"]
+    build:
+      context: .
+      dockerfile: infrastructure/docker/api.Dockerfile
+    container_name: devsync-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://devsync:devsync_password@postgres:5432/devsync?schema=public
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: devsync-production-grade-jwt-secret-key-32-chars
+      API_PORT: 3000
+      API_PREFIX: api
+      WEB_URL: http://localhost:80
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ==========================================================
+  # BACKGROUND WORKER (Full Profile)
+  # ==========================================================
+
+  worker:
+    profiles: ["full"]
+    build:
+      context: .
+      dockerfile: infrastructure/docker/worker.Dockerfile
+    container_name: devsync-worker
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://devsync:devsync_password@postgres:5432/devsync?schema=public
+      REDIS_URL: redis://redis:6379
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ==========================================================
+  # WEB FRONTEND & NGINX (Full Profile)
+  # ==========================================================
+
+  web:
+    profiles: ["full"]
+    build:
+      context: .
+      dockerfile: infrastructure/docker/web.Dockerfile
+    container_name: devsync-web
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
 # ==========================================================
 # VOLUMES
 # ==========================================================
 
 volumes:
+<<<<<<< HEAD
+  devsync_postgres_data:
+=======
 
   devsync_postgres_data:
 
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   devsync_redis_data:

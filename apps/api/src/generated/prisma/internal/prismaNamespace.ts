@@ -385,6 +385,10 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   User: 'User',
+<<<<<<< HEAD
+  EmailVerificationToken: 'EmailVerificationToken',
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   Organization: 'Organization',
   OrganizationMember: 'OrganizationMember',
   OrganizationInvitation: 'OrganizationInvitation',
@@ -436,7 +440,11 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
+<<<<<<< HEAD
+    modelProps: "user" | "emailVerificationToken" | "organization" | "organizationMember" | "organizationInvitation" | "project" | "projectMember" | "repository" | "branch" | "commit" | "task" | "taskLabel" | "label" | "issue" | "issueLabel" | "sprint" | "sprintMember" | "pullRequest" | "pullRequestReview" | "comment" | "commentMention" | "chatChannel" | "chatChannelMember" | "chatMessage" | "messageMention" | "notification" | "aIConversation" | "aIMessage" | "aIMessageCitation" | "document" | "documentChunk" | "aIInsight" | "projectRisk" | "projectAnalytics" | "gitHubAccount" | "gitHubWebhookEvent" | "auditLog" | "activity"
+=======
     modelProps: "user" | "organization" | "organizationMember" | "organizationInvitation" | "project" | "projectMember" | "repository" | "branch" | "commit" | "task" | "taskLabel" | "label" | "issue" | "issueLabel" | "sprint" | "sprintMember" | "pullRequest" | "pullRequestReview" | "comment" | "commentMention" | "chatChannel" | "chatChannelMember" | "chatMessage" | "messageMention" | "notification" | "aIConversation" | "aIMessage" | "aIMessageCitation" | "document" | "documentChunk" | "aIInsight" | "projectRisk" | "projectAnalytics" | "gitHubAccount" | "gitHubWebhookEvent" | "auditLog" | "activity"
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -514,6 +522,83 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+<<<<<<< HEAD
+    EmailVerificationToken: {
+      payload: Prisma.$EmailVerificationTokenPayload<ExtArgs>
+      fields: Prisma.EmailVerificationTokenFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EmailVerificationTokenFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailVerificationTokenPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EmailVerificationTokenFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailVerificationTokenPayload>
+        }
+        findFirst: {
+          args: Prisma.EmailVerificationTokenFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailVerificationTokenPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EmailVerificationTokenFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailVerificationTokenPayload>
+        }
+        findMany: {
+          args: Prisma.EmailVerificationTokenFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailVerificationTokenPayload>[]
+        }
+        create: {
+          args: Prisma.EmailVerificationTokenCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailVerificationTokenPayload>
+        }
+        createMany: {
+          args: Prisma.EmailVerificationTokenCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EmailVerificationTokenCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailVerificationTokenPayload>[]
+        }
+        delete: {
+          args: Prisma.EmailVerificationTokenDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailVerificationTokenPayload>
+        }
+        update: {
+          args: Prisma.EmailVerificationTokenUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailVerificationTokenPayload>
+        }
+        deleteMany: {
+          args: Prisma.EmailVerificationTokenDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EmailVerificationTokenUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EmailVerificationTokenUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailVerificationTokenPayload>[]
+        }
+        upsert: {
+          args: Prisma.EmailVerificationTokenUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailVerificationTokenPayload>
+        }
+        aggregate: {
+          args: Prisma.EmailVerificationTokenAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEmailVerificationToken>
+        }
+        groupBy: {
+          args: Prisma.EmailVerificationTokenGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmailVerificationTokenGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EmailVerificationTokenCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmailVerificationTokenCountAggregateOutputType> | number
+        }
+      }
+    }
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
     Organization: {
       payload: Prisma.$OrganizationPayload<ExtArgs>
       fields: Prisma.OrganizationFieldRefs
@@ -3220,6 +3305,10 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
+<<<<<<< HEAD
+  pendingEmail: 'pendingEmail',
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   username: 'username',
   firstName: 'firstName',
   lastName: 'lastName',
@@ -3227,6 +3316,11 @@ export const UserScalarFieldEnum = {
   bio: 'bio',
   passwordHash: 'passwordHash',
   status: 'status',
+<<<<<<< HEAD
+  platformRole: 'platformRole',
+  tokenVersion: 'tokenVersion',
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   lastLoginAt: 'lastLoginAt',
   emailVerifiedAt: 'emailVerifiedAt',
   createdAt: 'createdAt',
@@ -3236,6 +3330,23 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+<<<<<<< HEAD
+export const EmailVerificationTokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  email: 'email',
+  tokenHash: 'tokenHash',
+  purpose: 'purpose',
+  expiresAt: 'expiresAt',
+  consumedAt: 'consumedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type EmailVerificationTokenScalarFieldEnum = (typeof EmailVerificationTokenScalarFieldEnum)[keyof typeof EmailVerificationTokenScalarFieldEnum]
+
+
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 export const OrganizationScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -3858,6 +3969,37 @@ export type ListEnumUserStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$P
 
 
 /**
+<<<<<<< HEAD
+ * Reference to a field of type 'PlatformRole'
+ */
+export type EnumPlatformRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PlatformRole'>
+    
+
+
+/**
+ * Reference to a field of type 'PlatformRole[]'
+ */
+export type ListEnumPlatformRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PlatformRole[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -3872,6 +4014,23 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
+<<<<<<< HEAD
+ * Reference to a field of type 'VerificationPurpose'
+ */
+export type EnumVerificationPurposeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VerificationPurpose'>
+    
+
+
+/**
+ * Reference to a field of type 'VerificationPurpose[]'
+ */
+export type ListEnumVerificationPurposeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VerificationPurpose[]'>
+    
+
+
+/**
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
  * Reference to a field of type 'OrganizationRole'
  */
 export type EnumOrganizationRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OrganizationRole'>
@@ -3914,6 +4073,8 @@ export type ListEnumRepositoryVisibilityFieldRefInput<$PrismaModel> = FieldRefIn
 
 
 /**
+<<<<<<< HEAD
+=======
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -3928,6 +4089,7 @@ export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -4307,6 +4469,10 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
+<<<<<<< HEAD
+  emailVerificationToken?: Prisma.EmailVerificationTokenOmit
+=======
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
   organization?: Prisma.OrganizationOmit
   organizationMember?: Prisma.OrganizationMemberOmit
   organizationInvitation?: Prisma.OrganizationInvitationOmit

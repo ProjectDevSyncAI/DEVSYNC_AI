@@ -24,5 +24,12 @@ export class CreateUserDto {
   @IsOptional()
   @IsString()
   lastName?: string;
+<<<<<<< HEAD
+
+  @IsOptional()
+  @IsString()
+  avatarUrl?: string | null;
+=======
     avatarUrl: string | null | undefined;
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 }

@@ -700,6 +700,8 @@ export type EnumRepositoryVisibilityFieldUpdateOperationsInput = {
   set?: $Enums.RepositoryVisibility
 }
 
+<<<<<<< HEAD
+=======
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
@@ -708,6 +710,7 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 export type RepositoryCreateNestedOneWithoutBranchesInput = {
   create?: Prisma.XOR<Prisma.RepositoryCreateWithoutBranchesInput, Prisma.RepositoryUncheckedCreateWithoutBranchesInput>
   connectOrCreate?: Prisma.RepositoryCreateOrConnectWithoutBranchesInput

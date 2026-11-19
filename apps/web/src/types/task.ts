@@ -5,11 +5,20 @@ import type {
 } from "./common";
 
 export type TaskStatus =
+<<<<<<< HEAD
+  | "TODO"
+  | "IN_PROGRESS"
+  | "IN_REVIEW"
+  | "BLOCKED"
+  | "DONE"
+  | "CANCELLED";
+=======
   | "backlog"
   | "todo"
   | "in_progress"
   | "in_review"
   | "done";
+>>>>>>> 9522e203164e6cd5d7c231342e593c9c681d137c
 
 export interface Task extends TimeStamped {
   id: ID;
